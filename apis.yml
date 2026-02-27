@@ -1,0 +1,85 @@
+name: Mistral AI APIs
+description: Mistral AI provides state-of-the-art large language models and AI APIs for developers and enterprises
+image: https://mistral.ai/images/logo.png
+created: '2024'
+modified: '2024'
+specificationVersion: '0.18'
+url: https://docs.mistral.ai/apis.json
+apis:
+- name: Mistral AI Chat API
+  description: Chat completion API for conversational AI using Mistral's language models
+  image: https://mistral.ai/images/chat-icon.png
+  humanURL: https://docs.mistral.ai/api/
+  baseURL: https://api.mistral.ai/v1
+  tags:
+  - Artificial Intelligence
+  - Chat
+  - Conversational AI
+  - Large Language Models
+  - NLP
+  properties:
+  - type: Documentation
+    url: https://docs.mistral.ai/api/
+  - type: OpenAPI
+    url: https://docs.mistral.ai/openapi.json
+  - type: Authentication
+    url: https://docs.mistral.ai/api/#authentication
+  contact:
+  - type: Support
+    url: https://docs.mistral.ai/
+  - type: Email
+    url: mailto:support@mistral.ai
+- name: Mistral Embeddings API
+  description: Generate vector embeddings for text using Mistral's embedding models
+  image: https://mistral.ai/images/embeddings-icon.png
+  humanURL: https://docs.mistral.ai/api/#embeddings
+  baseURL: https://api.mistral.ai/v1
+  tags:
+  - Embeddings
+  - Vector Search
+  - Semantic Search
+  - Machine Learning
+  properties:
+  - type: Documentation
+    url: https://docs.mistral.ai/api/#embeddings
+  - type: Pricing
+    url: https://mistral.ai/technology/#pricing
+- name: Mistral Moderation API
+  description: Content moderation API for detecting potentially harmful or inappropriate content
+  image: https://mistral.ai/images/moderation-icon.png
+  humanURL: https://docs.mistral.ai/api/#moderation
+  baseURL: https://api.mistral.ai/v1
+  tags:
+  - Content Moderation
+  - Safety
+  - Compliance
+  properties:
+  - type: Documentation
+    url: https://docs.mistral.ai/api/#moderation
+maintainers:
+- name: Mistral AI
+  email: contact@mistral.ai
+  url: https://mistral.ai
+common:
+- type: Website
+  url: https://mistral.ai
+- type: Documentation
+  url: https://docs.mistral.ai
+- type: Getting Started
+  url: https://docs.mistral.ai/getting-started/
+- type: Terms of Service
+  url: https://mistral.ai/terms/
+- type: Privacy Policy
+  url: https://mistral.ai/privacy/
+- type: Pricing
+  url: https://mistral.ai/technology/#pricing
+- type: Status
+  url: https://status.mistral.ai
+- type: GitHub
+  url: https://github.com/mistralai
+- type: Twitter
+  url: https://twitter.com/MistralAI
+- type: LinkedIn
+  url: https://www.linkedin.com/company/mistralai
+- type: Discord
+  url: https://discord.gg/mistralai
