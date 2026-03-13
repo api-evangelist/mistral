@@ -1,0 +1,190 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "mistral": "https://docs.mistral.ai/schemas/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "ChatCompletion": {
+      "@id": "mistral:ChatCompletion",
+      "@context": {
+        "model": "mistral:model",
+        "choices": "mistral:choices",
+        "usage": "mistral:usage",
+        "created": {
+          "@id": "dcterms:created",
+          "@type": "xsd:integer"
+        }
+      }
+    },
+
+    "Message": {
+      "@id": "mistral:Message",
+      "@context": {
+        "role": "mistral:role",
+        "content": "schema:text",
+        "toolCalls": "mistral:toolCalls",
+        "toolCallId": "mistral:toolCallId"
+      }
+    },
+
+    "Embedding": {
+      "@id": "mistral:Embedding",
+      "@context": {
+        "embedding": "mistral:embeddingVector",
+        "index": {
+          "@id": "mistral:index",
+          "@type": "xsd:integer"
+        },
+        "model": "mistral:model"
+      }
+    },
+
+    "Model": {
+      "@id": "mistral:Model",
+      "@context": {
+        "name": "schema:name",
+        "description": "schema:description",
+        "ownedBy": "mistral:ownedBy",
+        "maxContextLength": {
+          "@id": "mistral:maxContextLength",
+          "@type": "xsd:integer"
+        },
+        "aliases": "mistral:aliases",
+        "capabilities": "mistral:capabilities",
+        "created": {
+          "@id": "dcterms:created",
+          "@type": "xsd:integer"
+        },
+        "deprecation": {
+          "@id": "mistral:deprecation",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "FineTuningJob": {
+      "@id": "mistral:FineTuningJob",
+      "@context": {
+        "model": "mistral:model",
+        "status": "mistral:status",
+        "jobType": "mistral:jobType",
+        "fineTunedModel": "mistral:fineTunedModel",
+        "trainingFiles": "mistral:trainingFiles",
+        "validationFiles": "mistral:validationFiles",
+        "hyperparameters": "mistral:hyperparameters",
+        "createdAt": {
+          "@id": "dcterms:created",
+          "@type": "xsd:integer"
+        },
+        "modifiedAt": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:integer"
+        }
+      }
+    },
+
+    "File": {
+      "@id": "mistral:File",
+      "@context": {
+        "filename": "schema:name",
+        "purpose": "mistral:purpose",
+        "bytes": {
+          "@id": "mistral:bytes",
+          "@type": "xsd:integer"
+        },
+        "numLines": {
+          "@id": "mistral:numLines",
+          "@type": "xsd:integer"
+        },
+        "source": "mistral:source",
+        "createdAt": {
+          "@id": "dcterms:created",
+          "@type": "xsd:integer"
+        }
+      }
+    },
+
+    "ModerationResult": {
+      "@id": "mistral:ModerationResult",
+      "@context": {
+        "categories": "mistral:categories",
+        "categoryScores": "mistral:categoryScores",
+        "model": "mistral:model"
+      }
+    },
+
+    "BatchJob": {
+      "@id": "mistral:BatchJob",
+      "@context": {
+        "endpoint": "mistral:endpoint",
+        "model": "mistral:model",
+        "status": "mistral:status",
+        "inputFiles": "mistral:inputFiles",
+        "outputFile": "mistral:outputFile",
+        "totalRequests": {
+          "@id": "mistral:totalRequests",
+          "@type": "xsd:integer"
+        },
+        "completedRequests": {
+          "@id": "mistral:completedRequests",
+          "@type": "xsd:integer"
+        },
+        "createdAt": {
+          "@id": "dcterms:created",
+          "@type": "xsd:integer"
+        },
+        "completedAt": {
+          "@id": "mistral:completedAt",
+          "@type": "xsd:integer"
+        }
+      }
+    },
+
+    "Transcription": {
+      "@id": "mistral:Transcription",
+      "@context": {
+        "text": "schema:text",
+        "language": "schema:inLanguage",
+        "duration": {
+          "@id": "mistral:duration",
+          "@type": "xsd:decimal"
+        },
+        "words": "mistral:words",
+        "segments": "mistral:segments"
+      }
+    },
+
+    "OcrResult": {
+      "@id": "mistral:OcrResult",
+      "@context": {
+        "pages": "mistral:pages",
+        "model": "mistral:model",
+        "markdown": "schema:text",
+        "index": {
+          "@id": "mistral:index",
+          "@type": "xsd:integer"
+        }
+      }
+    },
+
+    "Usage": {
+      "@id": "mistral:Usage",
+      "@context": {
+        "promptTokens": {
+          "@id": "mistral:promptTokens",
+          "@type": "xsd:integer"
+        },
+        "completionTokens": {
+          "@id": "mistral:completionTokens",
+          "@type": "xsd:integer"
+        },
+        "totalTokens": {
+          "@id": "mistral:totalTokens",
+          "@type": "xsd:integer"
+        }
+      }
+    }
+  }
+}

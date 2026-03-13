@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://docs.mistral.ai/schemas/mistral/model.json",
+  "title": "Mistral Model",
+  "description": "A language model available on the Mistral AI platform, including base models and user fine-tuned models with capability and configuration metadata.",
+  "type": "object",
+  "required": ["id", "object", "created", "owned_by"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the model"
+    },
+    "object": {
+      "type": "string",
+      "enum": ["model"],
+      "description": "Object type identifier"
+    },
+    "created": {
+      "type": "integer",
+      "description": "Unix timestamp when the model was created"
+    },
+    "owned_by": {
+      "type": "string",
+      "description": "Organization that owns the model"
+    },
+    "name": {
+      "type": ["string", "null"],
+      "description": "Human-readable name of the model"
+    },
+    "description": {
+      "type": ["string", "null"],
+      "description": "Description of the model and its capabilities"
+    },
+    "max_context_length": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Maximum context window length in tokens"
+    },
+    "aliases": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Alternative names that can reference this model"
+    },
+    "deprecation": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Deprecation date if the model is being retired"
+    },
+    "capabilities": {
+      "$ref": "#/$defs/Capabilities"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["base", "fine-tuned"],
+      "description": "Whether this is a base platform model or a user fine-tuned model"
+    }
+  },
+  "$defs": {
+    "Capabilities": {
+      "type": "object",
+      "description": "Supported capabilities of the model",
+      "properties": {
+        "completion_chat": {
+          "type": "boolean",
+          "description": "Whether the model supports chat completions"
+        },
+        "completion_fim": {
+          "type": "boolean",
+          "description": "Whether the model supports fill-in-the-middle completions"
+        },
+        "function_calling": {
+          "type": "boolean",
+          "description": "Whether the model supports function calling"
+        },
+        "fine_tuning": {
+          "type": "boolean",
+          "description": "Whether the model can be fine-tuned"
+        },
+        "vision": {
+          "type": "boolean",
+          "description": "Whether the model supports vision/image inputs"
+        }
+      }
+    }
+  }
+}

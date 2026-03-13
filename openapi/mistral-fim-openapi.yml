@@ -1,0 +1,189 @@
+openapi: 3.1.0
+info:
+  title: Mistral AI FIM API
+  description: >-
+    Fill-in-the-Middle code completion API powered by Codestral. Generates
+    code between a given prompt prefix and optional suffix, supporting over
+    80 programming languages for inline code completion and code generation.
+  version: '1.0'
+  contact:
+    name: Mistral AI Support
+    url: https://docs.mistral.ai/
+    email: support@mistral.ai
+  termsOfService: https://mistral.ai/terms/
+externalDocs:
+  description: Mistral AI FIM API Documentation
+  url: https://docs.mistral.ai/api/endpoint/fim
+servers:
+  - url: https://api.mistral.ai/v1
+    description: Mistral AI Production
+  - url: https://codestral.mistral.ai/v1
+    description: Codestral Dedicated Endpoint
+tags:
+  - name: FIM
+    description: Fill-in-the-Middle code completion operations
+security:
+  - bearerAuth: []
+paths:
+  /fim/completions:
+    post:
+      operationId: createFimCompletion
+      summary: Create a FIM completion
+      description: >-
+        Generate code to fill in between a given prompt prefix and optional
+        suffix. Powered by Codestral for high-quality code completions across
+        80+ programming languages.
+      tags:
+        - FIM
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FimCompletionRequest'
+      responses:
+        '200':
+          description: FIM completion response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FimCompletionResponse'
+            text/event-stream:
+              schema:
+                $ref: '#/components/schemas/FimCompletionStreamResponse'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '429':
+          description: Rate limit exceeded
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Mistral AI API key or Codestral API key
+  schemas:
+    FimCompletionRequest:
+      type: object
+      required:
+        - model
+        - prompt
+      properties:
+        model:
+          type: string
+          description: ID of the model to use
+          examples:
+            - codestral-latest
+        prompt:
+          type: string
+          description: The text before the code to complete (prefix)
+        suffix:
+          type: string
+          description: The text after the code to complete (optional suffix)
+        temperature:
+          type: number
+          minimum: 0
+          maximum: 2
+          default: 0.7
+          description: Sampling temperature
+        top_p:
+          type: number
+          minimum: 0
+          maximum: 1
+          default: 1
+          description: Nucleus sampling parameter
+        max_tokens:
+          type: integer
+          minimum: 1
+          description: Maximum number of tokens to generate
+        stream:
+          type: boolean
+          default: false
+          description: Whether to stream partial completions
+        stop:
+          oneOf:
+            - type: string
+            - type: array
+              items:
+                type: string
+          description: Stop sequences
+        random_seed:
+          type: integer
+          description: Random seed for deterministic generation
+        min_tokens:
+          type: integer
+          minimum: 0
+          description: Minimum number of tokens to generate
+    FimCompletionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+          enum:
+            - chat.completion
+        created:
+          type: integer
+        model:
+          type: string
+        choices:
+          type: array
+          items:
+            type: object
+            properties:
+              index:
+                type: integer
+              message:
+                type: object
+                properties:
+                  role:
+                    type: string
+                  content:
+                    type: string
+              finish_reason:
+                type: string
+                enum:
+                  - stop
+                  - length
+        usage:
+          type: object
+          properties:
+            prompt_tokens:
+              type: integer
+            completion_tokens:
+              type: integer
+            total_tokens:
+              type: integer
+    FimCompletionStreamResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+          enum:
+            - chat.completion.chunk
+        created:
+          type: integer
+        model:
+          type: string
+        choices:
+          type: array
+          items:
+            type: object
+            properties:
+              index:
+                type: integer
+              delta:
+                type: object
+                properties:
+                  role:
+                    type: string
+                  content:
+                    type: string
+              finish_reason:
+                type:
+                  - string
+                  - 'null'

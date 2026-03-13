@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://docs.mistral.ai/schemas/mistral/fine-tuning-job.json",
+  "title": "Mistral Fine-Tuning Job",
+  "description": "A fine-tuning job for customizing a Mistral model on user-provided training data, with configurable hyperparameters, status tracking, and integration support.",
+  "type": "object",
+  "required": ["id", "model", "status"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the fine-tuning job"
+    },
+    "auto_start": {
+      "type": "boolean",
+      "description": "Whether training starts automatically after validation"
+    },
+    "model": {
+      "type": "string",
+      "description": "The base model being fine-tuned"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "QUEUED",
+        "STARTED",
+        "VALIDATING",
+        "VALIDATED",
+        "RUNNING",
+        "FAILED_VALIDATION",
+        "FAILED",
+        "SUCCESS",
+        "CANCELLED",
+        "CANCELLATION_REQUESTED"
+      ],
+      "description": "Current status of the fine-tuning job"
+    },
+    "job_type": {
+      "type": "string",
+      "description": "Type of fine-tuning job (e.g., text, vision, classifier)"
+    },
+    "created_at": {
+      "type": "integer",
+      "description": "Unix timestamp when the job was created"
+    },
+    "modified_at": {
+      "type": "integer",
+      "description": "Unix timestamp when the job was last modified"
+    },
+    "training_files": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "description": "IDs of training data files"
+    },
+    "validation_files": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "description": "IDs of validation data files"
+    },
+    "hyperparameters": {
+      "$ref": "#/$defs/Hyperparameters"
+    },
+    "fine_tuned_model": {
+      "type": ["string", "null"],
+      "description": "ID of the resulting fine-tuned model upon completion"
+    },
+    "suffix": {
+      "type": "string",
+      "maxLength": 18,
+      "description": "User-specified suffix appended to the fine-tuned model name"
+    },
+    "integrations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Integration"
+      },
+      "description": "Third-party integrations for experiment tracking"
+    }
+  },
+  "$defs": {
+    "Hyperparameters": {
+      "type": "object",
+      "description": "Hyperparameters for the fine-tuning job",
+      "properties": {
+        "training_steps": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Number of training steps"
+        },
+        "learning_rate": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Learning rate"
+        },
+        "weight_decay": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Weight decay regularization factor"
+        },
+        "warmup_fraction": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Fraction of total steps for learning rate warmup"
+        },
+        "epochs": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Number of training epochs"
+        },
+        "seq_len": {
+          "type": "integer",
+          "description": "Maximum sequence length for training"
+        }
+      }
+    },
+    "Integration": {
+      "type": "object",
+      "description": "A third-party integration for experiment tracking",
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["wandb"],
+          "description": "Integration provider type"
+        },
+        "project": {
+          "type": "string",
+          "description": "Project name in the integration platform"
+        },
+        "name": {
+          "type": "string",
+          "description": "Run name in the integration platform"
+        }
+      }
+    }
+  }
+}

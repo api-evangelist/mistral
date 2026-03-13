@@ -1,0 +1,127 @@
+openapi: 3.1.0
+info:
+  title: Mistral Embeddings API
+  description: >-
+    Generate vector embeddings for text using Mistral's embedding models.
+    Useful for retrieval-augmented generation, clustering, classification,
+    and semantic search use cases.
+  version: '1.0'
+  contact:
+    name: Mistral AI Support
+    url: https://docs.mistral.ai/
+    email: support@mistral.ai
+  termsOfService: https://mistral.ai/terms/
+externalDocs:
+  description: Mistral Embeddings API Documentation
+  url: https://docs.mistral.ai/api/#embeddings
+servers:
+  - url: https://api.mistral.ai/v1
+    description: Mistral AI Production
+tags:
+  - name: Embeddings
+    description: Text embedding operations
+security:
+  - bearerAuth: []
+paths:
+  /embeddings:
+    post:
+      operationId: createEmbedding
+      summary: Create embeddings
+      description: >-
+        Generate vector embeddings for the given input text. Supports single
+        or batch text inputs and returns high-dimensional float vectors.
+      tags:
+        - Embeddings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmbeddingRequest'
+      responses:
+        '200':
+          description: Embedding response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmbeddingResponse'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized - invalid or missing API key
+        '429':
+          description: Rate limit exceeded
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Mistral AI API key passed as a Bearer token
+  schemas:
+    EmbeddingRequest:
+      type: object
+      required:
+        - model
+        - input
+      properties:
+        model:
+          type: string
+          description: ID of the embedding model to use
+          examples:
+            - mistral-embed
+        input:
+          oneOf:
+            - type: string
+            - type: array
+              items:
+                type: string
+          description: Text to embed, as a string or array of strings
+        encoding_format:
+          type: string
+          enum:
+            - float
+          default: float
+          description: The format of the output embeddings
+    EmbeddingResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the embedding request
+        object:
+          type: string
+          enum:
+            - list
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Embedding'
+        model:
+          type: string
+          description: The model used to generate the embeddings
+        usage:
+          $ref: '#/components/schemas/Usage'
+    Embedding:
+      type: object
+      properties:
+        object:
+          type: string
+          enum:
+            - embedding
+        embedding:
+          type: array
+          items:
+            type: number
+          description: The embedding vector
+        index:
+          type: integer
+          description: Index of the embedding in the input list
+    Usage:
+      type: object
+      properties:
+        prompt_tokens:
+          type: integer
+          description: Number of tokens in the input
+        total_tokens:
+          type: integer
+          description: Total tokens used

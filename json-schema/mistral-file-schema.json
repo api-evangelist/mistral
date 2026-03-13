@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://docs.mistral.ai/schemas/mistral/file.json",
+  "title": "Mistral File",
+  "description": "A file uploaded to the Mistral AI platform for use with fine-tuning, batch processing, or OCR endpoints.",
+  "type": "object",
+  "required": ["id", "object", "bytes", "created_at", "filename", "purpose"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the file"
+    },
+    "object": {
+      "type": "string",
+      "enum": ["file"],
+      "description": "Object type identifier"
+    },
+    "bytes": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "File size in bytes"
+    },
+    "created_at": {
+      "type": "integer",
+      "description": "Unix timestamp when the file was uploaded"
+    },
+    "filename": {
+      "type": "string",
+      "description": "Original filename of the uploaded file"
+    },
+    "purpose": {
+      "type": "string",
+      "enum": ["fine-tune", "batch", "ocr"],
+      "description": "Intended purpose of the file"
+    },
+    "num_lines": {
+      "type": ["integer", "null"],
+      "minimum": 0,
+      "description": "Number of lines in the file for JSONL files"
+    },
+    "source": {
+      "type": "string",
+      "enum": ["upload", "repository"],
+      "description": "How the file was created on the platform"
+    }
+  }
+}
