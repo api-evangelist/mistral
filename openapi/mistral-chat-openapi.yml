@@ -26,7 +26,7 @@ paths:
   /chat/completions:
     post:
       operationId: createChatCompletion
-      summary: Create a chat completion
+      summary: Mistral AI Create a chat completion
       description: >-
         Generate a model response for the given chat conversation. Supports
         multi-turn conversations, streaming, function calling, JSON mode,
@@ -309,7 +309,7 @@ components:
             - length
             - tool_calls
             - model_length
-            - null
+            - 
     Usage:
       type: object
       properties:

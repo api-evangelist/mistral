@@ -26,7 +26,7 @@ paths:
   /batch/jobs:
     get:
       operationId: listBatchJobs
-      summary: List batch jobs
+      summary: Mistral AI List batch jobs
       description: >-
         Retrieve a list of batch inference jobs for the authenticated account.
       tags:
@@ -68,7 +68,7 @@ paths:
           description: Unauthorized
     post:
       operationId: createBatchJob
-      summary: Create a batch job
+      summary: Mistral AI Create a batch job
       description: >-
         Create a new batch inference job. The input file must be a JSONL file
         with one request per line, uploaded via the Files API with purpose
@@ -95,7 +95,7 @@ paths:
   /batch/jobs/{job_id}:
     get:
       operationId: getBatchJob
-      summary: Get batch job details
+      summary: Mistral AI Get batch job details
       description: Retrieve the current status and details of a batch job.
       tags:
         - Batch Jobs
@@ -115,7 +115,7 @@ paths:
   /batch/jobs/{job_id}/cancel:
     post:
       operationId: cancelBatchJob
-      summary: Cancel a batch job
+      summary: Mistral AI Cancel a batch job
       description: Request cancellation of a running or queued batch job.
       tags:
         - Batch Jobs

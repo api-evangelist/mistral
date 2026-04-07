@@ -26,7 +26,7 @@ paths:
   /models:
     get:
       operationId: listModels
-      summary: List available models
+      summary: Mistral AI List available models
       description: >-
         Retrieve a list of all available models, including both Mistral
         platform models and user fine-tuned models.
@@ -44,7 +44,7 @@ paths:
   /models/{model_id}:
     get:
       operationId: getModel
-      summary: Get model details
+      summary: Mistral AI Get model details
       description: Retrieve details of a specific model by ID.
       tags:
         - Models
@@ -63,7 +63,7 @@ paths:
           description: Model not found
     patch:
       operationId: updateModel
-      summary: Update a fine-tuned model
+      summary: Mistral AI Update a fine-tuned model
       description: >-
         Update metadata of a fine-tuned model, such as its name or
         description. Only applicable to user fine-tuned models.
@@ -92,7 +92,7 @@ paths:
           description: Model not found
     delete:
       operationId: deleteModel
-      summary: Delete a fine-tuned model
+      summary: Mistral AI Delete a fine-tuned model
       description: Delete a user fine-tuned model. Platform models cannot be deleted.
       tags:
         - Models
@@ -112,7 +112,7 @@ paths:
   /models/{model_id}/archive:
     post:
       operationId: archiveModel
-      summary: Archive a fine-tuned model
+      summary: Mistral AI Archive a fine-tuned model
       description: >-
         Archive a fine-tuned model to remove it from the active models list.
         Archived models cannot be used for inference.
@@ -134,7 +134,7 @@ paths:
   /models/{model_id}/unarchive:
     post:
       operationId: unarchiveModel
-      summary: Unarchive a fine-tuned model
+      summary: Mistral AI Unarchive a fine-tuned model
       description: >-
         Restore an archived fine-tuned model so it can be used for inference again.
       tags:

@@ -28,7 +28,7 @@ paths:
   /fim/completions:
     post:
       operationId: createFimCompletion
-      summary: Create a FIM completion
+      summary: Mistral AI Create a FIM completion
       description: >-
         Generate code to fill in between a given prompt prefix and optional
         suffix. Powered by Codestral for high-quality code completions across

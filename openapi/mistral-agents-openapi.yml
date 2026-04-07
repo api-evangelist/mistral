@@ -27,7 +27,7 @@ paths:
   /agents/completions:
     post:
       operationId: createAgentCompletion
-      summary: Create an agent completion
+      summary: Mistral AI Create an agent completion
       description: >-
         Generate a response from a configured agent. The agent is identified
         by its agent_id and can use tools, maintain conversation context,

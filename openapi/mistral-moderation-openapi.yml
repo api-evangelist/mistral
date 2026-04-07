@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Mistral Moderation API
+  title: Mistral AI Mistral Moderation API
   description: >-
     Content moderation and classification API for detecting potentially harmful
     or inappropriate content. Supports text and chat moderation across safety
@@ -27,7 +27,7 @@ paths:
   /moderations:
     post:
       operationId: createModeration
-      summary: Moderate text content
+      summary: Mistral AI Moderate text content
       description: >-
         Classify text content for potential policy violations across safety
         categories. Returns category-level flags and scores.
@@ -55,7 +55,7 @@ paths:
   /chat/moderations:
     post:
       operationId: createChatModeration
-      summary: Moderate chat conversation
+      summary: Mistral AI Moderate chat conversation
       description: >-
         Classify a chat conversation for potential policy violations. Evaluates
         multi-turn conversations including system, user, and assistant messages.

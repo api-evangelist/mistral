@@ -26,7 +26,7 @@ paths:
   /audio/transcriptions:
     post:
       operationId: createTranscription
-      summary: Create an audio transcription
+      summary: Mistral AI Create an audio transcription
       description: >-
         Transcribe audio to text using Voxtral. Supports multiple audio formats,
         speaker diarization, word-level timestamps, context biasing with custom

@@ -27,7 +27,7 @@ paths:
   /ocr:
     post:
       operationId: processDocument
-      summary: Process a document with OCR
+      summary: Mistral AI Process a document with OCR
       description: >-
         Extract text, images, tables, and structured data from documents,
         PDFs, or images. Returns structured Markdown with extracted content

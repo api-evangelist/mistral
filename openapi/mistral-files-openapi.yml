@@ -26,7 +26,7 @@ paths:
   /files:
     get:
       operationId: listFiles
-      summary: List files
+      summary: Mistral AI List files
       description: Retrieve a list of all uploaded files for the authenticated account.
       tags:
         - Files
@@ -63,7 +63,7 @@ paths:
           description: Unauthorized
     post:
       operationId: uploadFile
-      summary: Upload a file
+      summary: Mistral AI Upload a file
       description: >-
         Upload a file for use with fine-tuning, batch processing, or OCR.
         Maximum file size is 512 MB.
@@ -104,7 +104,7 @@ paths:
   /files/{file_id}:
     get:
       operationId: getFile
-      summary: Get file details
+      summary: Mistral AI Get file details
       description: Retrieve metadata about a specific uploaded file.
       tags:
         - Files
@@ -123,7 +123,7 @@ paths:
           description: File not found
     delete:
       operationId: deleteFile
-      summary: Delete a file
+      summary: Mistral AI Delete a file
       description: Delete a previously uploaded file.
       tags:
         - Files
@@ -143,7 +143,7 @@ paths:
   /files/{file_id}/content:
     get:
       operationId: downloadFile
-      summary: Download file content
+      summary: Mistral AI Download file content
       description: Download the contents of a previously uploaded file.
       tags:
         - Files
@@ -164,7 +164,7 @@ paths:
   /files/{file_id}/url:
     get:
       operationId: getFileSignedUrl
-      summary: Get a signed download URL
+      summary: Mistral AI Get a signed download URL
       description: >-
         Get a time-limited signed URL for downloading the file content.
         The URL expires after a short period.
