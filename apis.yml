@@ -47,9 +47,9 @@ apis:
     baseURL: https://api.mistral.ai/v1
     tags:
       - Embeddings
-      - Vector Search
-      - Semantic Search
       - Machine Learning
+      - Semantic Search
+      - Vector Search
     properties:
       - type: Documentation
         url: https://docs.mistral.ai/api/#embeddings
@@ -68,10 +68,10 @@ apis:
     humanURL: https://docs.mistral.ai/api/#moderation
     baseURL: https://api.mistral.ai/v1
     tags:
+      - Classification
+      - Compliance
       - Content Moderation
       - Safety
-      - Compliance
-      - Classification
     properties:
       - type: Documentation
         url: https://docs.mistral.ai/api/#moderation
@@ -89,11 +89,11 @@ apis:
     humanURL: https://docs.mistral.ai/api/endpoint/agents
     baseURL: https://api.mistral.ai/v1
     tags:
-      - Artificial Intelligence
       - Agents
+      - Artificial Intelligence
+      - Automation
       - Function Calling
       - Tools
-      - Automation
     properties:
       - type: Documentation
         url: https://docs.mistral.ai/api/endpoint/agents
@@ -128,11 +128,11 @@ apis:
     humanURL: https://docs.mistral.ai/api/endpoint/ocr
     baseURL: https://api.mistral.ai/v1
     tags:
-      - OCR
       - Document AI
-      - Text Extraction
-      - PDF Processing
       - Document Understanding
+      - OCR
+      - PDF Processing
+      - Text Extraction
     properties:
       - type: Documentation
         url: https://docs.mistral.ai/api/endpoint/ocr
@@ -149,15 +149,14 @@ apis:
     baseURL: https://api.mistral.ai/v1
     tags:
       - Fine-Tuning
-      - Model Customization
       - Machine Learning
+      - Model Customization
       - Training
     properties:
       - type: Documentation
         url: https://docs.mistral.ai/api/endpoint/fine-tuning
       - type: GettingStarted
-        url: 
-          https://docs.mistral.ai/capabilities/finetuning/text_vision_finetuning
+        url: https://docs.mistral.ai/capabilities/finetuning/text_vision_finetuning
       - type: OpenAPI
         url: openapi/mistral-fine-tuning-openapi.yml
   - name: Mistral AI Files API
@@ -168,10 +167,10 @@ apis:
     humanURL: https://docs.mistral.ai/api/endpoint/files
     baseURL: https://api.mistral.ai/v1
     tags:
-      - Files
       - File Management
-      - Upload
+      - Files
       - Storage
+      - Upload
     properties:
       - type: Documentation
         url: https://docs.mistral.ai/api/endpoint/files
@@ -184,9 +183,9 @@ apis:
     humanURL: https://docs.mistral.ai/api/endpoint/models
     baseURL: https://api.mistral.ai/v1
     tags:
-      - Models
-      - Model Management
       - Artificial Intelligence
+      - Model Management
+      - Models
     properties:
       - type: Documentation
         url: https://docs.mistral.ai/api/endpoint/models
@@ -200,8 +199,8 @@ apis:
     humanURL: https://docs.mistral.ai/api/endpoint/batch
     baseURL: https://api.mistral.ai/v1
     tags:
-      - Batch Processing
       - Async
+      - Batch Processing
       - Bulk Operations
       - Cost Optimization
     properties:
@@ -220,10 +219,10 @@ apis:
     baseURL: https://api.mistral.ai/v1
     tags:
       - Audio
-      - Transcription
-      - Speech to Text
-      - Voxtral
       - Diarization
+      - Speech to Text
+      - Transcription
+      - Voxtral
     properties:
       - type: Documentation
         url: https://docs.mistral.ai/api/endpoint/audio/transcriptions
