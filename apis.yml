@@ -1,18 +1,16 @@
 aid: mistral
 name: Mistral AI
-description: >-
-  Mistral AI provides state-of-the-art large language models and AI APIs for developers
-  and enterprises.
+description: Mistral AI provides state-of-the-art large language models and AI APIs for developers and
+  enterprises.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 created: '2024'
-modified: '2026-04-28'
+modified: '2026-05-04'
 specificationVersion: '0.19'
 url: https://docs.mistral.ai/apis.json
 apis:
   - name: Mistral AI Chat API
-    description: >-
-      Chat completion API for conversational AI using Mistral's language models.
+    description: Chat completion API for conversational AI using Mistral's language models.
     image: https://mistral.ai/images/chat-icon.png
     humanURL: https://docs.mistral.ai/api/
     baseURL: https://api.mistral.ai/v1
@@ -39,9 +37,8 @@ apis:
       - type: Email
         url: mailto:support@mistral.ai
   - name: Mistral Embeddings API
-    description: >-
-      Generate vector embeddings for text and code using Mistral's embedding models
-      for retrieval, clustering, classification, and semantic search.
+    description: Generate vector embeddings for text and code using Mistral's embedding models for retrieval,
+      clustering, classification, and semantic search.
     image: https://mistral.ai/images/embeddings-icon.png
     humanURL: https://docs.mistral.ai/api/#embeddings
     baseURL: https://api.mistral.ai/v1
@@ -60,10 +57,8 @@ apis:
       - type: OpenAPI
         url: openapi/mistral-embeddings-openapi.yml
   - name: Mistral Moderation API
-    description: >-
-      Content moderation and classification API for detecting potentially harmful
-      or inappropriate content across nine safety categories including text and chat
-      moderation.
+    description: Content moderation and classification API for detecting potentially harmful or inappropriate
+      content across nine safety categories including text and chat moderation.
     image: https://mistral.ai/images/moderation-icon.png
     humanURL: https://docs.mistral.ai/api/#moderation
     baseURL: https://api.mistral.ai/v1
@@ -82,10 +77,8 @@ apis:
       - type: OpenAPI
         url: openapi/mistral-moderation-openapi.yml
   - name: Mistral AI Agents API
-    description: >-
-      Agent completions API for building AI agents that can handle complex tasks,
-      maintain context, coordinate multiple actions, and use tools including function
-      calling.
+    description: Agent completions API for building AI agents that can handle complex tasks, maintain
+      context, coordinate multiple actions, and use tools including function calling.
     humanURL: https://docs.mistral.ai/api/endpoint/agents
     baseURL: https://api.mistral.ai/v1
     tags:
@@ -102,9 +95,8 @@ apis:
       - type: OpenAPI
         url: openapi/mistral-agents-openapi.yml
   - name: Mistral AI FIM API
-    description: >-
-      Fill-in-the-Middle code completion API powered by Codestral for generating code
-      between a given prompt and suffix, supporting over 80 programming languages.
+    description: Fill-in-the-Middle code completion API powered by Codestral for generating code between
+      a given prompt and suffix, supporting over 80 programming languages.
     humanURL: https://docs.mistral.ai/api/endpoint/fim
     baseURL: https://api.mistral.ai/v1
     tags:
@@ -121,10 +113,8 @@ apis:
       - type: OpenAPI
         url: openapi/mistral-fim-openapi.yml
   - name: Mistral AI OCR API
-    description: >-
-      Optical Character Recognition API that extracts text, images, tables, and structured
-      data from documents and PDFs with support for complex layouts, LaTeX, and mathematical
-      expressions.
+    description: Optical Character Recognition API that extracts text, images, tables, and structured
+      data from documents and PDFs with support for complex layouts, LaTeX, and mathematical expressions.
     humanURL: https://docs.mistral.ai/api/endpoint/ocr
     baseURL: https://api.mistral.ai/v1
     tags:
@@ -141,10 +131,8 @@ apis:
       - type: OpenAPI
         url: openapi/mistral-ocr-openapi.yml
   - name: Mistral AI Fine-Tuning API
-    description: >-
-      Fine-tuning API for customizing Mistral models on your own datasets, supporting
-      text, vision, and classifier fine-tuning with configurable hyperparameters and
-      integrations.
+    description: Fine-tuning API for customizing Mistral models on your own datasets, supporting text,
+      vision, and classifier fine-tuning with configurable hyperparameters and integrations.
     humanURL: https://docs.mistral.ai/api/endpoint/fine-tuning
     baseURL: https://api.mistral.ai/v1
     tags:
@@ -160,10 +148,8 @@ apis:
       - type: OpenAPI
         url: openapi/mistral-fine-tuning-openapi.yml
   - name: Mistral AI Files API
-    description: >-
-      File management API for uploading, retrieving, downloading, and deleting files
-      used across fine-tuning, batch processing, and OCR endpoints with support for
-      files up to 512 MB.
+    description: File management API for uploading, retrieving, downloading, and deleting files used across
+      fine-tuning, batch processing, and OCR endpoints with support for files up to 512 MB.
     humanURL: https://docs.mistral.ai/api/endpoint/files
     baseURL: https://api.mistral.ai/v1
     tags:
@@ -177,9 +163,8 @@ apis:
       - type: OpenAPI
         url: openapi/mistral-files-openapi.yml
   - name: Mistral AI Models API
-    description: >-
-      Models management API for listing available models, retrieving model details,
-      and managing fine-tuned models including archiving and updating.
+    description: Models management API for listing available models, retrieving model details, and managing
+      fine-tuned models including archiving and updating.
     humanURL: https://docs.mistral.ai/api/endpoint/models
     baseURL: https://api.mistral.ai/v1
     tags:
@@ -192,10 +177,9 @@ apis:
       - type: OpenAPI
         url: openapi/mistral-models-openapi.yml
   - name: Mistral AI Batch API
-    description: >-
-      Batch inference API for processing up to one million requests asynchronously
-      at reduced cost, supporting chat completions, embeddings, FIM, moderations,
-      OCR, classifications, and audio transcriptions.
+    description: Batch inference API for processing up to one million requests asynchronously at reduced
+      cost, supporting chat completions, embeddings, FIM, moderations, OCR, classifications, and audio
+      transcriptions.
     humanURL: https://docs.mistral.ai/api/endpoint/batch
     baseURL: https://api.mistral.ai/v1
     tags:
@@ -211,10 +195,9 @@ apis:
       - type: OpenAPI
         url: openapi/mistral-batch-openapi.yml
   - name: Mistral AI Audio Transcription API
-    description: >-
-      Audio transcription API powered by Voxtral for converting speech to text with
-      support for speaker diarization, word-level timestamps, context biasing, and
-      real-time streaming across 13 languages.
+    description: Audio transcription API powered by Voxtral for converting speech to text with support
+      for speaker diarization, word-level timestamps, context biasing, and real-time streaming across
+      13 languages.
     humanURL: https://docs.mistral.ai/api/endpoint/audio/transcriptions
     baseURL: https://api.mistral.ai/v1
     tags:
@@ -284,3 +267,24 @@ common:
     url: json-schema/mistral-fine-tuning-job-schema.json
   - type: JSONSchema
     url: json-schema/mistral-file-schema.json
+  - type: Features
+    data:
+      - Mistral Large 2 at $2/$6 per MTok
+      - Mistral Medium 3 at $0.40/$2
+      - Mistral Small 3 at $0.10/$0.30
+      - Ministral 3B at $0.04/$0.04 (smallest commercial model)
+      - Mistral Nemo at $0.02/$0.04 (cheapest tier)
+      - Codestral at $0.30/$0.90 for code completion/FIM
+      - Pixtral Large for vision
+      - Mixtral 8x22B mixture-of-experts
+      - La Plateforme free tier with 1 RPS
+      - 'Paid tier: 10 RPS, 5M TPM'
+      - OpenAI-compatible Chat Completions
+      - Function calling and tool use
+      - JSON mode and guided generation
+      - Embed model for semantic search
+      - Available on AWS Bedrock, Azure AI, Vertex AI
+      - Fine-tuning service for select models
+    sources:
+      - https://mistral.ai/pricing
+    updated: '2026-05-04'

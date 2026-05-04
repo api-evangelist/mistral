@@ -1,0 +1,184 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Mistral AI
+providerId: mistral
+created: '2026-05-04'
+modified: '2026-05-04'
+reconciled: true
+tags:
+  - AI
+  - LLM
+  - Code
+description: Mistral AI per-token pricing across Large/Medium/Small/Codestral/Ministral models.
+sources:
+  - https://mistral.ai/pricing
+plans:
+  - id: mistral-large-2
+    name: Mistral Large 2
+    type: usage-based
+    description: Per-token pricing for Mistral Large 2.
+    entries:
+      - label: Input tokens
+        name: input
+        type: metered
+        metric: tokens
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1000000
+        price: '2.00'
+        userMultiplied: false
+      - label: Output tokens
+        name: output
+        type: metered
+        metric: tokens
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1000000
+        price: '6.00'
+        userMultiplied: false
+    elements:
+      - name: Per-token billing
+      - name: Pay as you go
+  - id: mistral-medium-3
+    name: Mistral Medium 3
+    type: usage-based
+    description: Per-token pricing for Mistral Medium 3.
+    entries:
+      - label: Input tokens
+        name: input
+        type: metered
+        metric: tokens
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1000000
+        price: '0.40'
+        userMultiplied: false
+      - label: Output tokens
+        name: output
+        type: metered
+        metric: tokens
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1000000
+        price: '2.00'
+        userMultiplied: false
+    elements:
+      - name: Per-token billing
+      - name: Pay as you go
+  - id: mistral-small-3
+    name: Mistral Small 3
+    type: usage-based
+    description: Per-token pricing for Mistral Small 3.
+    entries:
+      - label: Input tokens
+        name: input
+        type: metered
+        metric: tokens
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1000000
+        price: '0.10'
+        userMultiplied: false
+      - label: Output tokens
+        name: output
+        type: metered
+        metric: tokens
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1000000
+        price: '0.30'
+        userMultiplied: false
+    elements:
+      - name: Per-token billing
+      - name: Pay as you go
+  - id: mistral-ministral-3b
+    name: Ministral 3B
+    type: usage-based
+    description: Per-token pricing for Ministral 3B.
+    entries:
+      - label: Input tokens
+        name: input
+        type: metered
+        metric: tokens
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1000000
+        price: '0.04'
+        userMultiplied: false
+      - label: Output tokens
+        name: output
+        type: metered
+        metric: tokens
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1000000
+        price: '0.04'
+        userMultiplied: false
+    elements:
+      - name: Per-token billing
+      - name: Pay as you go
+  - id: mistral-nemo
+    name: Mistral Nemo
+    type: usage-based
+    description: Per-token pricing for Mistral Nemo.
+    entries:
+      - label: Input tokens
+        name: input
+        type: metered
+        metric: tokens
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1000000
+        price: '0.02'
+        userMultiplied: false
+      - label: Output tokens
+        name: output
+        type: metered
+        metric: tokens
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1000000
+        price: '0.04'
+        userMultiplied: false
+    elements:
+      - name: Per-token billing
+      - name: Pay as you go
+  - id: mistral-codestral
+    name: Codestral
+    type: usage-based
+    description: Code specialist model.
+    entries:
+      - label: Input tokens
+        name: input
+        type: metered
+        metric: tokens
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1000000
+        price: '0.30'
+        userMultiplied: false
+      - label: Output tokens
+        name: output
+        type: metered
+        metric: tokens
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1000000
+        price: '0.90'
+        userMultiplied: false
+    elements:
+      - name: Code completion and generation
+      - name: FIM (Fill-in-the-middle)
