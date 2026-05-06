@@ -1,0 +1,68 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Mistral AI Agents API
+  description: Agent completions API for building AI agents that can handle complex tasks, maintain context, coordinate multiple
+    actions, and use tools including function calling. Agents are created and configured via the Mistral platform and invoked
+    through this API.
+  tags:
+  - Mistral
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: mistral
+    baseUri: https://api.mistral.ai/v1
+    description: Mistral AI Agents API HTTP API.
+    authentication:
+      type: bearer
+      token: '{{MISTRAL_TOKEN}}'
+    resources:
+    - name: agents-completions
+      path: /agents/completions
+      operations:
+      - name: createagentcompletion
+        method: POST
+        description: Mistral AI Create an agent completion
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: mistral-rest
+    description: REST adapter for Mistral AI Agents API.
+    resources:
+    - path: /agents/completions
+      name: createagentcompletion
+      operations:
+      - method: POST
+        name: createagentcompletion
+        description: Mistral AI Create an agent completion
+        call: mistral.createagentcompletion
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: mistral-mcp
+    transport: http
+    description: MCP adapter for Mistral AI Agents API for AI agent use.
+    tools:
+    - name: createagentcompletion
+      description: Mistral AI Create an agent completion
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: mistral.createagentcompletion
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    MISTRAL_TOKEN: MISTRAL_TOKEN
