@@ -221,15 +221,15 @@ common:
     url: https://mistral.ai
   - type: Documentation
     url: https://docs.mistral.ai
-  - type: Getting Started
+  - type: GettingStarted
     url: https://docs.mistral.ai/getting-started/
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://mistral.ai/terms/
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://mistral.ai/privacy/
   - type: Pricing
     url: https://mistral.ai/technology/#pricing
-  - type: Status
+  - type: StatusPage
     url: https://status.mistral.ai
   - type: GitHub
     url: https://github.com/mistralai
@@ -257,7 +257,7 @@ common:
     url: https://github.com/mistralai/client-ts
   - type: GettingStarted
     url: https://docs.mistral.ai/getting-started/quickstart
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/mistral-context.jsonld
   - type: JSONSchema
     url: json-schema/mistral-chat-completion-schema.json
