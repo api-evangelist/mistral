@@ -1,0 +1,228 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Mistral AI Fine-Tuning API — Fine-Tuning Jobs
+  description: 'Mistral AI Fine-Tuning API — Fine-Tuning Jobs. 5 operations. Lead operation: Mistral AI List fine-tuning jobs.
+    Self-contained Naftiko capability covering one Mistral business surface.'
+  tags:
+  - Mistral
+  - Fine-Tuning Jobs
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MISTRAL_API_KEY: MISTRAL_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: fine-tuning-fine-tuning-jobs
+    baseUri: https://api.mistral.ai/v1
+    description: Mistral AI Fine-Tuning API — Fine-Tuning Jobs business capability. Self-contained, no shared references.
+    resources:
+    - name: fine_tuning-jobs
+      path: /fine_tuning/jobs
+      operations:
+      - name: listfinetuningjobs
+        method: GET
+        description: Mistral AI List fine-tuning jobs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: page
+          in: query
+          type: integer
+          description: Page number for pagination
+        - name: page_size
+          in: query
+          type: integer
+          description: Number of items per page
+        - name: model
+          in: query
+          type: string
+          description: Filter by base model
+        - name: status
+          in: query
+          type: string
+          description: Filter by job status
+      - name: createfinetuningjob
+        method: POST
+        description: Mistral AI Create a fine-tuning job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: fine_tuning-jobs-job_id
+      path: /fine_tuning/jobs/{job_id}
+      operations:
+      - name: getfinetuningjob
+        method: GET
+        description: Mistral AI Get a fine-tuning job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: fine_tuning-jobs-job_id-cancel
+      path: /fine_tuning/jobs/{job_id}/cancel
+      operations:
+      - name: cancelfinetuningjob
+        method: POST
+        description: Mistral AI Cancel a fine-tuning job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: fine_tuning-jobs-job_id-start
+      path: /fine_tuning/jobs/{job_id}/start
+      operations:
+      - name: startfinetuningjob
+        method: POST
+        description: Mistral AI Start a validated fine-tuning job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.MISTRAL_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: fine-tuning-fine-tuning-jobs-rest
+    port: 8080
+    description: REST adapter for Mistral AI Fine-Tuning API — Fine-Tuning Jobs. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/fine-tuning/jobs
+      name: fine-tuning-jobs
+      description: REST surface for fine_tuning-jobs.
+      operations:
+      - method: GET
+        name: listfinetuningjobs
+        description: Mistral AI List fine-tuning jobs
+        call: fine-tuning-fine-tuning-jobs.listfinetuningjobs
+        with:
+          page: rest.page
+          page_size: rest.page_size
+          model: rest.model
+          status: rest.status
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createfinetuningjob
+        description: Mistral AI Create a fine-tuning job
+        call: fine-tuning-fine-tuning-jobs.createfinetuningjob
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/fine-tuning/jobs/{job-id}
+      name: fine-tuning-jobs-job-id
+      description: REST surface for fine_tuning-jobs-job_id.
+      operations:
+      - method: GET
+        name: getfinetuningjob
+        description: Mistral AI Get a fine-tuning job
+        call: fine-tuning-fine-tuning-jobs.getfinetuningjob
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/fine-tuning/jobs/{job-id}/cancel
+      name: fine-tuning-jobs-job-id-cancel
+      description: REST surface for fine_tuning-jobs-job_id-cancel.
+      operations:
+      - method: POST
+        name: cancelfinetuningjob
+        description: Mistral AI Cancel a fine-tuning job
+        call: fine-tuning-fine-tuning-jobs.cancelfinetuningjob
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/fine-tuning/jobs/{job-id}/start
+      name: fine-tuning-jobs-job-id-start
+      description: REST surface for fine_tuning-jobs-job_id-start.
+      operations:
+      - method: POST
+        name: startfinetuningjob
+        description: Mistral AI Start a validated fine-tuning job
+        call: fine-tuning-fine-tuning-jobs.startfinetuningjob
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: fine-tuning-fine-tuning-jobs-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Mistral AI Fine-Tuning API — Fine-Tuning Jobs. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: mistral-ai-list-fine-tuning
+      description: Mistral AI List fine-tuning jobs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fine-tuning-fine-tuning-jobs.listfinetuningjobs
+      with:
+        page: tools.page
+        page_size: tools.page_size
+        model: tools.model
+        status: tools.status
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: mistral-ai-create-fine-tuning
+      description: Mistral AI Create a fine-tuning job
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fine-tuning-fine-tuning-jobs.createfinetuningjob
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: mistral-ai-get-fine-tuning
+      description: Mistral AI Get a fine-tuning job
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fine-tuning-fine-tuning-jobs.getfinetuningjob
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: mistral-ai-cancel-fine-tuning
+      description: Mistral AI Cancel a fine-tuning job
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fine-tuning-fine-tuning-jobs.cancelfinetuningjob
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: mistral-ai-start-validated-fine
+      description: Mistral AI Start a validated fine-tuning job
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: fine-tuning-fine-tuning-jobs.startfinetuningjob
+      outputParameters:
+      - type: object
+        mapping: $.

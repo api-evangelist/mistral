@@ -1,0 +1,226 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Mistral AI Models API — Models
+  description: 'Mistral AI Models API — Models. 6 operations. Lead operation: Mistral AI List available models. Self-contained
+    Naftiko capability covering one Mistral business surface.'
+  tags:
+  - Mistral
+  - Models
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MISTRAL_API_KEY: MISTRAL_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: models-models
+    baseUri: https://api.mistral.ai/v1
+    description: Mistral AI Models API — Models business capability. Self-contained, no shared references.
+    resources:
+    - name: models
+      path: /models
+      operations:
+      - name: listmodels
+        method: GET
+        description: Mistral AI List available models
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: models-model_id
+      path: /models/{model_id}
+      operations:
+      - name: getmodel
+        method: GET
+        description: Mistral AI Get model details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatemodel
+        method: PATCH
+        description: Mistral AI Update a fine-tuned model
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletemodel
+        method: DELETE
+        description: Mistral AI Delete a fine-tuned model
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: models-model_id-archive
+      path: /models/{model_id}/archive
+      operations:
+      - name: archivemodel
+        method: POST
+        description: Mistral AI Archive a fine-tuned model
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: models-model_id-unarchive
+      path: /models/{model_id}/unarchive
+      operations:
+      - name: unarchivemodel
+        method: POST
+        description: Mistral AI Unarchive a fine-tuned model
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.MISTRAL_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: models-models-rest
+    port: 8080
+    description: REST adapter for Mistral AI Models API — Models. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/models
+      name: models
+      description: REST surface for models.
+      operations:
+      - method: GET
+        name: listmodels
+        description: Mistral AI List available models
+        call: models-models.listmodels
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/models/{model-id}
+      name: models-model-id
+      description: REST surface for models-model_id.
+      operations:
+      - method: GET
+        name: getmodel
+        description: Mistral AI Get model details
+        call: models-models.getmodel
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatemodel
+        description: Mistral AI Update a fine-tuned model
+        call: models-models.updatemodel
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletemodel
+        description: Mistral AI Delete a fine-tuned model
+        call: models-models.deletemodel
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/models/{model-id}/archive
+      name: models-model-id-archive
+      description: REST surface for models-model_id-archive.
+      operations:
+      - method: POST
+        name: archivemodel
+        description: Mistral AI Archive a fine-tuned model
+        call: models-models.archivemodel
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/models/{model-id}/unarchive
+      name: models-model-id-unarchive
+      description: REST surface for models-model_id-unarchive.
+      operations:
+      - method: POST
+        name: unarchivemodel
+        description: Mistral AI Unarchive a fine-tuned model
+        call: models-models.unarchivemodel
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: models-models-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Mistral AI Models API — Models. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: mistral-ai-list-available-models
+      description: Mistral AI List available models
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: models-models.listmodels
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: mistral-ai-get-model-details
+      description: Mistral AI Get model details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: models-models.getmodel
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: mistral-ai-update-fine-tuned
+      description: Mistral AI Update a fine-tuned model
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: models-models.updatemodel
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: mistral-ai-delete-fine-tuned
+      description: Mistral AI Delete a fine-tuned model
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: models-models.deletemodel
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: mistral-ai-archive-fine-tuned
+      description: Mistral AI Archive a fine-tuned model
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: models-models.archivemodel
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: mistral-ai-unarchive-fine-tuned
+      description: Mistral AI Unarchive a fine-tuned model
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: models-models.unarchivemodel
+      outputParameters:
+      - type: object
+        mapping: $.

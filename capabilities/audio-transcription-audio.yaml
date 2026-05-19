@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Mistral AI Audio Transcription API — Audio
+  description: 'Mistral AI Audio Transcription API — Audio. 1 operations. Lead operation: Mistral AI Create an audio transcription.
+    Self-contained Naftiko capability covering one Mistral business surface.'
+  tags:
+  - Mistral
+  - Audio
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MISTRAL_API_KEY: MISTRAL_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: audio-transcription-audio
+    baseUri: https://api.mistral.ai/v1
+    description: Mistral AI Audio Transcription API — Audio business capability. Self-contained, no shared references.
+    resources:
+    - name: audio-transcriptions
+      path: /audio/transcriptions
+      operations:
+      - name: createtranscription
+        method: POST
+        description: Mistral AI Create an audio transcription
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MISTRAL_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: audio-transcription-audio-rest
+    port: 8080
+    description: REST adapter for Mistral AI Audio Transcription API — Audio. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/audio/transcriptions
+      name: audio-transcriptions
+      description: REST surface for audio-transcriptions.
+      operations:
+      - method: POST
+        name: createtranscription
+        description: Mistral AI Create an audio transcription
+        call: audio-transcription-audio.createtranscription
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: audio-transcription-audio-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Mistral AI Audio Transcription API — Audio. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: mistral-ai-create-audio-transcription
+      description: Mistral AI Create an audio transcription
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: audio-transcription-audio.createtranscription
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

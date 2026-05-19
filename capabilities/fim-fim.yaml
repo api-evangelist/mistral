@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Mistral AI FIM API — FIM
+  description: 'Mistral AI FIM API — FIM. 1 operations. Lead operation: Mistral AI Create a FIM completion. Self-contained
+    Naftiko capability covering one Mistral business surface.'
+  tags:
+  - Mistral
+  - FIM
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MISTRAL_API_KEY: MISTRAL_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: fim-fim
+    baseUri: https://api.mistral.ai/v1
+    description: Mistral AI FIM API — FIM business capability. Self-contained, no shared references.
+    resources:
+    - name: fim-completions
+      path: /fim/completions
+      operations:
+      - name: createfimcompletion
+        method: POST
+        description: Mistral AI Create a FIM completion
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MISTRAL_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: fim-fim-rest
+    port: 8080
+    description: REST adapter for Mistral AI FIM API — FIM. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/fim/completions
+      name: fim-completions
+      description: REST surface for fim-completions.
+      operations:
+      - method: POST
+        name: createfimcompletion
+        description: Mistral AI Create a FIM completion
+        call: fim-fim.createfimcompletion
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: fim-fim-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Mistral AI FIM API — FIM. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: mistral-ai-create-fim-completion
+      description: Mistral AI Create a FIM completion
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fim-fim.createfimcompletion
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
