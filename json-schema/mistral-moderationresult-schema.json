@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ModerationResult",
+  "title": "ModerationResult",
+  "type": "object",
+  "properties": {
+    "categories": {
+      "type": "object",
+      "description": "Category flags indicating violations",
+      "properties": {
+        "sexual": {
+          "type": "boolean"
+        },
+        "hate_and_discrimination": {
+          "type": "boolean"
+        },
+        "violence_and_threats": {
+          "type": "boolean"
+        },
+        "dangerous_and_criminal_content": {
+          "type": "boolean"
+        },
+        "selfharm": {
+          "type": "boolean"
+        },
+        "health": {
+          "type": "boolean"
+        },
+        "financial": {
+          "type": "boolean"
+        },
+        "law": {
+          "type": "boolean"
+        },
+        "pii": {
+          "type": "boolean"
+        }
+      }
+    },
+    "category_scores": {
+      "type": "object",
+      "description": "Category confidence scores between 0 and 1",
+      "properties": {
+        "sexual": {
+          "type": "number"
+        },
+        "hate_and_discrimination": {
+          "type": "number"
+        },
+        "violence_and_threats": {
+          "type": "number"
+        },
+        "dangerous_and_criminal_content": {
+          "type": "number"
+        },
+        "selfharm": {
+          "type": "number"
+        },
+        "health": {
+          "type": "number"
+        },
+        "financial": {
+          "type": "number"
+        },
+        "law": {
+          "type": "number"
+        },
+        "pii": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}

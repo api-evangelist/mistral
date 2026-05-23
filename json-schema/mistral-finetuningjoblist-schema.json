@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FineTuningJobList",
+  "title": "FineTuningJobList",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/FineTuningJob"
+      }
+    },
+    "total": {
+      "type": "integer",
+      "description": "Total number of jobs"
+    }
+  }
+}

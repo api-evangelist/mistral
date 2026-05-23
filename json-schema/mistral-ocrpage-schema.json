@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OcrPage",
+  "title": "OcrPage",
+  "type": "object",
+  "properties": {
+    "index": {
+      "type": "integer",
+      "description": "Zero-based page index"
+    },
+    "markdown": {
+      "type": "string",
+      "description": "Extracted content in Markdown format"
+    },
+    "images": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ExtractedImage"
+      }
+    },
+    "dimensions": {
+      "type": "object",
+      "properties": {
+        "width": {
+          "type": "integer"
+        },
+        "height": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}

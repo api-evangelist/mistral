@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TranscriptionRequest",
+  "title": "TranscriptionRequest",
+  "type": "object",
+  "required": [
+    "model",
+    "file"
+  ],
+  "properties": {
+    "model": {
+      "type": "string",
+      "description": "The transcription model to use",
+      "examples": [
+        "mistral-audio-latest"
+      ]
+    },
+    "file": {
+      "type": "string",
+      "format": "binary",
+      "description": "The audio file to transcribe (WAV, MP3, FLAC, OGG, M4A, WEBM)"
+    },
+    "language": {
+      "type": "string",
+      "description": "ISO 639-1 language code. If not specified, the language is auto-detected.",
+      "examples": [
+        "en",
+        "fr",
+        "de",
+        "es"
+      ]
+    },
+    "prompt": {
+      "type": "string",
+      "description": "Context or vocabulary hints to improve transcription accuracy. Useful for domain-specific terminology."
+    },
+    "response_format": {
+      "type": "string",
+      "enum": [
+        "json",
+        "text",
+        "verbose_json"
+      ],
+      "default": "json",
+      "description": "Output format for the transcription"
+    },
+    "temperature": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 0,
+      "description": "Sampling temperature for transcription"
+    },
+    "timestamp_granularities": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "word",
+          "segment"
+        ]
+      },
+      "description": "Granularity levels for timestamps"
+    },
+    "diarization": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to enable speaker diarization"
+    }
+  }
+}

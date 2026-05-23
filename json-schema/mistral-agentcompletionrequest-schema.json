@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AgentCompletionRequest",
+  "title": "AgentCompletionRequest",
+  "type": "object",
+  "required": [
+    "agent_id",
+    "messages"
+  ],
+  "properties": {
+    "agent_id": {
+      "type": "string",
+      "description": "The ID of the agent to use, created on the Mistral platform"
+    },
+    "messages": {
+      "type": "array",
+      "description": "List of messages comprising the conversation",
+      "items": {
+        "$ref": "#/components/schemas/Message"
+      }
+    },
+    "max_tokens": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Maximum number of tokens to generate"
+    },
+    "stream": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to stream partial message deltas"
+    },
+    "stop": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ],
+      "description": "Stop sequences"
+    },
+    "random_seed": {
+      "type": "integer",
+      "description": "Random seed for deterministic generation"
+    },
+    "response_format": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "text",
+            "json_object"
+          ]
+        }
+      }
+    },
+    "tool_choice": {
+      "type": "string",
+      "enum": [
+        "auto",
+        "none",
+        "any"
+      ],
+      "default": "auto",
+      "description": "Controls how the agent uses tools"
+    }
+  }
+}

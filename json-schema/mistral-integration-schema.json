@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Integration",
+  "title": "Integration",
+  "type": "object",
+  "required": [
+    "type"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "wandb"
+      ],
+      "description": "Integration type"
+    },
+    "project": {
+      "type": "string",
+      "description": "Project name for the integration"
+    },
+    "name": {
+      "type": "string",
+      "description": "Run name for the integration"
+    },
+    "api_key": {
+      "type": "string",
+      "description": "API key for the integration service"
+    }
+  }
+}

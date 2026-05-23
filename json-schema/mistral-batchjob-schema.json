@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BatchJob",
+  "title": "BatchJob",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the batch job"
+    },
+    "object": {
+      "type": "string",
+      "enum": [
+        "batch"
+      ]
+    },
+    "input_files": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "description": "Input file IDs"
+    },
+    "endpoint": {
+      "type": "string",
+      "description": "The API endpoint used"
+    },
+    "model": {
+      "type": "string",
+      "description": "The model used"
+    },
+    "output_file": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uuid",
+      "description": "Output file ID when job completes"
+    },
+    "error_file": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uuid",
+      "description": "Error file ID if there were errors"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "QUEUED",
+        "RUNNING",
+        "SUCCESS",
+        "FAILED",
+        "TIMEOUT_EXCEEDED",
+        "CANCELLATION_REQUESTED",
+        "CANCELLED"
+      ],
+      "description": "Current status of the batch job"
+    },
+    "created_at": {
+      "type": "integer",
+      "description": "Unix timestamp when the job was created"
+    },
+    "started_at": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "Unix timestamp when the job started processing"
+    },
+    "completed_at": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "Unix timestamp when the job completed"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "total_requests": {
+      "type": "integer",
+      "description": "Total number of requests in the batch"
+    },
+    "completed_requests": {
+      "type": "integer",
+      "description": "Number of completed requests"
+    },
+    "succeeded_requests": {
+      "type": "integer",
+      "description": "Number of successful requests"
+    },
+    "failed_requests": {
+      "type": "integer",
+      "description": "Number of failed requests"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OcrResponse",
+  "title": "OcrResponse",
+  "type": "object",
+  "properties": {
+    "pages": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/OcrPage"
+      }
+    },
+    "model": {
+      "type": "string",
+      "description": "The model used for OCR"
+    },
+    "usage": {
+      "type": "object",
+      "properties": {
+        "pages_processed": {
+          "type": "integer"
+        },
+        "doc_size_bytes": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}

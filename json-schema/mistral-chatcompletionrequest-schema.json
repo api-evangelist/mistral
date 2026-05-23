@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ChatCompletionRequest",
+  "title": "ChatCompletionRequest",
+  "type": "object",
+  "required": [
+    "model",
+    "messages"
+  ],
+  "properties": {
+    "model": {
+      "type": "string",
+      "description": "ID of the model to use",
+      "examples": [
+        "mistral-large-latest",
+        "mistral-small-latest",
+        "open-mistral-nemo"
+      ]
+    },
+    "messages": {
+      "type": "array",
+      "description": "List of messages comprising the conversation",
+      "items": {
+        "$ref": "#/components/schemas/Message"
+      }
+    },
+    "temperature": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 2,
+      "default": 0.7,
+      "description": "Sampling temperature between 0 and 2"
+    },
+    "top_p": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 1,
+      "description": "Nucleus sampling parameter"
+    },
+    "max_tokens": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Maximum number of tokens to generate"
+    },
+    "stream": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to stream partial message deltas"
+    },
+    "stop": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ],
+      "description": "Stop sequences where the model will stop generating"
+    },
+    "random_seed": {
+      "type": "integer",
+      "description": "Random seed for deterministic generation"
+    },
+    "response_format": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "text",
+            "json_object"
+          ]
+        }
+      },
+      "description": "Output format specification"
+    },
+    "tools": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Tool"
+      },
+      "description": "List of tools the model may call"
+    },
+    "tool_choice": {
+      "type": "string",
+      "enum": [
+        "auto",
+        "none",
+        "any"
+      ],
+      "default": "auto",
+      "description": "Controls how the model uses tools"
+    },
+    "safe_prompt": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to prepend a safety system prompt"
+    }
+  }
+}

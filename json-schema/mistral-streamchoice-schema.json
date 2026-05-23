@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/StreamChoice",
+  "title": "StreamChoice",
+  "type": "object",
+  "properties": {
+    "index": {
+      "type": "integer"
+    },
+    "delta": {
+      "$ref": "#/components/schemas/Message"
+    },
+    "finish_reason": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "stop",
+        "length",
+        "tool_calls",
+        "model_length",
+        null
+      ]
+    }
+  }
+}

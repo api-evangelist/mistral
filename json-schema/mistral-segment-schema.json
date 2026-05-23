@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Segment",
+  "title": "Segment",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Segment index"
+    },
+    "start": {
+      "type": "number",
+      "description": "Start time in seconds"
+    },
+    "end": {
+      "type": "number",
+      "description": "End time in seconds"
+    },
+    "text": {
+      "type": "string",
+      "description": "Transcribed text for this segment"
+    },
+    "speaker": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "Speaker ID if diarization is enabled"
+    }
+  }
+}

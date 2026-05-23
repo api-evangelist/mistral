@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ExtractedImage",
+  "title": "ExtractedImage",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Image identifier referenced in the Markdown"
+    },
+    "top_left_x": {
+      "type": "integer"
+    },
+    "top_left_y": {
+      "type": "integer"
+    },
+    "bottom_right_x": {
+      "type": "integer"
+    },
+    "bottom_right_y": {
+      "type": "integer"
+    },
+    "image_base64": {
+      "type": "string",
+      "description": "Base64-encoded image data if requested"
+    }
+  }
+}

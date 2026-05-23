@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Embedding",
+  "title": "Embedding",
+  "type": "object",
+  "properties": {
+    "object": {
+      "type": "string",
+      "enum": [
+        "embedding"
+      ]
+    },
+    "embedding": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "description": "The embedding vector"
+    },
+    "index": {
+      "type": "integer",
+      "description": "Index of the embedding in the input list"
+    }
+  }
+}

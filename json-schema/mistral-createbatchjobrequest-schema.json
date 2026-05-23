@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreateBatchJobRequest",
+  "title": "CreateBatchJobRequest",
+  "type": "object",
+  "required": [
+    "input_files",
+    "endpoint",
+    "model"
+  ],
+  "properties": {
+    "input_files": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "description": "IDs of JSONL input files uploaded via the Files API"
+    },
+    "endpoint": {
+      "type": "string",
+      "enum": [
+        "/v1/chat/completions",
+        "/v1/embeddings",
+        "/v1/fim/completions",
+        "/v1/moderations",
+        "/v1/chat/moderations",
+        "/v1/ocr"
+      ],
+      "description": "The API endpoint to use for batch processing"
+    },
+    "model": {
+      "type": "string",
+      "description": "The model to use for inference"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Optional metadata key-value pairs"
+    },
+    "timeout_hours": {
+      "type": "integer",
+      "default": 24,
+      "description": "Maximum time in hours before the job times out"
+    }
+  }
+}

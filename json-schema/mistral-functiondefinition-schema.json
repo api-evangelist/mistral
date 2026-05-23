@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FunctionDefinition",
+  "title": "FunctionDefinition",
+  "type": "object",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the function"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of what the function does"
+    },
+    "parameters": {
+      "type": "object",
+      "description": "JSON Schema describing the function parameters"
+    }
+  }
+}

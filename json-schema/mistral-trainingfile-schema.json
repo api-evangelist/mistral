@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TrainingFile",
+  "title": "TrainingFile",
+  "type": "object",
+  "required": [
+    "file_id"
+  ],
+  "properties": {
+    "file_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "ID of the uploaded training file"
+    },
+    "weight": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Relative weight of this training file"
+    }
+  }
+}

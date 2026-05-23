@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AgentCompletionResponse",
+  "title": "AgentCompletionResponse",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "object": {
+      "type": "string",
+      "enum": [
+        "chat.completion"
+      ]
+    },
+    "created": {
+      "type": "integer"
+    },
+    "model": {
+      "type": "string"
+    },
+    "choices": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Choice"
+      }
+    },
+    "usage": {
+      "$ref": "#/components/schemas/Usage"
+    }
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FineTuningJob",
+  "title": "FineTuningJob",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the fine-tuning job"
+    },
+    "auto_start": {
+      "type": "boolean"
+    },
+    "hyperparameters": {
+      "$ref": "#/components/schemas/Hyperparameters"
+    },
+    "model": {
+      "type": "string",
+      "description": "Base model being fine-tuned"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "QUEUED",
+        "STARTED",
+        "VALIDATING",
+        "VALIDATED",
+        "RUNNING",
+        "FAILED_VALIDATION",
+        "FAILED",
+        "SUCCESS",
+        "CANCELLED",
+        "CANCELLATION_REQUESTED"
+      ],
+      "description": "Current status of the job"
+    },
+    "job_type": {
+      "type": "string",
+      "description": "Type of fine-tuning job"
+    },
+    "created_at": {
+      "type": "integer",
+      "description": "Unix timestamp when the job was created"
+    },
+    "modified_at": {
+      "type": "integer",
+      "description": "Unix timestamp when the job was last modified"
+    },
+    "training_files": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
+    },
+    "validation_files": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
+    },
+    "fine_tuned_model": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The resulting fine-tuned model ID"
+    },
+    "integrations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Integration"
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Hyperparameters",
+  "title": "Hyperparameters",
+  "type": "object",
+  "properties": {
+    "training_steps": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Number of training steps"
+    },
+    "learning_rate": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Learning rate for training"
+    },
+    "weight_decay": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Weight decay regularization"
+    },
+    "warmup_fraction": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Fraction of steps for learning rate warmup"
+    },
+    "epochs": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Number of training epochs"
+    },
+    "seq_len": {
+      "type": "integer",
+      "description": "Maximum sequence length"
+    }
+  }
+}

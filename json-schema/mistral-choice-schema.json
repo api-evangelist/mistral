@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Choice",
+  "title": "Choice",
+  "type": "object",
+  "properties": {
+    "index": {
+      "type": "integer"
+    },
+    "message": {
+      "$ref": "#/components/schemas/Message"
+    },
+    "finish_reason": {
+      "type": "string",
+      "enum": [
+        "stop",
+        "length",
+        "tool_calls",
+        "model_length"
+      ]
+    }
+  }
+}

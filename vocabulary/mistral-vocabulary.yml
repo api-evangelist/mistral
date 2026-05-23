@@ -1,0 +1,7 @@
+name: Mistral AI Domain Vocabulary
+provider: Mistral AI
+providerId: mistral
+description: Tag-derived vocabulary for the Mistral AI API surface; sourced from openapi/ tags.
+terms:
+- term: Fine-Tuning Jobs
+  description: Create and manage fine-tuning jobs

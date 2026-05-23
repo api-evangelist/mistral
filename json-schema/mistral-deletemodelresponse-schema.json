@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DeleteModelResponse",
+  "title": "DeleteModelResponse",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "object": {
+      "type": "string",
+      "enum": [
+        "model"
+      ]
+    },
+    "deleted": {
+      "type": "boolean"
+    }
+  }
+}

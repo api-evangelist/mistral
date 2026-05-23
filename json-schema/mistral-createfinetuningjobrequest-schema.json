@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreateFineTuningJobRequest",
+  "title": "CreateFineTuningJobRequest",
+  "type": "object",
+  "required": [
+    "model",
+    "training_files"
+  ],
+  "properties": {
+    "model": {
+      "type": "string",
+      "description": "The base model to fine-tune",
+      "examples": [
+        "open-mistral-7b",
+        "mistral-small-latest"
+      ]
+    },
+    "training_files": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/TrainingFile"
+      },
+      "description": "Training data file references"
+    },
+    "validation_files": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/TrainingFile"
+      },
+      "description": "Validation data file references"
+    },
+    "hyperparameters": {
+      "$ref": "#/components/schemas/Hyperparameters"
+    },
+    "suffix": {
+      "type": "string",
+      "maxLength": 18,
+      "description": "Suffix appended to the fine-tuned model name"
+    },
+    "integrations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Integration"
+      },
+      "description": "Third-party integrations for tracking"
+    },
+    "auto_start": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to start training after validation"
+    }
+  }
+}

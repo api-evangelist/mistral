@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BatchJobList",
+  "title": "BatchJobList",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BatchJob"
+      }
+    },
+    "total": {
+      "type": "integer"
+    },
+    "object": {
+      "type": "string",
+      "enum": [
+        "list"
+      ]
+    }
+  }
+}

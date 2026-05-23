@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EmbeddingRequest",
+  "title": "EmbeddingRequest",
+  "type": "object",
+  "required": [
+    "model",
+    "input"
+  ],
+  "properties": {
+    "model": {
+      "type": "string",
+      "description": "ID of the embedding model to use",
+      "examples": [
+        "mistral-embed"
+      ]
+    },
+    "input": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ],
+      "description": "Text to embed, as a string or array of strings"
+    },
+    "encoding_format": {
+      "type": "string",
+      "enum": [
+        "float"
+      ],
+      "default": "float",
+      "description": "The format of the output embeddings"
+    }
+  }
+}

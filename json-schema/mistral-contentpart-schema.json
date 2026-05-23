@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ContentPart",
+  "title": "ContentPart",
+  "type": "object",
+  "required": [
+    "type"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "text",
+        "image_url"
+      ]
+    },
+    "text": {
+      "type": "string",
+      "description": "Text content"
+    },
+    "image_url": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL or base64 data URI of the image"
+        }
+      }
+    }
+  }
+}

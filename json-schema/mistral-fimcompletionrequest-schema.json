@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FimCompletionRequest",
+  "title": "FimCompletionRequest",
+  "type": "object",
+  "required": [
+    "model",
+    "prompt"
+  ],
+  "properties": {
+    "model": {
+      "type": "string",
+      "description": "ID of the model to use",
+      "examples": [
+        "codestral-latest"
+      ]
+    },
+    "prompt": {
+      "type": "string",
+      "description": "The text before the code to complete (prefix)"
+    },
+    "suffix": {
+      "type": "string",
+      "description": "The text after the code to complete (optional suffix)"
+    },
+    "temperature": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 2,
+      "default": 0.7,
+      "description": "Sampling temperature"
+    },
+    "top_p": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 1,
+      "description": "Nucleus sampling parameter"
+    },
+    "max_tokens": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Maximum number of tokens to generate"
+    },
+    "stream": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to stream partial completions"
+    },
+    "stop": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ],
+      "description": "Stop sequences"
+    },
+    "random_seed": {
+      "type": "integer",
+      "description": "Random seed for deterministic generation"
+    },
+    "min_tokens": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Minimum number of tokens to generate"
+    }
+  }
+}
