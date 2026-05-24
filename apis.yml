@@ -307,3 +307,5 @@ common:
   sources:
   - https://mistral.ai/pricing
   updated: '2026-05-04'
+- type: LLMsTxt
+  url: https://docs.mistral.ai/llms.txt
