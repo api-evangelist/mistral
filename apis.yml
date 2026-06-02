@@ -4,7 +4,7 @@ description: Mistral AI provides state-of-the-art large language models and AI A
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 created: '2024'
-modified: '2026-05-19'
+modified: '2026-05-29'
 specificationVersion: '0.19'
 url: https://docs.mistral.ai/apis.json
 apis:
@@ -30,6 +30,8 @@ apis:
     url: https://docs.mistral.ai/api/endpoint/chat
   - type: OpenAPI
     url: openapi/mistral-chat-openapi.yml
+  - type: AsyncAPI
+    url: asyncapi/mistral-asyncapi.yml
   - type: NaftikoCapability
     url: capabilities/chat-chat.yaml
   contact:
@@ -99,6 +101,8 @@ apis:
     url: https://docs.mistral.ai/agents/agents
   - type: OpenAPI
     url: openapi/mistral-agents-openapi.yml
+  - type: AsyncAPI
+    url: asyncapi/mistral-asyncapi.yml
   - type: NaftikoCapability
     url: capabilities/agents-agents.yaml
 - name: Mistral AI FIM API
@@ -119,6 +123,8 @@ apis:
     url: https://docs.mistral.ai/capabilities/code_generation
   - type: OpenAPI
     url: openapi/mistral-fim-openapi.yml
+  - type: AsyncAPI
+    url: asyncapi/mistral-asyncapi.yml
   - type: NaftikoCapability
     url: capabilities/fim-fim.yaml
 - name: Mistral AI OCR API

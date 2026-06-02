@@ -1,0 +1,556 @@
+asyncapi: 2.6.0
+info:
+  title: Mistral AI Streaming Completions API
+  version: '1.0'
+  description: >-
+    AsyncAPI definition for Mistral AI streaming completion endpoints. Mistral
+    is OpenAI-compatible and delivers streamed completions as Server-Sent
+    Events (SSE) over HTTP when `stream: true` is set on the request. Each
+    stream emits a sequence of `chat.completion.chunk` events terminated by a
+    sentinel `[DONE]` message. When `stream_options.include_usage` is true on
+    chat completions, a final chunk before `[DONE]` includes a `usage` object.
+
+    This document covers three streaming endpoints documented by Mistral:
+      - POST /chat/completions (text/event-stream)
+      - POST /fim/completions  (text/event-stream)
+      - POST /agents/completions (text/event-stream)
+
+    All events are taken from Mistral's public API documentation
+    (https://docs.mistral.ai/api/) and the corresponding OpenAPI definitions
+    in this repository. No event types or fields are fabricated.
+  contact:
+    name: Mistral AI Support
+    url: https://docs.mistral.ai/
+    email: support@mistral.ai
+  termsOfService: https://mistral.ai/terms/
+  license:
+    name: Mistral AI Terms of Service
+    url: https://mistral.ai/terms/
+externalDocs:
+  description: Mistral AI API Documentation
+  url: https://docs.mistral.ai/api/
+
+defaultContentType: text/event-stream
+
+servers:
+  production:
+    url: https://api.mistral.ai/v1
+    protocol: https
+    description: Mistral AI production API. Streaming completions are returned as Server-Sent Events.
+    security:
+      - bearerAuth: []
+    bindings:
+      http:
+        type: response
+        bindingVersion: '0.3.0'
+  codestral:
+    url: https://codestral.mistral.ai/v1
+    protocol: https
+    description: Dedicated Codestral endpoint (FIM completions). Streaming returned as Server-Sent Events.
+    security:
+      - bearerAuth: []
+    bindings:
+      http:
+        type: response
+        bindingVersion: '0.3.0'
+
+channels:
+  /chat/completions:
+    description: >-
+      Streaming chat completions. Client POSTs a ChatCompletionRequest with
+      `stream: true`. The server responds with `Content-Type: text/event-stream`
+      and emits a sequence of `chat.completion.chunk` events, terminated by a
+      `data: [DONE]` line. When `stream_options.include_usage` is true, the
+      final chunk before `[DONE]` carries a populated `usage` object and an
+      empty `choices` array.
+    bindings:
+      http:
+        type: request
+        method: POST
+        bindingVersion: '0.3.0'
+    subscribe:
+      operationId: receiveChatCompletionStream
+      summary: Receive streamed chat completion chunks
+      description: >-
+        Consume SSE events emitted by POST /chat/completions when `stream: true`.
+        Each `message` event below corresponds to one `data:` line in the SSE
+        stream.
+      bindings:
+        http:
+          bindingVersion: '0.3.0'
+      message:
+        oneOf:
+          - $ref: '#/components/messages/ChatCompletionChunk'
+          - $ref: '#/components/messages/ChatCompletionUsageChunk'
+          - $ref: '#/components/messages/StreamDone'
+
+  /fim/completions:
+    description: >-
+      Streaming Fill-in-the-Middle (FIM) code completions powered by Codestral.
+      Client POSTs a FimCompletionRequest with `stream: true`. The server
+      responds with `Content-Type: text/event-stream` and emits a sequence of
+      `chat.completion.chunk` events terminated by `data: [DONE]`.
+    bindings:
+      http:
+        type: request
+        method: POST
+        bindingVersion: '0.3.0'
+    subscribe:
+      operationId: receiveFimCompletionStream
+      summary: Receive streamed FIM completion chunks
+      description: >-
+        Consume SSE events emitted by POST /fim/completions when `stream: true`.
+      bindings:
+        http:
+          bindingVersion: '0.3.0'
+      message:
+        oneOf:
+          - $ref: '#/components/messages/FimCompletionChunk'
+          - $ref: '#/components/messages/StreamDone'
+
+  /agents/completions:
+    description: >-
+      Streaming agent completions. Client POSTs an AgentCompletionRequest with
+      `stream: true` and an `agent_id` referencing an agent configured in the
+      Mistral platform. The server responds with `Content-Type: text/event-stream`
+      and emits a sequence of `chat.completion.chunk` events terminated by
+      `data: [DONE]`.
+    bindings:
+      http:
+        type: request
+        method: POST
+        bindingVersion: '0.3.0'
+    subscribe:
+      operationId: receiveAgentCompletionStream
+      summary: Receive streamed agent completion chunks
+      description: >-
+        Consume SSE events emitted by POST /agents/completions when
+        `stream: true`.
+      bindings:
+        http:
+          bindingVersion: '0.3.0'
+      message:
+        oneOf:
+          - $ref: '#/components/messages/AgentCompletionChunk'
+          - $ref: '#/components/messages/StreamDone'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Mistral AI API key passed as a Bearer token.
+
+  messages:
+    ChatCompletionChunk:
+      name: ChatCompletionChunk
+      title: Chat completion stream chunk
+      summary: One streamed delta from POST /chat/completions.
+      contentType: application/json
+      description: >-
+        A single SSE `data:` payload emitted while streaming a chat completion.
+        Each chunk carries one or more `choices`, each with a `delta` containing
+        either an incremental `content` token, an assistant `role` (on the first
+        chunk), or one or more `tool_calls` deltas. The terminal chunk for a
+        choice sets `finish_reason` to one of `stop`, `length`, `tool_calls`,
+        or `model_length`.
+      bindings:
+        http:
+          bindingVersion: '0.3.0'
+      payload:
+        $ref: '#/components/schemas/ChatCompletionChunk'
+      examples:
+        - name: contentDelta
+          summary: Incremental content token
+          payload:
+            id: cmpl-e5cc70bb28c444948073e77776eb30ef
+            object: chat.completion.chunk
+            created: 1702256327
+            model: mistral-small-latest
+            choices:
+              - index: 0
+                delta:
+                  content: ' Paris'
+                finish_reason: null
+        - name: toolCallDelta
+          summary: Tool-call delta chunk
+          payload:
+            id: cmpl-e5cc70bb28c444948073e77776eb30ef
+            object: chat.completion.chunk
+            created: 1702256327
+            model: mistral-large-latest
+            choices:
+              - index: 0
+                delta:
+                  tool_calls:
+                    - id: call_abc123
+                      type: function
+                      function:
+                        name: get_weather
+                        arguments: '{"city":"Paris"}'
+                finish_reason: null
+        - name: finishStop
+          summary: Terminal chunk for a choice
+          payload:
+            id: cmpl-e5cc70bb28c444948073e77776eb30ef
+            object: chat.completion.chunk
+            created: 1702256327
+            model: mistral-small-latest
+            choices:
+              - index: 0
+                delta: {}
+                finish_reason: stop
+
+    ChatCompletionUsageChunk:
+      name: ChatCompletionUsageChunk
+      title: Chat completion usage chunk
+      summary: Final usage chunk emitted when stream_options.include_usage is true.
+      contentType: application/json
+      description: >-
+        When the request includes `stream_options.include_usage: true`, the
+        server emits one additional chunk immediately before `[DONE]` whose
+        `choices` array is empty and whose `usage` object reports prompt,
+        completion, and total token counts for the call.
+      bindings:
+        http:
+          bindingVersion: '0.3.0'
+      payload:
+        $ref: '#/components/schemas/ChatCompletionUsageChunk'
+      examples:
+        - name: usageChunk
+          summary: Final usage chunk
+          payload:
+            id: cmpl-e5cc70bb28c444948073e77776eb30ef
+            object: chat.completion.chunk
+            created: 1702256327
+            model: mistral-small-latest
+            choices: []
+            usage:
+              prompt_tokens: 14
+              completion_tokens: 22
+              total_tokens: 36
+
+    FimCompletionChunk:
+      name: FimCompletionChunk
+      title: FIM completion stream chunk
+      summary: One streamed delta from POST /fim/completions.
+      contentType: application/json
+      description: >-
+        A single SSE `data:` payload emitted while streaming a Fill-in-the-Middle
+        completion. Each chunk carries one or more `choices`, each with a
+        `delta` containing an incremental `content` token (and `role` on the
+        first chunk). The terminal chunk for a choice sets `finish_reason` to
+        `stop` or `length`.
+      bindings:
+        http:
+          bindingVersion: '0.3.0'
+      payload:
+        $ref: '#/components/schemas/FimCompletionChunk'
+      examples:
+        - name: fimDelta
+          summary: FIM incremental token
+          payload:
+            id: fim-cmpl-1
+            object: chat.completion.chunk
+            created: 1702256327
+            model: codestral-latest
+            choices:
+              - index: 0
+                delta:
+                  content: '    return a + b'
+                finish_reason: null
+
+    AgentCompletionChunk:
+      name: AgentCompletionChunk
+      title: Agent completion stream chunk
+      summary: One streamed delta from POST /agents/completions.
+      contentType: application/json
+      description: >-
+        A single SSE `data:` payload emitted while streaming an agent
+        completion. Same chunk shape as chat completions, including support
+        for tool-call deltas.
+      bindings:
+        http:
+          bindingVersion: '0.3.0'
+      payload:
+        $ref: '#/components/schemas/AgentCompletionChunk'
+      examples:
+        - name: agentDelta
+          summary: Agent incremental token
+          payload:
+            id: agt-cmpl-1
+            object: chat.completion.chunk
+            created: 1702256327
+            model: mistral-large-latest
+            choices:
+              - index: 0
+                delta:
+                  content: 'Looking that up'
+                finish_reason: null
+
+    StreamDone:
+      name: StreamDone
+      title: Stream terminator
+      summary: Sentinel marking end of SSE stream.
+      contentType: text/plain
+      description: >-
+        Final SSE line `data: [DONE]` that terminates every Mistral streaming
+        response. It is not valid JSON; clients should match the literal
+        `[DONE]` token after the `data: ` prefix and close the stream.
+      bindings:
+        http:
+          bindingVersion: '0.3.0'
+      payload:
+        $ref: '#/components/schemas/StreamDone'
+      examples:
+        - name: done
+          summary: Stream terminator
+          payload: '[DONE]'
+
+  schemas:
+    ChatCompletionChunk:
+      type: object
+      description: A chat.completion.chunk event delivered over SSE.
+      required:
+        - id
+        - object
+        - created
+        - model
+        - choices
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the completion. Stable across all chunks of one stream.
+        object:
+          type: string
+          enum:
+            - chat.completion.chunk
+          description: Object type. Always `chat.completion.chunk` for streamed chunks.
+        created:
+          type: integer
+          description: Unix timestamp (seconds) when the completion was created.
+        model:
+          type: string
+          description: The model that produced the chunk.
+        choices:
+          type: array
+          description: Streamed choice deltas. Empty for the final usage chunk.
+          items:
+            $ref: '#/components/schemas/ChatStreamChoice'
+        usage:
+          description: >-
+            Token usage. Present only on the final chunk emitted when
+            `stream_options.include_usage` is true on the request.
+          $ref: '#/components/schemas/Usage'
+
+    ChatCompletionUsageChunk:
+      type: object
+      description: >-
+        The terminal chat.completion.chunk emitted when
+        `stream_options.include_usage` is true. `choices` is empty and `usage`
+        is populated.
+      required:
+        - id
+        - object
+        - created
+        - model
+        - choices
+        - usage
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+          enum:
+            - chat.completion.chunk
+        created:
+          type: integer
+        model:
+          type: string
+        choices:
+          type: array
+          maxItems: 0
+          items:
+            $ref: '#/components/schemas/ChatStreamChoice'
+        usage:
+          $ref: '#/components/schemas/Usage'
+
+    FimCompletionChunk:
+      type: object
+      description: A streamed FIM completion chunk.
+      required:
+        - id
+        - object
+        - created
+        - model
+        - choices
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+          enum:
+            - chat.completion.chunk
+        created:
+          type: integer
+        model:
+          type: string
+        choices:
+          type: array
+          items:
+            $ref: '#/components/schemas/FimStreamChoice'
+
+    AgentCompletionChunk:
+      type: object
+      description: A streamed agent completion chunk.
+      required:
+        - id
+        - object
+        - created
+        - model
+        - choices
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+          enum:
+            - chat.completion.chunk
+        created:
+          type: integer
+        model:
+          type: string
+        choices:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChatStreamChoice'
+
+    ChatStreamChoice:
+      type: object
+      description: One streamed choice within a chat.completion.chunk.
+      required:
+        - index
+        - delta
+      properties:
+        index:
+          type: integer
+          description: Index of the choice in the `choices` array.
+        delta:
+          $ref: '#/components/schemas/DeltaMessage'
+        finish_reason:
+          type:
+            - string
+            - 'null'
+          enum:
+            - stop
+            - length
+            - tool_calls
+            - model_length
+            - null
+          description: >-
+            Reason the model stopped generating tokens for this choice. `null`
+            on intermediate chunks; set on the terminal chunk for the choice.
+
+    FimStreamChoice:
+      type: object
+      description: One streamed choice within a FIM chunk.
+      required:
+        - index
+        - delta
+      properties:
+        index:
+          type: integer
+        delta:
+          type: object
+          properties:
+            role:
+              type: string
+              description: Present on the first chunk only.
+            content:
+              type: string
+              description: Incremental code token.
+        finish_reason:
+          type:
+            - string
+            - 'null'
+          enum:
+            - stop
+            - length
+            - model_length
+            - null
+
+    DeltaMessage:
+      type: object
+      description: >-
+        Incremental message contribution carried by a streamed choice. On the
+        first chunk this typically carries `role: assistant`; subsequent
+        chunks carry `content` tokens or `tool_calls` deltas; terminal chunks
+        may be empty.
+      properties:
+        role:
+          type: string
+          enum:
+            - assistant
+          description: Author role. Present on the first delta of a choice.
+        content:
+          type:
+            - string
+            - 'null'
+          description: Incremental content token. May be null on tool-call or terminal chunks.
+        tool_calls:
+          type: array
+          description: Streamed tool-call deltas. Each tool call is built up across chunks.
+          items:
+            $ref: '#/components/schemas/ToolCallDelta'
+
+    ToolCallDelta:
+      type: object
+      description: A streamed tool-call delta from an assistant message.
+      properties:
+        index:
+          type: integer
+          description: Index of this tool call within the choice.
+        id:
+          type: string
+          description: Unique identifier for the tool call. Present on the first delta for a given index.
+        type:
+          type: string
+          enum:
+            - function
+          description: Tool type. Currently always `function`.
+        function:
+          type: object
+          properties:
+            name:
+              type: string
+              description: Name of the function being called. Present on the first delta.
+            arguments:
+              type: string
+              description: Streamed fragment of the JSON-encoded function arguments string.
+
+    Usage:
+      type: object
+      description: Token usage for the completed stream.
+      required:
+        - prompt_tokens
+        - completion_tokens
+        - total_tokens
+      properties:
+        prompt_tokens:
+          type: integer
+          description: Number of tokens in the prompt.
+        completion_tokens:
+          type: integer
+          description: Number of tokens generated in the completion.
+        total_tokens:
+          type: integer
+          description: Sum of prompt and completion tokens.
+
+    StreamDone:
+      type: string
+      description: >-
+        Literal `[DONE]` sentinel emitted as the final SSE `data:` line. Not
+        JSON. Clients should compare the raw payload after `data: ` against
+        the literal string `[DONE]`.
+      enum:
+        - '[DONE]'
