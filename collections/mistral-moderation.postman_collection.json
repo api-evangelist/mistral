@@ -1,0 +1,526 @@
+{
+  "item": [
+    {
+      "id": "3cd17ca4-52c1-418f-9f9a-59605f76bacb",
+      "name": "Moderation",
+      "description": {
+        "content": "Content moderation and classification operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ec17088d-c706-42a4-adbd-36b5900b66e9",
+          "name": "Mistral AI Moderate text content",
+          "request": {
+            "name": "Mistral AI Moderate text content",
+            "description": {
+              "content": "Classify text content for potential policy violations across safety categories. Returns category-level flags and scores.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "moderations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model\": \"<string>\",\n  \"input\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "772e3209-5617-4b41-b59e-f1fe0ba992e3",
+              "name": "Moderation result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "moderations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"mistral-moderation-latest\",\n  \"input\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"model\": \"string\",\n  \"results\": [\n    {\n      \"categories\": {\n        \"sexual\": true,\n        \"hate_and_discrimination\": false,\n        \"violence_and_threats\": false,\n        \"dangerous_and_criminal_content\": true,\n        \"selfharm\": false,\n        \"health\": true,\n        \"financial\": true,\n        \"law\": true,\n        \"pii\": false\n      },\n      \"category_scores\": {\n        \"sexual\": 3908.80887954554,\n        \"hate_and_discrimination\": 3046.892511786957,\n        \"violence_and_threats\": 8917.790330469883,\n        \"dangerous_and_criminal_content\": 6804.642584068202,\n        \"selfharm\": 8542.176343827245,\n        \"health\": 9658.484366433877,\n        \"financial\": 6976.174607905868,\n        \"law\": 7818.396899669578,\n        \"pii\": 2449.869156058816\n      }\n    },\n    {\n      \"categories\": {\n        \"sexual\": false,\n        \"hate_and_discrimination\": true,\n        \"violence_and_threats\": false,\n        \"dangerous_and_criminal_content\": false,\n        \"selfharm\": true,\n        \"health\": false,\n        \"financial\": false,\n        \"law\": false,\n        \"pii\": true\n      },\n      \"category_scores\": {\n        \"sexual\": 9512.0244760117,\n        \"hate_and_discrimination\": 1174.5812773809928,\n        \"violence_and_threats\": 9307.845030688719,\n        \"dangerous_and_criminal_content\": 3350.5721013588873,\n        \"selfharm\": 6790.083804475707,\n        \"health\": 1039.0295993264765,\n        \"financial\": 430.7114131777512,\n        \"law\": 9318.941744307813,\n        \"pii\": 4953.140153911127\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "88d98deb-2742-4880-b72b-669b83a19760",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "moderations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"mistral-moderation-latest\",\n  \"input\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "51d80c78-4224-459e-b36a-6ce57ac403dc",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "moderations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"mistral-moderation-latest\",\n  \"input\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "266b07bd-dbd3-41b0-b21b-cba7e35eefb3",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "moderations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"mistral-moderation-latest\",\n  \"input\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8e1242a1-f823-49a7-b378-f66b44e6031c",
+          "name": "Mistral AI Moderate chat conversation",
+          "request": {
+            "name": "Mistral AI Moderate chat conversation",
+            "description": {
+              "content": "Classify a chat conversation for potential policy violations. Evaluates multi-turn conversations including system, user, and assistant messages.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "chat",
+                "moderations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model\": \"<string>\",\n  \"input\": [\n    {\n      \"role\": \"<string>\",\n      \"content\": \"<string>\"\n    },\n    {\n      \"role\": \"<string>\",\n      \"content\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bd3759e4-b5b8-4a3e-bd2b-d8a97f732f95",
+              "name": "Chat moderation result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chat",
+                    "moderations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"mistral-moderation-latest\",\n  \"input\": [\n    {\n      \"role\": \"<string>\",\n      \"content\": \"<string>\"\n    },\n    {\n      \"role\": \"<string>\",\n      \"content\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"model\": \"string\",\n  \"results\": [\n    {\n      \"categories\": {\n        \"sexual\": true,\n        \"hate_and_discrimination\": false,\n        \"violence_and_threats\": false,\n        \"dangerous_and_criminal_content\": true,\n        \"selfharm\": false,\n        \"health\": true,\n        \"financial\": true,\n        \"law\": true,\n        \"pii\": false\n      },\n      \"category_scores\": {\n        \"sexual\": 3908.80887954554,\n        \"hate_and_discrimination\": 3046.892511786957,\n        \"violence_and_threats\": 8917.790330469883,\n        \"dangerous_and_criminal_content\": 6804.642584068202,\n        \"selfharm\": 8542.176343827245,\n        \"health\": 9658.484366433877,\n        \"financial\": 6976.174607905868,\n        \"law\": 7818.396899669578,\n        \"pii\": 2449.869156058816\n      }\n    },\n    {\n      \"categories\": {\n        \"sexual\": false,\n        \"hate_and_discrimination\": true,\n        \"violence_and_threats\": false,\n        \"dangerous_and_criminal_content\": false,\n        \"selfharm\": true,\n        \"health\": false,\n        \"financial\": false,\n        \"law\": false,\n        \"pii\": true\n      },\n      \"category_scores\": {\n        \"sexual\": 9512.0244760117,\n        \"hate_and_discrimination\": 1174.5812773809928,\n        \"violence_and_threats\": 9307.845030688719,\n        \"dangerous_and_criminal_content\": 3350.5721013588873,\n        \"selfharm\": 6790.083804475707,\n        \"health\": 1039.0295993264765,\n        \"financial\": 430.7114131777512,\n        \"law\": 9318.941744307813,\n        \"pii\": 4953.140153911127\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2ed45e9b-b25b-44cd-b414-c7cdd3b693db",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chat",
+                    "moderations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"mistral-moderation-latest\",\n  \"input\": [\n    {\n      \"role\": \"<string>\",\n      \"content\": \"<string>\"\n    },\n    {\n      \"role\": \"<string>\",\n      \"content\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "90861a14-f11f-4ab8-bc24-75c9742fc7e2",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chat",
+                    "moderations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"mistral-moderation-latest\",\n  \"input\": [\n    {\n      \"role\": \"<string>\",\n      \"content\": \"<string>\"\n    },\n    {\n      \"role\": \"<string>\",\n      \"content\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e412bd2d-058e-40ba-90a4-72cc1f77e856",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chat",
+                    "moderations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"mistral-moderation-latest\",\n  \"input\": [\n    {\n      \"role\": \"<string>\",\n      \"content\": \"<string>\"\n    },\n    {\n      \"role\": \"<string>\",\n      \"content\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.mistral.ai/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "99d2f701-bc2a-4eaf-9aca-b357855bcf49",
+    "name": "Mistral AI Mistral Moderation API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Content moderation and classification API for detecting potentially harmful or inappropriate content. Supports text and chat moderation across safety categories including violence, sexual content, hate speech, self-harm, dangerous content, and more.\n\nContact Support:\n Name: Mistral AI Support\n Email: support@mistral.ai",
+      "type": "text/plain"
+    }
+  }
+}

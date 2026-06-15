@@ -1,0 +1,286 @@
+{
+  "item": [
+    {
+      "id": "bc48cd51-9032-41c5-9064-1d08cc56fd7a",
+      "name": "FIM",
+      "description": {
+        "content": "Fill-in-the-Middle code completion operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a74838e6-efa1-4d52-ba99-db03c21d924e",
+          "name": "Mistral AI Create a FIM completion",
+          "request": {
+            "name": "Mistral AI Create a FIM completion",
+            "description": {
+              "content": "Generate code to fill in between a given prompt prefix and optional suffix. Powered by Codestral for high-quality code completions across 80+ programming languages.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fim",
+                "completions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model\": \"<string>\",\n  \"prompt\": \"<string>\",\n  \"suffix\": \"<string>\",\n  \"temperature\": 0.7,\n  \"top_p\": 1,\n  \"max_tokens\": \"<integer>\",\n  \"stream\": false,\n  \"stop\": \"<string>\",\n  \"random_seed\": \"<integer>\",\n  \"min_tokens\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3a651cc5-c0fe-43c3-8865-c7cc9399ff57",
+              "name": "FIM completion response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fim",
+                    "completions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"codestral-latest\",\n  \"prompt\": \"<string>\",\n  \"suffix\": \"<string>\",\n  \"temperature\": 0.7,\n  \"top_p\": 1,\n  \"max_tokens\": \"<integer>\",\n  \"stream\": false,\n  \"stop\": \"<string>\",\n  \"random_seed\": \"<integer>\",\n  \"min_tokens\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"object\": \"chat.completion\",\n  \"created\": 6613,\n  \"model\": \"string\",\n  \"choices\": [\n    {\n      \"index\": 6673,\n      \"message\": {\n        \"role\": \"string\",\n        \"content\": \"string\"\n      },\n      \"finish_reason\": \"length\"\n    },\n    {\n      \"index\": 816,\n      \"message\": {\n        \"role\": \"string\",\n        \"content\": \"string\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4196,\n    \"completion_tokens\": 7423,\n    \"total_tokens\": 5995\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cb742d21-6756-4547-9424-26a910d51d70",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fim",
+                    "completions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"codestral-latest\",\n  \"prompt\": \"<string>\",\n  \"suffix\": \"<string>\",\n  \"temperature\": 0.7,\n  \"top_p\": 1,\n  \"max_tokens\": \"<integer>\",\n  \"stream\": false,\n  \"stop\": \"<string>\",\n  \"random_seed\": \"<integer>\",\n  \"min_tokens\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3f0111cd-f56a-4cb2-a253-6ddce4934197",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fim",
+                    "completions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"codestral-latest\",\n  \"prompt\": \"<string>\",\n  \"suffix\": \"<string>\",\n  \"temperature\": 0.7,\n  \"top_p\": 1,\n  \"max_tokens\": \"<integer>\",\n  \"stream\": false,\n  \"stop\": \"<string>\",\n  \"random_seed\": \"<integer>\",\n  \"min_tokens\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "648c74e9-fc0e-4ba1-b412-1ebdd81780f0",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fim",
+                    "completions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"codestral-latest\",\n  \"prompt\": \"<string>\",\n  \"suffix\": \"<string>\",\n  \"temperature\": 0.7,\n  \"top_p\": 1,\n  \"max_tokens\": \"<integer>\",\n  \"stream\": false,\n  \"stop\": \"<string>\",\n  \"random_seed\": \"<integer>\",\n  \"min_tokens\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.mistral.ai/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "604b5024-4c61-4517-a5f7-bb3bddabf84d",
+    "name": "Mistral AI FIM API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Fill-in-the-Middle code completion API powered by Codestral. Generates code between a given prompt prefix and optional suffix, supporting over 80 programming languages for inline code completion and code generation.\n\nContact Support:\n Name: Mistral AI Support\n Email: support@mistral.ai",
+      "type": "text/plain"
+    }
+  }
+}

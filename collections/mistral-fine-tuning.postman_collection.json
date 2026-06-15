@@ -1,0 +1,1013 @@
+{
+  "item": [
+    {
+      "id": "4da708d7-8d61-4e61-8a17-64830c7e8d3b",
+      "name": "Fine-Tuning Jobs",
+      "description": {
+        "content": "Create and manage fine-tuning jobs",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "88fd8966-fb9e-4355-9a98-2696c53494e2",
+          "name": "Mistral AI List fine-tuning jobs",
+          "request": {
+            "name": "Mistral AI List fine-tuning jobs",
+            "description": {
+              "content": "Retrieve a list of fine-tuning jobs for the authenticated account, with optional pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fine_tuning",
+                "jobs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Page number for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "20",
+                  "description": "Number of items per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "model",
+                  "value": "<string>",
+                  "description": "Filter by base model"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter by job status"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fbfd8549-e39d-4d2f-8232-f1ca478069b7",
+              "name": "List of fine-tuning jobs",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fine_tuning",
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "model",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"bb1b133f-a3cc-2cbe-918d-1ff9c50e3526\",\n      \"auto_start\": true,\n      \"hyperparameters\": {\n        \"training_steps\": 5126,\n        \"learning_rate\": 2896.5667001681904,\n        \"weight_decay\": 980.3021261170696,\n        \"warmup_fraction\": 0.18033033434070855,\n        \"epochs\": 4916.940480178605,\n        \"seq_len\": 4498\n      },\n      \"model\": \"string\",\n      \"status\": \"RUNNING\",\n      \"job_type\": \"string\",\n      \"created_at\": 8121,\n      \"modified_at\": 4853,\n      \"training_files\": [\n        \"c3001842-5ea4-0a26-c83a-d71628652c04\",\n        \"f0b12f89-b152-2d1e-d163-60c3fdba06f0\"\n      ],\n      \"validation_files\": [\n        \"db8e0bef-0213-8e3c-f2a9-8f0ce9624815\",\n        \"57ff4958-c2c2-3427-ae58-611ece3e55b8\"\n      ],\n      \"fine_tuned_model\": \"string\",\n      \"integrations\": [\n        {\n          \"type\": \"wandb\",\n          \"project\": \"string\",\n          \"name\": \"string\",\n          \"api_key\": \"string\"\n        },\n        {\n          \"type\": \"wandb\",\n          \"project\": \"string\",\n          \"name\": \"string\",\n          \"api_key\": \"string\"\n        }\n      ]\n    },\n    {\n      \"id\": \"d70c0999-e7f7-0ca3-e48c-b340bdc22550\",\n      \"auto_start\": false,\n      \"hyperparameters\": {\n        \"training_steps\": 586,\n        \"learning_rate\": 468.45388294983746,\n        \"weight_decay\": 9423.210007812731,\n        \"warmup_fraction\": 0.0497766828262608,\n        \"epochs\": 5685.535923194852,\n        \"seq_len\": 1079\n      },\n      \"model\": \"string\",\n      \"status\": \"RUNNING\",\n      \"job_type\": \"string\",\n      \"created_at\": 1384,\n      \"modified_at\": 6186,\n      \"training_files\": [\n        \"06d49f9c-2ced-b1ac-35af-8ab2f588ef3b\",\n        \"90fd8ef7-dd21-ccb6-8dd7-94a3bbb0cb92\"\n      ],\n      \"validation_files\": [\n        \"be4f8920-341c-dc24-b171-de7d98ca5ef2\",\n        \"eb8bc138-daae-6870-e813-2be108f5ecb8\"\n      ],\n      \"fine_tuned_model\": \"string\",\n      \"integrations\": [\n        {\n          \"type\": \"wandb\",\n          \"project\": \"string\",\n          \"name\": \"string\",\n          \"api_key\": \"string\"\n        },\n        {\n          \"type\": \"wandb\",\n          \"project\": \"string\",\n          \"name\": \"string\",\n          \"api_key\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"total\": 4067\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7376ef19-0224-40de-b0fc-c49d8bfcfac7",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fine_tuning",
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "model",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "995a60a5-24a3-4b0d-9922-fdb1926e497d",
+          "name": "Mistral AI Create a fine-tuning job",
+          "request": {
+            "name": "Mistral AI Create a fine-tuning job",
+            "description": {
+              "content": "Create a new fine-tuning job to customize a Mistral model on your dataset. Specify the base model, training file, and hyperparameters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fine_tuning",
+                "jobs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model\": \"<string>\",\n  \"training_files\": [\n    {\n      \"file_id\": \"<uuid>\",\n      \"weight\": \"<number>\"\n    },\n    {\n      \"file_id\": \"<uuid>\",\n      \"weight\": \"<number>\"\n    }\n  ],\n  \"validation_files\": [\n    {\n      \"file_id\": \"<uuid>\",\n      \"weight\": \"<number>\"\n    },\n    {\n      \"file_id\": \"<uuid>\",\n      \"weight\": \"<number>\"\n    }\n  ],\n  \"hyperparameters\": {\n    \"training_steps\": \"<integer>\",\n    \"learning_rate\": \"<number>\",\n    \"weight_decay\": \"<number>\",\n    \"warmup_fraction\": \"<number>\",\n    \"epochs\": \"<number>\",\n    \"seq_len\": \"<integer>\"\n  },\n  \"suffix\": \"<string>\",\n  \"integrations\": [\n    {\n      \"type\": \"<string>\",\n      \"project\": \"<string>\",\n      \"name\": \"<string>\",\n      \"api_key\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"project\": \"<string>\",\n      \"name\": \"<string>\",\n      \"api_key\": \"<string>\"\n    }\n  ],\n  \"auto_start\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6bb21d1d-db52-47a0-8dc2-05d240fe4a14",
+              "name": "Fine-tuning job created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fine_tuning",
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"open-mistral-7b\",\n  \"training_files\": [\n    {\n      \"file_id\": \"b7329d4f-40e5-34ed-feee-fbe3b5d7a61a\",\n      \"weight\": 8444.597152936398\n    },\n    {\n      \"file_id\": \"f2f0f8a5-72ce-791a-b487-86f47c19163e\",\n      \"weight\": 5367.586186690176\n    }\n  ],\n  \"validation_files\": [\n    {\n      \"file_id\": \"28169d4b-3156-7972-fd48-7f7904b9aab5\",\n      \"weight\": 2499.2272397559977\n    },\n    {\n      \"file_id\": \"5527a5ca-3ba4-a63f-840f-a1abb2c51e82\",\n      \"weight\": 1708.1311219646\n    }\n  ],\n  \"hyperparameters\": {\n    \"training_steps\": 5121,\n    \"learning_rate\": 8603.431382763923,\n    \"weight_decay\": 6977.157242301288,\n    \"warmup_fraction\": 0.28861479989077443,\n    \"epochs\": 2748.436168069913,\n    \"seq_len\": 7026\n  },\n  \"suffix\": \"<string>\",\n  \"integrations\": [\n    {\n      \"type\": \"wandb\",\n      \"project\": \"string\",\n      \"name\": \"string\",\n      \"api_key\": \"string\"\n    },\n    {\n      \"type\": \"wandb\",\n      \"project\": \"string\",\n      \"name\": \"string\",\n      \"api_key\": \"string\"\n    }\n  ],\n  \"auto_start\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"f5106927-8df0-18d7-02a8-26b16c9e0d83\",\n  \"auto_start\": true,\n  \"hyperparameters\": {\n    \"training_steps\": 1296,\n    \"learning_rate\": 2584.1668920460957,\n    \"weight_decay\": 4178.5533277814875,\n    \"warmup_fraction\": 0.21550485425286214,\n    \"epochs\": 1767.2098600260456,\n    \"seq_len\": 320\n  },\n  \"model\": \"string\",\n  \"status\": \"CANCELLATION_REQUESTED\",\n  \"job_type\": \"string\",\n  \"created_at\": 311,\n  \"modified_at\": 5276,\n  \"training_files\": [\n    \"0c4f33f1-3697-2d5d-be9b-ef8efbde3a9b\",\n    \"1a12431f-de64-c74e-e85c-ba00d54c5982\"\n  ],\n  \"validation_files\": [\n    \"884ff6c6-8074-bf2d-76f9-7d83336cf050\",\n    \"c072825f-ab1e-f283-6c24-33509f23d009\"\n  ],\n  \"fine_tuned_model\": \"string\",\n  \"integrations\": [\n    {\n      \"type\": \"wandb\",\n      \"project\": \"string\",\n      \"name\": \"string\",\n      \"api_key\": \"string\"\n    },\n    {\n      \"type\": \"wandb\",\n      \"project\": \"string\",\n      \"name\": \"string\",\n      \"api_key\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "48c1c64d-54ec-41ec-aa33-637b5bd158e3",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fine_tuning",
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"open-mistral-7b\",\n  \"training_files\": [\n    {\n      \"file_id\": \"b7329d4f-40e5-34ed-feee-fbe3b5d7a61a\",\n      \"weight\": 8444.597152936398\n    },\n    {\n      \"file_id\": \"f2f0f8a5-72ce-791a-b487-86f47c19163e\",\n      \"weight\": 5367.586186690176\n    }\n  ],\n  \"validation_files\": [\n    {\n      \"file_id\": \"28169d4b-3156-7972-fd48-7f7904b9aab5\",\n      \"weight\": 2499.2272397559977\n    },\n    {\n      \"file_id\": \"5527a5ca-3ba4-a63f-840f-a1abb2c51e82\",\n      \"weight\": 1708.1311219646\n    }\n  ],\n  \"hyperparameters\": {\n    \"training_steps\": 5121,\n    \"learning_rate\": 8603.431382763923,\n    \"weight_decay\": 6977.157242301288,\n    \"warmup_fraction\": 0.28861479989077443,\n    \"epochs\": 2748.436168069913,\n    \"seq_len\": 7026\n  },\n  \"suffix\": \"<string>\",\n  \"integrations\": [\n    {\n      \"type\": \"wandb\",\n      \"project\": \"string\",\n      \"name\": \"string\",\n      \"api_key\": \"string\"\n    },\n    {\n      \"type\": \"wandb\",\n      \"project\": \"string\",\n      \"name\": \"string\",\n      \"api_key\": \"string\"\n    }\n  ],\n  \"auto_start\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a4816458-8358-480a-81d2-589748ad3483",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fine_tuning",
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"open-mistral-7b\",\n  \"training_files\": [\n    {\n      \"file_id\": \"b7329d4f-40e5-34ed-feee-fbe3b5d7a61a\",\n      \"weight\": 8444.597152936398\n    },\n    {\n      \"file_id\": \"f2f0f8a5-72ce-791a-b487-86f47c19163e\",\n      \"weight\": 5367.586186690176\n    }\n  ],\n  \"validation_files\": [\n    {\n      \"file_id\": \"28169d4b-3156-7972-fd48-7f7904b9aab5\",\n      \"weight\": 2499.2272397559977\n    },\n    {\n      \"file_id\": \"5527a5ca-3ba4-a63f-840f-a1abb2c51e82\",\n      \"weight\": 1708.1311219646\n    }\n  ],\n  \"hyperparameters\": {\n    \"training_steps\": 5121,\n    \"learning_rate\": 8603.431382763923,\n    \"weight_decay\": 6977.157242301288,\n    \"warmup_fraction\": 0.28861479989077443,\n    \"epochs\": 2748.436168069913,\n    \"seq_len\": 7026\n  },\n  \"suffix\": \"<string>\",\n  \"integrations\": [\n    {\n      \"type\": \"wandb\",\n      \"project\": \"string\",\n      \"name\": \"string\",\n      \"api_key\": \"string\"\n    },\n    {\n      \"type\": \"wandb\",\n      \"project\": \"string\",\n      \"name\": \"string\",\n      \"api_key\": \"string\"\n    }\n  ],\n  \"auto_start\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a3622d76-cedd-4ef3-a3fa-a51fafe56466",
+          "name": "Mistral AI Get a fine-tuning job",
+          "request": {
+            "name": "Mistral AI Get a fine-tuning job",
+            "description": {
+              "content": "Retrieve details of a specific fine-tuning job by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fine_tuning",
+                "jobs",
+                ":job_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "job_id",
+                  "description": "(Required) The unique identifier of the fine-tuning job"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "af47311b-e95d-4aa1-9999-95ff7997c34a",
+              "name": "Fine-tuning job details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fine_tuning",
+                    "jobs",
+                    ":job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "job_id",
+                      "description": "(Required) The unique identifier of the fine-tuning job"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"f5106927-8df0-18d7-02a8-26b16c9e0d83\",\n  \"auto_start\": true,\n  \"hyperparameters\": {\n    \"training_steps\": 1296,\n    \"learning_rate\": 2584.1668920460957,\n    \"weight_decay\": 4178.5533277814875,\n    \"warmup_fraction\": 0.21550485425286214,\n    \"epochs\": 1767.2098600260456,\n    \"seq_len\": 320\n  },\n  \"model\": \"string\",\n  \"status\": \"CANCELLATION_REQUESTED\",\n  \"job_type\": \"string\",\n  \"created_at\": 311,\n  \"modified_at\": 5276,\n  \"training_files\": [\n    \"0c4f33f1-3697-2d5d-be9b-ef8efbde3a9b\",\n    \"1a12431f-de64-c74e-e85c-ba00d54c5982\"\n  ],\n  \"validation_files\": [\n    \"884ff6c6-8074-bf2d-76f9-7d83336cf050\",\n    \"c072825f-ab1e-f283-6c24-33509f23d009\"\n  ],\n  \"fine_tuned_model\": \"string\",\n  \"integrations\": [\n    {\n      \"type\": \"wandb\",\n      \"project\": \"string\",\n      \"name\": \"string\",\n      \"api_key\": \"string\"\n    },\n    {\n      \"type\": \"wandb\",\n      \"project\": \"string\",\n      \"name\": \"string\",\n      \"api_key\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "04f440af-6a33-435b-9374-93e626783156",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fine_tuning",
+                    "jobs",
+                    ":job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "job_id",
+                      "description": "(Required) The unique identifier of the fine-tuning job"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "762dc3b0-ae6f-4837-b594-9a7e6f1f10a5",
+              "name": "Job not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fine_tuning",
+                    "jobs",
+                    ":job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "job_id",
+                      "description": "(Required) The unique identifier of the fine-tuning job"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "22252553-6946-4e65-82e5-dd506e5fcb88",
+          "name": "Mistral AI Cancel a fine-tuning job",
+          "request": {
+            "name": "Mistral AI Cancel a fine-tuning job",
+            "description": {
+              "content": "Request cancellation of a running or queued fine-tuning job.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fine_tuning",
+                "jobs",
+                ":job_id",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "job_id",
+                  "description": "(Required) The unique identifier of the fine-tuning job"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f45420ce-be9c-42d5-8120-4f3f587d636b",
+              "name": "Fine-tuning job cancellation requested",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fine_tuning",
+                    "jobs",
+                    ":job_id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "job_id",
+                      "description": "(Required) The unique identifier of the fine-tuning job"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"f5106927-8df0-18d7-02a8-26b16c9e0d83\",\n  \"auto_start\": true,\n  \"hyperparameters\": {\n    \"training_steps\": 1296,\n    \"learning_rate\": 2584.1668920460957,\n    \"weight_decay\": 4178.5533277814875,\n    \"warmup_fraction\": 0.21550485425286214,\n    \"epochs\": 1767.2098600260456,\n    \"seq_len\": 320\n  },\n  \"model\": \"string\",\n  \"status\": \"CANCELLATION_REQUESTED\",\n  \"job_type\": \"string\",\n  \"created_at\": 311,\n  \"modified_at\": 5276,\n  \"training_files\": [\n    \"0c4f33f1-3697-2d5d-be9b-ef8efbde3a9b\",\n    \"1a12431f-de64-c74e-e85c-ba00d54c5982\"\n  ],\n  \"validation_files\": [\n    \"884ff6c6-8074-bf2d-76f9-7d83336cf050\",\n    \"c072825f-ab1e-f283-6c24-33509f23d009\"\n  ],\n  \"fine_tuned_model\": \"string\",\n  \"integrations\": [\n    {\n      \"type\": \"wandb\",\n      \"project\": \"string\",\n      \"name\": \"string\",\n      \"api_key\": \"string\"\n    },\n    {\n      \"type\": \"wandb\",\n      \"project\": \"string\",\n      \"name\": \"string\",\n      \"api_key\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03cab612-ec72-4364-8ef7-2afa3d575074",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fine_tuning",
+                    "jobs",
+                    ":job_id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "job_id",
+                      "description": "(Required) The unique identifier of the fine-tuning job"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "098e2515-c636-4722-bd5a-3a90b1de824b",
+              "name": "Job not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fine_tuning",
+                    "jobs",
+                    ":job_id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "job_id",
+                      "description": "(Required) The unique identifier of the fine-tuning job"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9a91bd4b-eeaf-4600-b5c9-c10d2513a717",
+          "name": "Mistral AI Start a validated fine-tuning job",
+          "request": {
+            "name": "Mistral AI Start a validated fine-tuning job",
+            "description": {
+              "content": "Start a fine-tuning job that has been validated. The job must be in VALIDATED status to be started.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fine_tuning",
+                "jobs",
+                ":job_id",
+                "start"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "job_id",
+                  "description": "(Required) The unique identifier of the fine-tuning job"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6407f886-b3b1-4f03-b901-f446a49f3265",
+              "name": "Fine-tuning job started",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fine_tuning",
+                    "jobs",
+                    ":job_id",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "job_id",
+                      "description": "(Required) The unique identifier of the fine-tuning job"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"f5106927-8df0-18d7-02a8-26b16c9e0d83\",\n  \"auto_start\": true,\n  \"hyperparameters\": {\n    \"training_steps\": 1296,\n    \"learning_rate\": 2584.1668920460957,\n    \"weight_decay\": 4178.5533277814875,\n    \"warmup_fraction\": 0.21550485425286214,\n    \"epochs\": 1767.2098600260456,\n    \"seq_len\": 320\n  },\n  \"model\": \"string\",\n  \"status\": \"CANCELLATION_REQUESTED\",\n  \"job_type\": \"string\",\n  \"created_at\": 311,\n  \"modified_at\": 5276,\n  \"training_files\": [\n    \"0c4f33f1-3697-2d5d-be9b-ef8efbde3a9b\",\n    \"1a12431f-de64-c74e-e85c-ba00d54c5982\"\n  ],\n  \"validation_files\": [\n    \"884ff6c6-8074-bf2d-76f9-7d83336cf050\",\n    \"c072825f-ab1e-f283-6c24-33509f23d009\"\n  ],\n  \"fine_tuned_model\": \"string\",\n  \"integrations\": [\n    {\n      \"type\": \"wandb\",\n      \"project\": \"string\",\n      \"name\": \"string\",\n      \"api_key\": \"string\"\n    },\n    {\n      \"type\": \"wandb\",\n      \"project\": \"string\",\n      \"name\": \"string\",\n      \"api_key\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a0187c43-b092-4bd7-a669-f5d5099e6ef6",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fine_tuning",
+                    "jobs",
+                    ":job_id",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "job_id",
+                      "description": "(Required) The unique identifier of the fine-tuning job"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "86b2176a-2fc0-4662-b9a9-9c2b6e7ca95d",
+              "name": "Job not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fine_tuning",
+                    "jobs",
+                    ":job_id",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "job_id",
+                      "description": "(Required) The unique identifier of the fine-tuning job"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.mistral.ai/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0521ed3e-59e0-44d7-83b4-0eae73ca1805",
+    "name": "Mistral AI Fine-Tuning API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Fine-tuning API for customizing Mistral models on your own datasets. Supports text, vision, and classifier fine-tuning with configurable hyperparameters, Weights & Biases integration, and job management.\n\nContact Support:\n Name: Mistral AI Support\n Email: support@mistral.ai",
+      "type": "text/plain"
+    }
+  }
+}

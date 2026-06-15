@@ -1,0 +1,799 @@
+{
+  "item": [
+    {
+      "id": "124cf81c-41c8-4d28-bd06-e6fc6cb00d20",
+      "name": "Batch Jobs",
+      "description": {
+        "content": "Batch inference job operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d1552472-1b66-405d-a0c4-c5686dbd4da5",
+          "name": "Mistral AI List batch jobs",
+          "request": {
+            "name": "Mistral AI List batch jobs",
+            "description": {
+              "content": "Retrieve a list of batch inference jobs for the authenticated account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "batch",
+                "jobs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Page number for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "20",
+                  "description": "Number of items per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter by job status"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "178f3d43-a8ba-4009-ab2b-1cc232ea4c0a",
+              "name": "List of batch jobs",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "batch",
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"20fd9b12-1f1e-407e-8651-c397b30bf173\",\n      \"object\": \"batch\",\n      \"input_files\": [\n        \"57b65133-f931-e5a8-40ff-89e68d32dd97\",\n        \"fb8591bc-9a45-c14f-63bb-5c46c55b0d1a\"\n      ],\n      \"endpoint\": \"string\",\n      \"model\": \"string\",\n      \"output_file\": \"46eeb6dc-962a-1480-5c04-a7c761e72cd4\",\n      \"error_file\": \"f405211c-a623-5660-b90a-1abcfd35ffb0\",\n      \"status\": \"RUNNING\",\n      \"created_at\": 3014,\n      \"started_at\": 6989,\n      \"completed_at\": 3132,\n      \"metadata\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"total_requests\": 1705,\n      \"completed_requests\": 949,\n      \"succeeded_requests\": 3023,\n      \"failed_requests\": 9790\n    },\n    {\n      \"id\": \"7735fcca-7e63-6b75-597c-fe3bfbc197fb\",\n      \"object\": \"batch\",\n      \"input_files\": [\n        \"3adc3cec-b9f2-e1f8-6991-87a99cef93ee\",\n        \"9e82290b-0728-2c5c-b9da-02fcd3402a8a\"\n      ],\n      \"endpoint\": \"string\",\n      \"model\": \"string\",\n      \"output_file\": \"d70c0b98-15e6-8511-5f50-31ea3608f842\",\n      \"error_file\": \"c3652e0a-c6bd-b960-f4ad-eee80b7db4cc\",\n      \"status\": \"CANCELLED\",\n      \"created_at\": 1008,\n      \"started_at\": 462,\n      \"completed_at\": 7325,\n      \"metadata\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"total_requests\": 1173,\n      \"completed_requests\": 4710,\n      \"succeeded_requests\": 1720,\n      \"failed_requests\": 8652\n    }\n  ],\n  \"total\": 157,\n  \"object\": \"list\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4e684988-ab8c-45b6-88c9-c73fdbf08857",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "batch",
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "689477a6-d740-4df0-aeb4-3347779ddbc0",
+          "name": "Mistral AI Create a batch job",
+          "request": {
+            "name": "Mistral AI Create a batch job",
+            "description": {
+              "content": "Create a new batch inference job. The input file must be a JSONL file with one request per line, uploaded via the Files API with purpose set to batch.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "batch",
+                "jobs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"input_files\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"endpoint\": \"<string>\",\n  \"model\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\"\n  },\n  \"timeout_hours\": 24\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "701cd198-f014-4898-bc95-33d43bc285ba",
+              "name": "Batch job created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "batch",
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input_files\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"endpoint\": \"<string>\",\n  \"model\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"timeout_hours\": 24\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"3906daf5-2781-1f3e-84fb-8e7b538ec17b\",\n  \"object\": \"batch\",\n  \"input_files\": [\n    \"62046b1c-6f85-b7f7-a29e-196bec2553f3\",\n    \"44bfa448-c19f-2dd6-5976-5cc56b3bf3ef\"\n  ],\n  \"endpoint\": \"string\",\n  \"model\": \"string\",\n  \"output_file\": \"aa84e50f-4719-ea82-371a-f457af9ea4e6\",\n  \"error_file\": \"5e810d85-e1c4-2e1d-600f-12b5360cb0ab\",\n  \"status\": \"SUCCESS\",\n  \"created_at\": 6188,\n  \"started_at\": 6516,\n  \"completed_at\": 5214,\n  \"metadata\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"total_requests\": 6628,\n  \"completed_requests\": 3381,\n  \"succeeded_requests\": 4809,\n  \"failed_requests\": 9921\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1939a4eb-1455-4183-b30d-ae53366e0da3",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "batch",
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input_files\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"endpoint\": \"<string>\",\n  \"model\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"timeout_hours\": 24\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "daa7e23e-7228-4f3b-81f7-1c4914a4f549",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "batch",
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input_files\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"endpoint\": \"<string>\",\n  \"model\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"timeout_hours\": 24\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "05e9ed0b-06af-4dc8-aba7-f23490fdcb57",
+          "name": "Mistral AI Get batch job details",
+          "request": {
+            "name": "Mistral AI Get batch job details",
+            "description": {
+              "content": "Retrieve the current status and details of a batch job.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "batch",
+                "jobs",
+                ":job_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "job_id",
+                  "description": "(Required) The unique identifier of the batch job"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c18efc0c-2f2f-4313-9a49-2028b3c0327d",
+              "name": "Batch job details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "batch",
+                    "jobs",
+                    ":job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "job_id",
+                      "description": "(Required) The unique identifier of the batch job"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"3906daf5-2781-1f3e-84fb-8e7b538ec17b\",\n  \"object\": \"batch\",\n  \"input_files\": [\n    \"62046b1c-6f85-b7f7-a29e-196bec2553f3\",\n    \"44bfa448-c19f-2dd6-5976-5cc56b3bf3ef\"\n  ],\n  \"endpoint\": \"string\",\n  \"model\": \"string\",\n  \"output_file\": \"aa84e50f-4719-ea82-371a-f457af9ea4e6\",\n  \"error_file\": \"5e810d85-e1c4-2e1d-600f-12b5360cb0ab\",\n  \"status\": \"SUCCESS\",\n  \"created_at\": 6188,\n  \"started_at\": 6516,\n  \"completed_at\": 5214,\n  \"metadata\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"total_requests\": 6628,\n  \"completed_requests\": 3381,\n  \"succeeded_requests\": 4809,\n  \"failed_requests\": 9921\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eada3e2e-93dd-440d-a1a5-b74570ae5097",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "batch",
+                    "jobs",
+                    ":job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "job_id",
+                      "description": "(Required) The unique identifier of the batch job"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0a5b52a9-ea82-4bad-aee7-817b3949896d",
+              "name": "Job not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "batch",
+                    "jobs",
+                    ":job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "job_id",
+                      "description": "(Required) The unique identifier of the batch job"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "05d00d20-b1f9-4dc0-80a6-0a4a4755ba31",
+          "name": "Mistral AI Cancel a batch job",
+          "request": {
+            "name": "Mistral AI Cancel a batch job",
+            "description": {
+              "content": "Request cancellation of a running or queued batch job.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "batch",
+                "jobs",
+                ":job_id",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "job_id",
+                  "description": "(Required) The unique identifier of the batch job"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "140612c3-fa94-4e8c-8e70-56e05c1b32f3",
+              "name": "Batch job cancellation requested",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "batch",
+                    "jobs",
+                    ":job_id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "job_id",
+                      "description": "(Required) The unique identifier of the batch job"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"3906daf5-2781-1f3e-84fb-8e7b538ec17b\",\n  \"object\": \"batch\",\n  \"input_files\": [\n    \"62046b1c-6f85-b7f7-a29e-196bec2553f3\",\n    \"44bfa448-c19f-2dd6-5976-5cc56b3bf3ef\"\n  ],\n  \"endpoint\": \"string\",\n  \"model\": \"string\",\n  \"output_file\": \"aa84e50f-4719-ea82-371a-f457af9ea4e6\",\n  \"error_file\": \"5e810d85-e1c4-2e1d-600f-12b5360cb0ab\",\n  \"status\": \"SUCCESS\",\n  \"created_at\": 6188,\n  \"started_at\": 6516,\n  \"completed_at\": 5214,\n  \"metadata\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"total_requests\": 6628,\n  \"completed_requests\": 3381,\n  \"succeeded_requests\": 4809,\n  \"failed_requests\": 9921\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b1fa2a3-f13c-4aaa-9d32-059221f383df",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "batch",
+                    "jobs",
+                    ":job_id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "job_id",
+                      "description": "(Required) The unique identifier of the batch job"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "be588fe7-1890-4a66-b7c7-aafb7a69b9ad",
+              "name": "Job not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "batch",
+                    "jobs",
+                    ":job_id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "job_id",
+                      "description": "(Required) The unique identifier of the batch job"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.mistral.ai/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "39279cd1-b0a6-4eda-a4f6-58e5e8213138",
+    "name": "Mistral AI Batch API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Batch inference API for processing up to one million requests asynchronously at reduced cost. Supports chat completions, embeddings, FIM, moderations, OCR, classifications, and audio transcriptions in batch mode.\n\nContact Support:\n Name: Mistral AI Support\n Email: support@mistral.ai",
+      "type": "text/plain"
+    }
+  }
+}
