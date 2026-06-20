@@ -3,7 +3,7 @@ name: Mistral AI
 description: Mistral AI provides state-of-the-art large language models and AI APIs
   for developers and enterprises.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 created: '2024'
 modified: '2026-05-29'
 specificationVersion: '0.19'
