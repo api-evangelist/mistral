@@ -259,7 +259,7 @@ common:
   url: https://mistral.ai/news
 - type: ChangeLog
   url: https://docs.mistral.ai/getting-started/changelog
-- type: SignUp
+- type: Signup
   url: https://console.mistral.ai
 - type: Pricing
   url: https://mistral.ai/pricing
@@ -302,5 +302,5 @@ common:
   sources:
   - https://mistral.ai/pricing
   updated: '2026-05-04'
-- type: LLMsTxt
+- type: LlmsText
   url: https://docs.mistral.ai/llms.txt
