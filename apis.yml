@@ -231,6 +231,10 @@ maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 common:
+- type: DomainSecurity
+  url: security/mistral-domain-security.yml
+- type: Authentication
+  url: authentication/mistral-authentication.yml
 - type: Website
   url: https://mistral.ai
 - type: Documentation

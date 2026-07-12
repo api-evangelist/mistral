@@ -1,0 +1,26 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/mistral-agents-openapi.yml, openapi/mistral-audio-transcription-openapi.yml,
+  openapi/mistral-batch-openapi.yml, openapi/mistral-chat-openapi.yml, openapi/mistral-embeddings-openapi.yml,
+  openapi/mistral-files-openapi.yml, openapi/mistral-fim-openapi.yml, openapi/mistral-fine-tuning-openapi.yml,
+  openapi/mistral-models-openapi.yml, openapi/mistral-moderation-openapi.yml, openapi/mistral-ocr-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: Mistral AI API key passed as a Bearer token
+  sources:
+  - openapi/mistral-agents-openapi.yml
+  - openapi/mistral-audio-transcription-openapi.yml
+  - openapi/mistral-batch-openapi.yml
+  - openapi/mistral-chat-openapi.yml
+  - openapi/mistral-embeddings-openapi.yml
+  - openapi/mistral-files-openapi.yml
+  - openapi/mistral-fim-openapi.yml
+  - openapi/mistral-fine-tuning-openapi.yml
+  - openapi/mistral-models-openapi.yml
+  - openapi/mistral-moderation-openapi.yml
+  - openapi/mistral-ocr-openapi.yml
