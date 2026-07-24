@@ -1,38 +1,29 @@
 openapi: 3.1.0
 info:
-  title: Mistral AI Mistral Moderation API
-  description: >-
-    Content moderation and classification API for detecting potentially harmful
-    or inappropriate content. Supports text and chat moderation across safety
-    categories including violence, sexual content, hate speech, self-harm,
-    dangerous content, and more.
+  title: Mistral AI Agents Moderation API
+  description: Agent completions API for building AI agents that can handle complex tasks, maintain context, coordinate multiple actions, and use tools including function calling. Agents are created and configured via the Mistral platform and invoked through this API.
   version: '1.0'
   contact:
     name: Mistral AI Support
     url: https://docs.mistral.ai/
     email: support@mistral.ai
   termsOfService: https://mistral.ai/terms/
-externalDocs:
-  description: Mistral Moderation API Documentation
-  url: https://docs.mistral.ai/api/#moderation
 servers:
-  - url: https://api.mistral.ai/v1
-    description: Mistral AI Production
-tags:
-  - name: Moderation
-    description: Content moderation and classification operations
+- url: https://api.mistral.ai/v1
+  description: Mistral AI Production
 security:
-  - bearerAuth: []
+- bearerAuth: []
+tags:
+- name: Moderation
+  description: Content moderation and classification operations
 paths:
   /moderations:
     post:
       operationId: createModeration
       summary: Mistral AI Moderate text content
-      description: >-
-        Classify text content for potential policy violations across safety
-        categories. Returns category-level flags and scores.
+      description: Classify text content for potential policy violations across safety categories. Returns category-level flags and scores.
       tags:
-        - Moderation
+      - Moderation
       requestBody:
         required: true
         content:
@@ -56,11 +47,9 @@ paths:
     post:
       operationId: createChatModeration
       summary: Mistral AI Moderate chat conversation
-      description: >-
-        Classify a chat conversation for potential policy violations. Evaluates
-        multi-turn conversations including system, user, and assistant messages.
+      description: Classify a chat conversation for potential policy violations. Evaluates multi-turn conversations including system, user, and assistant messages.
       tags:
-        - Moderation
+      - Moderation
       requestBody:
         required: true
         content:
@@ -81,41 +70,18 @@ paths:
         '429':
           description: Rate limit exceeded
 components:
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      description: Mistral AI API key passed as a Bearer token
   schemas:
-    ModerationRequest:
-      type: object
-      required:
-        - model
-        - input
-      properties:
-        model:
-          type: string
-          description: The moderation model to use
-          examples:
-            - mistral-moderation-latest
-        input:
-          oneOf:
-            - type: string
-            - type: array
-              items:
-                type: string
-          description: Text content to classify
     ChatModerationRequest:
       type: object
       required:
-        - model
-        - input
+      - model
+      - input
       properties:
         model:
           type: string
           description: The moderation model to use
           examples:
-            - mistral-moderation-latest
+          - mistral-moderation-latest
         input:
           type: array
           items:
@@ -124,9 +90,9 @@ components:
               role:
                 type: string
                 enum:
-                  - system
-                  - user
-                  - assistant
+                - system
+                - user
+                - assistant
               content:
                 type: string
           description: Chat messages to classify
@@ -190,3 +156,29 @@ components:
               type: number
             pii:
               type: number
+    ModerationRequest:
+      type: object
+      required:
+      - model
+      - input
+      properties:
+        model:
+          type: string
+          description: The moderation model to use
+          examples:
+          - mistral-moderation-latest
+        input:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+          description: Text content to classify
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Mistral AI API key passed as a Bearer token
+externalDocs:
+  description: Mistral AI Agents API Documentation
+  url: https://docs.mistral.ai/api/endpoint/agents

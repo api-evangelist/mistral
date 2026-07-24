@@ -1,37 +1,29 @@
 openapi: 3.1.0
 info:
-  title: Mistral AI Models API
-  description: >-
-    Models management API for listing available models, retrieving model
-    details, and managing fine-tuned models including archiving, unarchiving,
-    and updating model metadata.
+  title: Mistral AI Agents Models API
+  description: Agent completions API for building AI agents that can handle complex tasks, maintain context, coordinate multiple actions, and use tools including function calling. Agents are created and configured via the Mistral platform and invoked through this API.
   version: '1.0'
   contact:
     name: Mistral AI Support
     url: https://docs.mistral.ai/
     email: support@mistral.ai
   termsOfService: https://mistral.ai/terms/
-externalDocs:
-  description: Mistral AI Models API Documentation
-  url: https://docs.mistral.ai/api/endpoint/models
 servers:
-  - url: https://api.mistral.ai/v1
-    description: Mistral AI Production
-tags:
-  - name: Models
-    description: Model management operations
+- url: https://api.mistral.ai/v1
+  description: Mistral AI Production
 security:
-  - bearerAuth: []
+- bearerAuth: []
+tags:
+- name: Models
+  description: Model management operations
 paths:
   /models:
     get:
       operationId: listModels
       summary: Mistral AI List available models
-      description: >-
-        Retrieve a list of all available models, including both Mistral
-        platform models and user fine-tuned models.
+      description: Retrieve a list of all available models, including both Mistral platform models and user fine-tuned models.
       tags:
-        - Models
+      - Models
       responses:
         '200':
           description: List of models
@@ -47,9 +39,9 @@ paths:
       summary: Mistral AI Get model details
       description: Retrieve details of a specific model by ID.
       tags:
-        - Models
+      - Models
       parameters:
-        - $ref: '#/components/parameters/modelId'
+      - $ref: '#/components/parameters/modelId'
       responses:
         '200':
           description: Model details
@@ -64,13 +56,11 @@ paths:
     patch:
       operationId: updateModel
       summary: Mistral AI Update a fine-tuned model
-      description: >-
-        Update metadata of a fine-tuned model, such as its name or
-        description. Only applicable to user fine-tuned models.
+      description: Update metadata of a fine-tuned model, such as its name or description. Only applicable to user fine-tuned models.
       tags:
-        - Models
+      - Models
       parameters:
-        - $ref: '#/components/parameters/modelId'
+      - $ref: '#/components/parameters/modelId'
       requestBody:
         required: true
         content:
@@ -95,9 +85,9 @@ paths:
       summary: Mistral AI Delete a fine-tuned model
       description: Delete a user fine-tuned model. Platform models cannot be deleted.
       tags:
-        - Models
+      - Models
       parameters:
-        - $ref: '#/components/parameters/modelId'
+      - $ref: '#/components/parameters/modelId'
       responses:
         '200':
           description: Model deleted
@@ -113,13 +103,11 @@ paths:
     post:
       operationId: archiveModel
       summary: Mistral AI Archive a fine-tuned model
-      description: >-
-        Archive a fine-tuned model to remove it from the active models list.
-        Archived models cannot be used for inference.
+      description: Archive a fine-tuned model to remove it from the active models list. Archived models cannot be used for inference.
       tags:
-        - Models
+      - Models
       parameters:
-        - $ref: '#/components/parameters/modelId'
+      - $ref: '#/components/parameters/modelId'
       responses:
         '200':
           description: Model archived
@@ -135,12 +123,11 @@ paths:
     post:
       operationId: unarchiveModel
       summary: Mistral AI Unarchive a fine-tuned model
-      description: >-
-        Restore an archived fine-tuned model so it can be used for inference again.
+      description: Restore an archived fine-tuned model so it can be used for inference again.
       tags:
-        - Models
+      - Models
       parameters:
-        - $ref: '#/components/parameters/modelId'
+      - $ref: '#/components/parameters/modelId'
       responses:
         '200':
           description: Model unarchived
@@ -153,20 +140,27 @@ paths:
         '404':
           description: Model not found
 components:
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      description: Mistral AI API key passed as a Bearer token
-  parameters:
-    modelId:
-      name: model_id
-      in: path
-      required: true
-      description: The unique identifier of the model
-      schema:
-        type: string
   schemas:
+    UpdateModelRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: New name for the model
+        description:
+          type: string
+          description: New description for the model
+    ModelList:
+      type: object
+      properties:
+        object:
+          type: string
+          enum:
+          - list
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Model'
     Model:
       type: object
       properties:
@@ -176,7 +170,7 @@ components:
         object:
           type: string
           enum:
-            - model
+          - model
         created:
           type: integer
           description: Unix timestamp when the model was created
@@ -185,13 +179,13 @@ components:
           description: Organization that owns the model
         name:
           type:
-            - string
-            - 'null'
+          - string
+          - 'null'
           description: Human-readable name of the model
         description:
           type:
-            - string
-            - 'null'
+          - string
+          - 'null'
           description: Description of the model
         max_context_length:
           type: integer
@@ -203,8 +197,8 @@ components:
           description: Alternative names that can be used to reference the model
         deprecation:
           type:
-            - string
-            - 'null'
+          - string
+          - 'null'
           format: date-time
           description: Deprecation date if the model is deprecated
         capabilities:
@@ -224,29 +218,9 @@ components:
         type:
           type: string
           enum:
-            - base
-            - fine-tuned
+          - base
+          - fine-tuned
           description: Whether this is a base or fine-tuned model
-    ModelList:
-      type: object
-      properties:
-        object:
-          type: string
-          enum:
-            - list
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Model'
-    UpdateModelRequest:
-      type: object
-      properties:
-        name:
-          type: string
-          description: New name for the model
-        description:
-          type: string
-          description: New description for the model
     DeleteModelResponse:
       type: object
       properties:
@@ -255,6 +229,22 @@ components:
         object:
           type: string
           enum:
-            - model
+          - model
         deleted:
           type: boolean
+  parameters:
+    modelId:
+      name: model_id
+      in: path
+      required: true
+      description: The unique identifier of the model
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Mistral AI API key passed as a Bearer token
+externalDocs:
+  description: Mistral AI Agents API Documentation
+  url: https://docs.mistral.ai/api/endpoint/agents

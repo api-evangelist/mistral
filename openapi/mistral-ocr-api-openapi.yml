@@ -1,39 +1,29 @@
 openapi: 3.1.0
 info:
-  title: Mistral AI OCR API
-  description: >-
-    Optical Character Recognition API that extracts text, images, tables, and
-    structured data from documents and PDFs. Supports complex layouts, LaTeX
-    and mathematical expressions, interleaved text and images, and outputs
-    structured Markdown.
+  title: Mistral AI Agents OCR API
+  description: Agent completions API for building AI agents that can handle complex tasks, maintain context, coordinate multiple actions, and use tools including function calling. Agents are created and configured via the Mistral platform and invoked through this API.
   version: '1.0'
   contact:
     name: Mistral AI Support
     url: https://docs.mistral.ai/
     email: support@mistral.ai
   termsOfService: https://mistral.ai/terms/
-externalDocs:
-  description: Mistral AI OCR API Documentation
-  url: https://docs.mistral.ai/api/endpoint/ocr
 servers:
-  - url: https://api.mistral.ai/v1
-    description: Mistral AI Production
-tags:
-  - name: OCR
-    description: Document OCR and text extraction operations
+- url: https://api.mistral.ai/v1
+  description: Mistral AI Production
 security:
-  - bearerAuth: []
+- bearerAuth: []
+tags:
+- name: OCR
+  description: Document OCR and text extraction operations
 paths:
   /ocr:
     post:
       operationId: processDocument
       summary: Mistral AI Process a document with OCR
-      description: >-
-        Extract text, images, tables, and structured data from documents,
-        PDFs, or images. Returns structured Markdown with extracted content
-        including mathematical expressions in LaTeX format.
+      description: Extract text, images, tables, and structured data from documents, PDFs, or images. Returns structured Markdown with extracted content including mathematical expressions in LaTeX format.
       tags:
-        - OCR
+      - OCR
       requestBody:
         required: true
         content:
@@ -54,23 +44,35 @@ paths:
         '429':
           description: Rate limit exceeded
 components:
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      description: Mistral AI API key passed as a Bearer token
   schemas:
+    ExtractedImage:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Image identifier referenced in the Markdown
+        top_left_x:
+          type: integer
+        top_left_y:
+          type: integer
+        bottom_right_x:
+          type: integer
+        bottom_right_y:
+          type: integer
+        image_base64:
+          type: string
+          description: Base64-encoded image data if requested
     OcrRequest:
       type: object
       required:
-        - model
-        - document
+      - model
+      - document
       properties:
         model:
           type: string
           description: The OCR model to use
           examples:
-            - mistral-ocr-latest
+          - mistral-ocr-latest
         document:
           $ref: '#/components/schemas/DocumentInput'
         pages:
@@ -88,17 +90,37 @@ components:
         image_min_size:
           type: integer
           description: Minimum image dimension in pixels to extract
+    OcrPage:
+      type: object
+      properties:
+        index:
+          type: integer
+          description: Zero-based page index
+        markdown:
+          type: string
+          description: Extracted content in Markdown format
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExtractedImage'
+        dimensions:
+          type: object
+          properties:
+            width:
+              type: integer
+            height:
+              type: integer
     DocumentInput:
       type: object
       required:
-        - type
+      - type
       properties:
         type:
           type: string
           enum:
-            - document_url
-            - image_url
-            - file_id
+          - document_url
+          - image_url
+          - file_id
           description: The type of document input
         document_url:
           type: string
@@ -128,40 +150,11 @@ components:
               type: integer
             doc_size_bytes:
               type: integer
-    OcrPage:
-      type: object
-      properties:
-        index:
-          type: integer
-          description: Zero-based page index
-        markdown:
-          type: string
-          description: Extracted content in Markdown format
-        images:
-          type: array
-          items:
-            $ref: '#/components/schemas/ExtractedImage'
-        dimensions:
-          type: object
-          properties:
-            width:
-              type: integer
-            height:
-              type: integer
-    ExtractedImage:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Image identifier referenced in the Markdown
-        top_left_x:
-          type: integer
-        top_left_y:
-          type: integer
-        bottom_right_x:
-          type: integer
-        bottom_right_y:
-          type: integer
-        image_base64:
-          type: string
-          description: Base64-encoded image data if requested
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Mistral AI API key passed as a Bearer token
+externalDocs:
+  description: Mistral AI Agents API Documentation
+  url: https://docs.mistral.ai/api/endpoint/agents

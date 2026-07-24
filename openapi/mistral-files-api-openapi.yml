@@ -1,27 +1,21 @@
 openapi: 3.1.0
 info:
-  title: Mistral AI Files API
-  description: >-
-    File management API for uploading, retrieving, downloading, and deleting
-    files used across fine-tuning, batch processing, and OCR endpoints.
-    Supports files up to 512 MB with various purposes.
+  title: Mistral AI Agents Files API
+  description: Agent completions API for building AI agents that can handle complex tasks, maintain context, coordinate multiple actions, and use tools including function calling. Agents are created and configured via the Mistral platform and invoked through this API.
   version: '1.0'
   contact:
     name: Mistral AI Support
     url: https://docs.mistral.ai/
     email: support@mistral.ai
   termsOfService: https://mistral.ai/terms/
-externalDocs:
-  description: Mistral AI Files API Documentation
-  url: https://docs.mistral.ai/api/endpoint/files
 servers:
-  - url: https://api.mistral.ai/v1
-    description: Mistral AI Production
-tags:
-  - name: Files
-    description: File management operations
+- url: https://api.mistral.ai/v1
+  description: Mistral AI Production
 security:
-  - bearerAuth: []
+- bearerAuth: []
+tags:
+- name: Files
+  description: File management operations
 paths:
   /files:
     get:
@@ -29,29 +23,29 @@ paths:
       summary: Mistral AI List files
       description: Retrieve a list of all uploaded files for the authenticated account.
       tags:
-        - Files
+      - Files
       parameters:
-        - name: page
-          in: query
-          schema:
-            type: integer
-            default: 0
-          description: Page number for pagination
-        - name: page_size
-          in: query
-          schema:
-            type: integer
-            default: 20
-          description: Number of items per page
-        - name: purpose
-          in: query
-          schema:
-            type: string
-            enum:
-              - fine-tune
-              - batch
-              - ocr
-          description: Filter files by purpose
+      - name: page
+        in: query
+        schema:
+          type: integer
+          default: 0
+        description: Page number for pagination
+      - name: page_size
+        in: query
+        schema:
+          type: integer
+          default: 20
+        description: Number of items per page
+      - name: purpose
+        in: query
+        schema:
+          type: string
+          enum:
+          - fine-tune
+          - batch
+          - ocr
+        description: Filter files by purpose
       responses:
         '200':
           description: List of files
@@ -64,11 +58,9 @@ paths:
     post:
       operationId: uploadFile
       summary: Mistral AI Upload a file
-      description: >-
-        Upload a file for use with fine-tuning, batch processing, or OCR.
-        Maximum file size is 512 MB.
+      description: Upload a file for use with fine-tuning, batch processing, or OCR. Maximum file size is 512 MB.
       tags:
-        - Files
+      - Files
       requestBody:
         required: true
         content:
@@ -76,8 +68,8 @@ paths:
             schema:
               type: object
               required:
-                - file
-                - purpose
+              - file
+              - purpose
               properties:
                 file:
                   type: string
@@ -86,9 +78,9 @@ paths:
                 purpose:
                   type: string
                   enum:
-                    - fine-tune
-                    - batch
-                    - ocr
+                  - fine-tune
+                  - batch
+                  - ocr
                   description: Intended purpose of the file
       responses:
         '200':
@@ -107,9 +99,9 @@ paths:
       summary: Mistral AI Get file details
       description: Retrieve metadata about a specific uploaded file.
       tags:
-        - Files
+      - Files
       parameters:
-        - $ref: '#/components/parameters/fileId'
+      - $ref: '#/components/parameters/fileId'
       responses:
         '200':
           description: File details
@@ -126,9 +118,9 @@ paths:
       summary: Mistral AI Delete a file
       description: Delete a previously uploaded file.
       tags:
-        - Files
+      - Files
       parameters:
-        - $ref: '#/components/parameters/fileId'
+      - $ref: '#/components/parameters/fileId'
       responses:
         '200':
           description: File deleted
@@ -146,9 +138,9 @@ paths:
       summary: Mistral AI Download file content
       description: Download the contents of a previously uploaded file.
       tags:
-        - Files
+      - Files
       parameters:
-        - $ref: '#/components/parameters/fileId'
+      - $ref: '#/components/parameters/fileId'
       responses:
         '200':
           description: File content
@@ -165,19 +157,17 @@ paths:
     get:
       operationId: getFileSignedUrl
       summary: Mistral AI Get a signed download URL
-      description: >-
-        Get a time-limited signed URL for downloading the file content.
-        The URL expires after a short period.
+      description: Get a time-limited signed URL for downloading the file content. The URL expires after a short period.
       tags:
-        - Files
+      - Files
       parameters:
-        - $ref: '#/components/parameters/fileId'
-        - name: expiry
-          in: query
-          schema:
-            type: integer
-            default: 24
-          description: URL expiry time in hours
+      - $ref: '#/components/parameters/fileId'
+      - name: expiry
+        in: query
+        schema:
+          type: integer
+          default: 24
+        description: URL expiry time in hours
       responses:
         '200':
           description: Signed URL for downloading
@@ -195,59 +185,7 @@ paths:
         '404':
           description: File not found
 components:
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      description: Mistral AI API key passed as a Bearer token
-  parameters:
-    fileId:
-      name: file_id
-      in: path
-      required: true
-      description: The unique identifier of the file
-      schema:
-        type: string
-        format: uuid
   schemas:
-    File:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Unique identifier for the file
-        object:
-          type: string
-          enum:
-            - file
-        bytes:
-          type: integer
-          description: File size in bytes
-        created_at:
-          type: integer
-          description: Unix timestamp when the file was uploaded
-        filename:
-          type: string
-          description: Original filename
-        purpose:
-          type: string
-          enum:
-            - fine-tune
-            - batch
-            - ocr
-          description: Purpose of the file
-        num_lines:
-          type:
-            - integer
-            - 'null'
-          description: Number of lines in the file (for JSONL files)
-        source:
-          type: string
-          enum:
-            - upload
-            - repository
-          description: How the file was created
     FileList:
       type: object
       properties:
@@ -261,7 +199,7 @@ components:
         object:
           type: string
           enum:
-            - list
+          - list
     DeleteFileResponse:
       type: object
       properties:
@@ -271,6 +209,61 @@ components:
         object:
           type: string
           enum:
-            - file
+          - file
         deleted:
           type: boolean
+    File:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the file
+        object:
+          type: string
+          enum:
+          - file
+        bytes:
+          type: integer
+          description: File size in bytes
+        created_at:
+          type: integer
+          description: Unix timestamp when the file was uploaded
+        filename:
+          type: string
+          description: Original filename
+        purpose:
+          type: string
+          enum:
+          - fine-tune
+          - batch
+          - ocr
+          description: Purpose of the file
+        num_lines:
+          type:
+          - integer
+          - 'null'
+          description: Number of lines in the file (for JSONL files)
+        source:
+          type: string
+          enum:
+          - upload
+          - repository
+          description: How the file was created
+  parameters:
+    fileId:
+      name: file_id
+      in: path
+      required: true
+      description: The unique identifier of the file
+      schema:
+        type: string
+        format: uuid
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Mistral AI API key passed as a Bearer token
+externalDocs:
+  description: Mistral AI Agents API Documentation
+  url: https://docs.mistral.ai/api/endpoint/agents

@@ -1,37 +1,29 @@
 openapi: 3.1.0
 info:
-  title: Mistral AI Mistral Embeddings API
-  description: >-
-    Generate vector embeddings for text using Mistral's embedding models.
-    Useful for retrieval-augmented generation, clustering, classification,
-    and semantic search use cases.
+  title: Mistral AI Agents Embeddings API
+  description: Agent completions API for building AI agents that can handle complex tasks, maintain context, coordinate multiple actions, and use tools including function calling. Agents are created and configured via the Mistral platform and invoked through this API.
   version: '1.0'
   contact:
     name: Mistral AI Support
     url: https://docs.mistral.ai/
     email: support@mistral.ai
   termsOfService: https://mistral.ai/terms/
-externalDocs:
-  description: Mistral Embeddings API Documentation
-  url: https://docs.mistral.ai/api/#embeddings
 servers:
-  - url: https://api.mistral.ai/v1
-    description: Mistral AI Production
-tags:
-  - name: Embeddings
-    description: Text embedding operations
+- url: https://api.mistral.ai/v1
+  description: Mistral AI Production
 security:
-  - bearerAuth: []
+- bearerAuth: []
+tags:
+- name: Embeddings
+  description: Text embedding operations
 paths:
   /embeddings:
     post:
       operationId: createEmbedding
       summary: Mistral AI Create embeddings
-      description: >-
-        Generate vector embeddings for the given input text. Supports single
-        or batch text inputs and returns high-dimensional float vectors.
+      description: Generate vector embeddings for the given input text. Supports single or batch text inputs and returns high-dimensional float vectors.
       tags:
-        - Embeddings
+      - Embeddings
       requestBody:
         required: true
         content:
@@ -52,36 +44,7 @@ paths:
         '429':
           description: Rate limit exceeded
 components:
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      description: Mistral AI API key passed as a Bearer token
   schemas:
-    EmbeddingRequest:
-      type: object
-      required:
-        - model
-        - input
-      properties:
-        model:
-          type: string
-          description: ID of the embedding model to use
-          examples:
-            - mistral-embed
-        input:
-          oneOf:
-            - type: string
-            - type: array
-              items:
-                type: string
-          description: Text to embed, as a string or array of strings
-        encoding_format:
-          type: string
-          enum:
-            - float
-          default: float
-          description: The format of the output embeddings
     EmbeddingResponse:
       type: object
       properties:
@@ -91,7 +54,7 @@ components:
         object:
           type: string
           enum:
-            - list
+          - list
         data:
           type: array
           items:
@@ -101,21 +64,6 @@ components:
           description: The model used to generate the embeddings
         usage:
           $ref: '#/components/schemas/Usage'
-    Embedding:
-      type: object
-      properties:
-        object:
-          type: string
-          enum:
-            - embedding
-        embedding:
-          type: array
-          items:
-            type: number
-          description: The embedding vector
-        index:
-          type: integer
-          description: Index of the embedding in the input list
     Usage:
       type: object
       properties:
@@ -125,3 +73,50 @@ components:
         total_tokens:
           type: integer
           description: Total tokens used
+    Embedding:
+      type: object
+      properties:
+        object:
+          type: string
+          enum:
+          - embedding
+        embedding:
+          type: array
+          items:
+            type: number
+          description: The embedding vector
+        index:
+          type: integer
+          description: Index of the embedding in the input list
+    EmbeddingRequest:
+      type: object
+      required:
+      - model
+      - input
+      properties:
+        model:
+          type: string
+          description: ID of the embedding model to use
+          examples:
+          - mistral-embed
+        input:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+          description: Text to embed, as a string or array of strings
+        encoding_format:
+          type: string
+          enum:
+          - float
+          default: float
+          description: The format of the output embeddings
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Mistral AI API key passed as a Bearer token
+externalDocs:
+  description: Mistral AI Agents API Documentation
+  url: https://docs.mistral.ai/api/endpoint/agents
