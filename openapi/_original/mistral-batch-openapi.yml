@@ -1,0 +1,273 @@
+openapi: 3.1.0
+info:
+  title: Mistral AI Batch API
+  description: >-
+    Batch inference API for processing up to one million requests asynchronously
+    at reduced cost. Supports chat completions, embeddings, FIM, moderations,
+    OCR, classifications, and audio transcriptions in batch mode.
+  version: '1.0'
+  contact:
+    name: Mistral AI Support
+    url: https://docs.mistral.ai/
+    email: support@mistral.ai
+  termsOfService: https://mistral.ai/terms/
+externalDocs:
+  description: Mistral AI Batch API Documentation
+  url: https://docs.mistral.ai/api/endpoint/batch
+servers:
+  - url: https://api.mistral.ai/v1
+    description: Mistral AI Production
+tags:
+  - name: Batch Jobs
+    description: Batch inference job operations
+security:
+  - bearerAuth: []
+paths:
+  /batch/jobs:
+    get:
+      operationId: listBatchJobs
+      summary: Mistral AI List batch jobs
+      description: >-
+        Retrieve a list of batch inference jobs for the authenticated account.
+      tags:
+        - Batch Jobs
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 0
+          description: Page number for pagination
+        - name: page_size
+          in: query
+          schema:
+            type: integer
+            default: 20
+          description: Number of items per page
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum:
+              - QUEUED
+              - RUNNING
+              - SUCCESS
+              - FAILED
+              - TIMEOUT_EXCEEDED
+              - CANCELLATION_REQUESTED
+              - CANCELLED
+          description: Filter by job status
+      responses:
+        '200':
+          description: List of batch jobs
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchJobList'
+        '401':
+          description: Unauthorized
+    post:
+      operationId: createBatchJob
+      summary: Mistral AI Create a batch job
+      description: >-
+        Create a new batch inference job. The input file must be a JSONL file
+        with one request per line, uploaded via the Files API with purpose
+        set to batch.
+      tags:
+        - Batch Jobs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateBatchJobRequest'
+      responses:
+        '200':
+          description: Batch job created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchJob'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+  /batch/jobs/{job_id}:
+    get:
+      operationId: getBatchJob
+      summary: Mistral AI Get batch job details
+      description: Retrieve the current status and details of a batch job.
+      tags:
+        - Batch Jobs
+      parameters:
+        - $ref: '#/components/parameters/jobId'
+      responses:
+        '200':
+          description: Batch job details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchJob'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Job not found
+  /batch/jobs/{job_id}/cancel:
+    post:
+      operationId: cancelBatchJob
+      summary: Mistral AI Cancel a batch job
+      description: Request cancellation of a running or queued batch job.
+      tags:
+        - Batch Jobs
+      parameters:
+        - $ref: '#/components/parameters/jobId'
+      responses:
+        '200':
+          description: Batch job cancellation requested
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchJob'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Job not found
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Mistral AI API key passed as a Bearer token
+  parameters:
+    jobId:
+      name: job_id
+      in: path
+      required: true
+      description: The unique identifier of the batch job
+      schema:
+        type: string
+        format: uuid
+  schemas:
+    CreateBatchJobRequest:
+      type: object
+      required:
+        - input_files
+        - endpoint
+        - model
+      properties:
+        input_files:
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: IDs of JSONL input files uploaded via the Files API
+        endpoint:
+          type: string
+          enum:
+            - /v1/chat/completions
+            - /v1/embeddings
+            - /v1/fim/completions
+            - /v1/moderations
+            - /v1/chat/moderations
+            - /v1/ocr
+          description: The API endpoint to use for batch processing
+        model:
+          type: string
+          description: The model to use for inference
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+          description: Optional metadata key-value pairs
+        timeout_hours:
+          type: integer
+          default: 24
+          description: Maximum time in hours before the job times out
+    BatchJob:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the batch job
+        object:
+          type: string
+          enum:
+            - batch
+        input_files:
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: Input file IDs
+        endpoint:
+          type: string
+          description: The API endpoint used
+        model:
+          type: string
+          description: The model used
+        output_file:
+          type:
+            - string
+            - 'null'
+          format: uuid
+          description: Output file ID when job completes
+        error_file:
+          type:
+            - string
+            - 'null'
+          format: uuid
+          description: Error file ID if there were errors
+        status:
+          type: string
+          enum:
+            - QUEUED
+            - RUNNING
+            - SUCCESS
+            - FAILED
+            - TIMEOUT_EXCEEDED
+            - CANCELLATION_REQUESTED
+            - CANCELLED
+          description: Current status of the batch job
+        created_at:
+          type: integer
+          description: Unix timestamp when the job was created
+        started_at:
+          type:
+            - integer
+            - 'null'
+          description: Unix timestamp when the job started processing
+        completed_at:
+          type:
+            - integer
+            - 'null'
+          description: Unix timestamp when the job completed
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+        total_requests:
+          type: integer
+          description: Total number of requests in the batch
+        completed_requests:
+          type: integer
+          description: Number of completed requests
+        succeeded_requests:
+          type: integer
+          description: Number of successful requests
+        failed_requests:
+          type: integer
+          description: Number of failed requests
+    BatchJobList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BatchJob'
+        total:
+          type: integer
+        object:
+          type: string
+          enum:
+            - list

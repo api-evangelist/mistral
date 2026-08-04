@@ -1,0 +1,34 @@
+{
+  "provider": "mistral",
+  "sources": [
+    "mistral-agents-api-openapi.yml",
+    "mistral-audio-api-openapi.yml",
+    "mistral-batch-jobs-api-openapi.yml",
+    "mistral-chat-api-openapi.yml",
+    "mistral-embeddings-api-openapi.yml",
+    "mistral-files-api-openapi.yml",
+    "mistral-fim-api-openapi.yml",
+    "mistral-fine-tuning-jobs-api-openapi.yml",
+    "mistral-models-api-openapi.yml",
+    "mistral-moderation-api-openapi.yml",
+    "mistral-ocr-api-openapi.yml"
+  ],
+  "outputs": [
+    "mistral-agents-api-openapi.yml",
+    "mistral-audio-api-openapi.yml",
+    "mistral-batch-jobs-api-openapi.yml",
+    "mistral-chat-api-openapi.yml",
+    "mistral-embeddings-api-openapi.yml",
+    "mistral-files-api-openapi.yml",
+    "mistral-fim-api-openapi.yml",
+    "mistral-fine-tuning-jobs-api-openapi.yml",
+    "mistral-models-api-openapi.yml",
+    "mistral-moderation-api-openapi.yml",
+    "mistral-ocr-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

@@ -1,0 +1,167 @@
+openapi: 3.1.0
+info:
+  title: Mistral AI OCR API
+  description: >-
+    Optical Character Recognition API that extracts text, images, tables, and
+    structured data from documents and PDFs. Supports complex layouts, LaTeX
+    and mathematical expressions, interleaved text and images, and outputs
+    structured Markdown.
+  version: '1.0'
+  contact:
+    name: Mistral AI Support
+    url: https://docs.mistral.ai/
+    email: support@mistral.ai
+  termsOfService: https://mistral.ai/terms/
+externalDocs:
+  description: Mistral AI OCR API Documentation
+  url: https://docs.mistral.ai/api/endpoint/ocr
+servers:
+  - url: https://api.mistral.ai/v1
+    description: Mistral AI Production
+tags:
+  - name: OCR
+    description: Document OCR and text extraction operations
+security:
+  - bearerAuth: []
+paths:
+  /ocr:
+    post:
+      operationId: processDocument
+      summary: Mistral AI Process a document with OCR
+      description: >-
+        Extract text, images, tables, and structured data from documents,
+        PDFs, or images. Returns structured Markdown with extracted content
+        including mathematical expressions in LaTeX format.
+      tags:
+        - OCR
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OcrRequest'
+      responses:
+        '200':
+          description: OCR extraction result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OcrResponse'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '429':
+          description: Rate limit exceeded
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Mistral AI API key passed as a Bearer token
+  schemas:
+    OcrRequest:
+      type: object
+      required:
+        - model
+        - document
+      properties:
+        model:
+          type: string
+          description: The OCR model to use
+          examples:
+            - mistral-ocr-latest
+        document:
+          $ref: '#/components/schemas/DocumentInput'
+        pages:
+          type: array
+          items:
+            type: integer
+          description: Specific page numbers to process (0-indexed)
+        include_image_base64:
+          type: boolean
+          default: false
+          description: Whether to include extracted images as base64
+        image_limit:
+          type: integer
+          description: Maximum number of images to extract
+        image_min_size:
+          type: integer
+          description: Minimum image dimension in pixels to extract
+    DocumentInput:
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          type: string
+          enum:
+            - document_url
+            - image_url
+            - file_id
+          description: The type of document input
+        document_url:
+          type: string
+          format: uri
+          description: URL of the document to process
+        image_url:
+          type: string
+          format: uri
+          description: URL of the image to process
+        file_id:
+          type: string
+          description: ID of a previously uploaded file
+    OcrResponse:
+      type: object
+      properties:
+        pages:
+          type: array
+          items:
+            $ref: '#/components/schemas/OcrPage'
+        model:
+          type: string
+          description: The model used for OCR
+        usage:
+          type: object
+          properties:
+            pages_processed:
+              type: integer
+            doc_size_bytes:
+              type: integer
+    OcrPage:
+      type: object
+      properties:
+        index:
+          type: integer
+          description: Zero-based page index
+        markdown:
+          type: string
+          description: Extracted content in Markdown format
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExtractedImage'
+        dimensions:
+          type: object
+          properties:
+            width:
+              type: integer
+            height:
+              type: integer
+    ExtractedImage:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Image identifier referenced in the Markdown
+        top_left_x:
+          type: integer
+        top_left_y:
+          type: integer
+        bottom_right_x:
+          type: integer
+        bottom_right_y:
+          type: integer
+        image_base64:
+          type: string
+          description: Base64-encoded image data if requested

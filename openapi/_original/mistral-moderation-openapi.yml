@@ -1,0 +1,192 @@
+openapi: 3.1.0
+info:
+  title: Mistral AI Mistral Moderation API
+  description: >-
+    Content moderation and classification API for detecting potentially harmful
+    or inappropriate content. Supports text and chat moderation across safety
+    categories including violence, sexual content, hate speech, self-harm,
+    dangerous content, and more.
+  version: '1.0'
+  contact:
+    name: Mistral AI Support
+    url: https://docs.mistral.ai/
+    email: support@mistral.ai
+  termsOfService: https://mistral.ai/terms/
+externalDocs:
+  description: Mistral Moderation API Documentation
+  url: https://docs.mistral.ai/api/#moderation
+servers:
+  - url: https://api.mistral.ai/v1
+    description: Mistral AI Production
+tags:
+  - name: Moderation
+    description: Content moderation and classification operations
+security:
+  - bearerAuth: []
+paths:
+  /moderations:
+    post:
+      operationId: createModeration
+      summary: Mistral AI Moderate text content
+      description: >-
+        Classify text content for potential policy violations across safety
+        categories. Returns category-level flags and scores.
+      tags:
+        - Moderation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModerationRequest'
+      responses:
+        '200':
+          description: Moderation result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModerationResponse'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '429':
+          description: Rate limit exceeded
+  /chat/moderations:
+    post:
+      operationId: createChatModeration
+      summary: Mistral AI Moderate chat conversation
+      description: >-
+        Classify a chat conversation for potential policy violations. Evaluates
+        multi-turn conversations including system, user, and assistant messages.
+      tags:
+        - Moderation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatModerationRequest'
+      responses:
+        '200':
+          description: Chat moderation result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModerationResponse'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '429':
+          description: Rate limit exceeded
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Mistral AI API key passed as a Bearer token
+  schemas:
+    ModerationRequest:
+      type: object
+      required:
+        - model
+        - input
+      properties:
+        model:
+          type: string
+          description: The moderation model to use
+          examples:
+            - mistral-moderation-latest
+        input:
+          oneOf:
+            - type: string
+            - type: array
+              items:
+                type: string
+          description: Text content to classify
+    ChatModerationRequest:
+      type: object
+      required:
+        - model
+        - input
+      properties:
+        model:
+          type: string
+          description: The moderation model to use
+          examples:
+            - mistral-moderation-latest
+        input:
+          type: array
+          items:
+            type: object
+            properties:
+              role:
+                type: string
+                enum:
+                  - system
+                  - user
+                  - assistant
+              content:
+                type: string
+          description: Chat messages to classify
+    ModerationResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the moderation request
+        model:
+          type: string
+          description: The model used for moderation
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ModerationResult'
+    ModerationResult:
+      type: object
+      properties:
+        categories:
+          type: object
+          description: Category flags indicating violations
+          properties:
+            sexual:
+              type: boolean
+            hate_and_discrimination:
+              type: boolean
+            violence_and_threats:
+              type: boolean
+            dangerous_and_criminal_content:
+              type: boolean
+            selfharm:
+              type: boolean
+            health:
+              type: boolean
+            financial:
+              type: boolean
+            law:
+              type: boolean
+            pii:
+              type: boolean
+        category_scores:
+          type: object
+          description: Category confidence scores between 0 and 1
+          properties:
+            sexual:
+              type: number
+            hate_and_discrimination:
+              type: number
+            violence_and_threats:
+              type: number
+            dangerous_and_criminal_content:
+              type: number
+            selfharm:
+              type: number
+            health:
+              type: number
+            financial:
+              type: number
+            law:
+              type: number
+            pii:
+              type: number

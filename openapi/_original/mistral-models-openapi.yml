@@ -1,0 +1,260 @@
+openapi: 3.1.0
+info:
+  title: Mistral AI Models API
+  description: >-
+    Models management API for listing available models, retrieving model
+    details, and managing fine-tuned models including archiving, unarchiving,
+    and updating model metadata.
+  version: '1.0'
+  contact:
+    name: Mistral AI Support
+    url: https://docs.mistral.ai/
+    email: support@mistral.ai
+  termsOfService: https://mistral.ai/terms/
+externalDocs:
+  description: Mistral AI Models API Documentation
+  url: https://docs.mistral.ai/api/endpoint/models
+servers:
+  - url: https://api.mistral.ai/v1
+    description: Mistral AI Production
+tags:
+  - name: Models
+    description: Model management operations
+security:
+  - bearerAuth: []
+paths:
+  /models:
+    get:
+      operationId: listModels
+      summary: Mistral AI List available models
+      description: >-
+        Retrieve a list of all available models, including both Mistral
+        platform models and user fine-tuned models.
+      tags:
+        - Models
+      responses:
+        '200':
+          description: List of models
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelList'
+        '401':
+          description: Unauthorized
+  /models/{model_id}:
+    get:
+      operationId: getModel
+      summary: Mistral AI Get model details
+      description: Retrieve details of a specific model by ID.
+      tags:
+        - Models
+      parameters:
+        - $ref: '#/components/parameters/modelId'
+      responses:
+        '200':
+          description: Model details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Model'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Model not found
+    patch:
+      operationId: updateModel
+      summary: Mistral AI Update a fine-tuned model
+      description: >-
+        Update metadata of a fine-tuned model, such as its name or
+        description. Only applicable to user fine-tuned models.
+      tags:
+        - Models
+      parameters:
+        - $ref: '#/components/parameters/modelId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateModelRequest'
+      responses:
+        '200':
+          description: Model updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Model'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Model not found
+    delete:
+      operationId: deleteModel
+      summary: Mistral AI Delete a fine-tuned model
+      description: Delete a user fine-tuned model. Platform models cannot be deleted.
+      tags:
+        - Models
+      parameters:
+        - $ref: '#/components/parameters/modelId'
+      responses:
+        '200':
+          description: Model deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteModelResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Model not found
+  /models/{model_id}/archive:
+    post:
+      operationId: archiveModel
+      summary: Mistral AI Archive a fine-tuned model
+      description: >-
+        Archive a fine-tuned model to remove it from the active models list.
+        Archived models cannot be used for inference.
+      tags:
+        - Models
+      parameters:
+        - $ref: '#/components/parameters/modelId'
+      responses:
+        '200':
+          description: Model archived
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Model'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Model not found
+  /models/{model_id}/unarchive:
+    post:
+      operationId: unarchiveModel
+      summary: Mistral AI Unarchive a fine-tuned model
+      description: >-
+        Restore an archived fine-tuned model so it can be used for inference again.
+      tags:
+        - Models
+      parameters:
+        - $ref: '#/components/parameters/modelId'
+      responses:
+        '200':
+          description: Model unarchived
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Model'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Model not found
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Mistral AI API key passed as a Bearer token
+  parameters:
+    modelId:
+      name: model_id
+      in: path
+      required: true
+      description: The unique identifier of the model
+      schema:
+        type: string
+  schemas:
+    Model:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the model
+        object:
+          type: string
+          enum:
+            - model
+        created:
+          type: integer
+          description: Unix timestamp when the model was created
+        owned_by:
+          type: string
+          description: Organization that owns the model
+        name:
+          type:
+            - string
+            - 'null'
+          description: Human-readable name of the model
+        description:
+          type:
+            - string
+            - 'null'
+          description: Description of the model
+        max_context_length:
+          type: integer
+          description: Maximum context length in tokens
+        aliases:
+          type: array
+          items:
+            type: string
+          description: Alternative names that can be used to reference the model
+        deprecation:
+          type:
+            - string
+            - 'null'
+          format: date-time
+          description: Deprecation date if the model is deprecated
+        capabilities:
+          type: object
+          properties:
+            completion_chat:
+              type: boolean
+            completion_fim:
+              type: boolean
+            function_calling:
+              type: boolean
+            fine_tuning:
+              type: boolean
+            vision:
+              type: boolean
+          description: Model capabilities
+        type:
+          type: string
+          enum:
+            - base
+            - fine-tuned
+          description: Whether this is a base or fine-tuned model
+    ModelList:
+      type: object
+      properties:
+        object:
+          type: string
+          enum:
+            - list
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Model'
+    UpdateModelRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: New name for the model
+        description:
+          type: string
+          description: New description for the model
+    DeleteModelResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+          enum:
+            - model
+        deleted:
+          type: boolean

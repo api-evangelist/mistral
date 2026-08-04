@@ -686,6 +686,8 @@ maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/mistral-ai/overview
 - type: AgenticAccess
   url: agentic-access/mistral-agentic-access.yml
 - type: DomainSecurity

@@ -1,0 +1,342 @@
+openapi: 3.1.0
+info:
+  title: Mistral AI Fine-Tuning API
+  description: >-
+    Fine-tuning API for customizing Mistral models on your own datasets.
+    Supports text, vision, and classifier fine-tuning with configurable
+    hyperparameters, Weights & Biases integration, and job management.
+  version: '1.0'
+  contact:
+    name: Mistral AI Support
+    url: https://docs.mistral.ai/
+    email: support@mistral.ai
+  termsOfService: https://mistral.ai/terms/
+externalDocs:
+  description: Mistral AI Fine-Tuning API Documentation
+  url: https://docs.mistral.ai/api/endpoint/fine-tuning
+servers:
+  - url: https://api.mistral.ai/v1
+    description: Mistral AI Production
+tags:
+  - name: Fine-Tuning Jobs
+    description: Create and manage fine-tuning jobs
+security:
+  - bearerAuth: []
+paths:
+  /fine_tuning/jobs:
+    get:
+      operationId: listFineTuningJobs
+      summary: Mistral AI List fine-tuning jobs
+      description: >-
+        Retrieve a list of fine-tuning jobs for the authenticated account,
+        with optional pagination.
+      tags:
+        - Fine-Tuning Jobs
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 0
+          description: Page number for pagination
+        - name: page_size
+          in: query
+          schema:
+            type: integer
+            default: 20
+          description: Number of items per page
+        - name: model
+          in: query
+          schema:
+            type: string
+          description: Filter by base model
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum:
+              - QUEUED
+              - STARTED
+              - VALIDATING
+              - VALIDATED
+              - RUNNING
+              - FAILED_VALIDATION
+              - FAILED
+              - SUCCESS
+              - CANCELLED
+              - CANCELLATION_REQUESTED
+          description: Filter by job status
+      responses:
+        '200':
+          description: List of fine-tuning jobs
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FineTuningJobList'
+        '401':
+          description: Unauthorized
+    post:
+      operationId: createFineTuningJob
+      summary: Mistral AI Create a fine-tuning job
+      description: >-
+        Create a new fine-tuning job to customize a Mistral model on your
+        dataset. Specify the base model, training file, and hyperparameters.
+      tags:
+        - Fine-Tuning Jobs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateFineTuningJobRequest'
+      responses:
+        '200':
+          description: Fine-tuning job created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FineTuningJob'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+  /fine_tuning/jobs/{job_id}:
+    get:
+      operationId: getFineTuningJob
+      summary: Mistral AI Get a fine-tuning job
+      description: Retrieve details of a specific fine-tuning job by ID.
+      tags:
+        - Fine-Tuning Jobs
+      parameters:
+        - $ref: '#/components/parameters/jobId'
+      responses:
+        '200':
+          description: Fine-tuning job details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FineTuningJob'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Job not found
+  /fine_tuning/jobs/{job_id}/cancel:
+    post:
+      operationId: cancelFineTuningJob
+      summary: Mistral AI Cancel a fine-tuning job
+      description: Request cancellation of a running or queued fine-tuning job.
+      tags:
+        - Fine-Tuning Jobs
+      parameters:
+        - $ref: '#/components/parameters/jobId'
+      responses:
+        '200':
+          description: Fine-tuning job cancellation requested
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FineTuningJob'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Job not found
+  /fine_tuning/jobs/{job_id}/start:
+    post:
+      operationId: startFineTuningJob
+      summary: Mistral AI Start a validated fine-tuning job
+      description: >-
+        Start a fine-tuning job that has been validated. The job must be in
+        VALIDATED status to be started.
+      tags:
+        - Fine-Tuning Jobs
+      parameters:
+        - $ref: '#/components/parameters/jobId'
+      responses:
+        '200':
+          description: Fine-tuning job started
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FineTuningJob'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Job not found
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Mistral AI API key passed as a Bearer token
+  parameters:
+    jobId:
+      name: job_id
+      in: path
+      required: true
+      description: The unique identifier of the fine-tuning job
+      schema:
+        type: string
+        format: uuid
+  schemas:
+    CreateFineTuningJobRequest:
+      type: object
+      required:
+        - model
+        - training_files
+      properties:
+        model:
+          type: string
+          description: The base model to fine-tune
+          examples:
+            - open-mistral-7b
+            - mistral-small-latest
+        training_files:
+          type: array
+          items:
+            $ref: '#/components/schemas/TrainingFile'
+          description: Training data file references
+        validation_files:
+          type: array
+          items:
+            $ref: '#/components/schemas/TrainingFile'
+          description: Validation data file references
+        hyperparameters:
+          $ref: '#/components/schemas/Hyperparameters'
+        suffix:
+          type: string
+          maxLength: 18
+          description: Suffix appended to the fine-tuned model name
+        integrations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Integration'
+          description: Third-party integrations for tracking
+        auto_start:
+          type: boolean
+          default: true
+          description: Whether to start training after validation
+    TrainingFile:
+      type: object
+      required:
+        - file_id
+      properties:
+        file_id:
+          type: string
+          format: uuid
+          description: ID of the uploaded training file
+        weight:
+          type: number
+          minimum: 0
+          description: Relative weight of this training file
+    Hyperparameters:
+      type: object
+      properties:
+        training_steps:
+          type: integer
+          minimum: 1
+          description: Number of training steps
+        learning_rate:
+          type: number
+          minimum: 0
+          description: Learning rate for training
+        weight_decay:
+          type: number
+          minimum: 0
+          description: Weight decay regularization
+        warmup_fraction:
+          type: number
+          minimum: 0
+          maximum: 1
+          description: Fraction of steps for learning rate warmup
+        epochs:
+          type: number
+          minimum: 0
+          description: Number of training epochs
+        seq_len:
+          type: integer
+          description: Maximum sequence length
+    Integration:
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          type: string
+          enum:
+            - wandb
+          description: Integration type
+        project:
+          type: string
+          description: Project name for the integration
+        name:
+          type: string
+          description: Run name for the integration
+        api_key:
+          type: string
+          description: API key for the integration service
+    FineTuningJob:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the fine-tuning job
+        auto_start:
+          type: boolean
+        hyperparameters:
+          $ref: '#/components/schemas/Hyperparameters'
+        model:
+          type: string
+          description: Base model being fine-tuned
+        status:
+          type: string
+          enum:
+            - QUEUED
+            - STARTED
+            - VALIDATING
+            - VALIDATED
+            - RUNNING
+            - FAILED_VALIDATION
+            - FAILED
+            - SUCCESS
+            - CANCELLED
+            - CANCELLATION_REQUESTED
+          description: Current status of the job
+        job_type:
+          type: string
+          description: Type of fine-tuning job
+        created_at:
+          type: integer
+          description: Unix timestamp when the job was created
+        modified_at:
+          type: integer
+          description: Unix timestamp when the job was last modified
+        training_files:
+          type: array
+          items:
+            type: string
+            format: uuid
+        validation_files:
+          type: array
+          items:
+            type: string
+            format: uuid
+        fine_tuned_model:
+          type:
+            - string
+            - 'null'
+          description: The resulting fine-tuned model ID
+        integrations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Integration'
+    FineTuningJobList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/FineTuningJob'
+        total:
+          type: integer
+          description: Total number of jobs
