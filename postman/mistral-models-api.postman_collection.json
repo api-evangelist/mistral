@@ -1,0 +1,802 @@
+{
+  "info": {
+    "_postman_id": "1b019840-8c31-4ce6-a594-7775c6f1122a",
+    "name": "Mistral AI Agents Models API",
+    "description": "The Mistral AI Agents API provides a dedicated framework for building agentic applications. It complements the Chat Completion API by enabling AI agents to handle complex tasks, maintain context across interactions, and coordinate multiple actions. Developers can create agents with specific configurations, tools, and instructions, making it suitable for enterprise-grade agentic platforms and multi-step workflow automation.\n\nContact Support:\n Name: Mistral AI Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:14:46.000Z",
+    "updatedAt": "2026-07-28T02:14:46.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1b019840-8c31-4ce6-a594-7775c6f1122a"
+  },
+  "item": [
+    {
+      "name": "models",
+      "item": [
+        {
+          "name": "{model_id}",
+          "item": [
+            {
+              "name": "Retrieve model",
+              "id": "7ab190c3-77e8-4c8a-baa0-fa4a7668afa4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/models/:model_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "models",
+                    ":model_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "66537f3f-3abb-4f50-9ea7-97355c2e8734",
+                      "key": "model_id",
+                      "value": "<string>",
+                      "description": "(Required) The ID of the model."
+                    }
+                  ]
+                },
+                "description": "Retrieves a model instance, providing information about the model including its ID, creation date, owner, and capabilities."
+              },
+              "response": [
+                {
+                  "id": "5be430a4-4ed6-476f-942f-726516a4245c",
+                  "name": "Successfully retrieved model",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/models/:model_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "models",
+                        ":model_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "model_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"model\",\n  \"created\": \"<integer>\",\n  \"owned_by\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"max_context_length\": \"<integer>\",\n  \"aliases\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"deprecation\": \"<dateTime>\",\n  \"capabilities\": {\n    \"completion_chat\": \"<boolean>\",\n    \"completion_fim\": \"<boolean>\",\n    \"function_calling\": \"<boolean>\",\n    \"fine_tuning\": \"<boolean>\",\n    \"vision\": \"<boolean>\"\n  },\n  \"type\": \"fine-tuned\"\n}",
+                  "createdAt": "2026-07-28T02:14:46.000Z",
+                  "updatedAt": "2026-07-28T02:14:46.000Z",
+                  "uid": "35240-5be430a4-4ed6-476f-942f-726516a4245c"
+                },
+                {
+                  "id": "deb7ff8a-dbc7-4a28-83c2-10776151b788",
+                  "name": "Unauthorized due to missing or invalid API key",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/models/:model_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "models",
+                        ":model_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "model_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"type\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T02:14:46.000Z",
+                  "updatedAt": "2026-07-28T02:14:46.000Z",
+                  "uid": "35240-deb7ff8a-dbc7-4a28-83c2-10776151b788"
+                },
+                {
+                  "id": "e614afc2-b01d-430b-998f-fd0b30ef8b73",
+                  "name": "Model not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/models/:model_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "models",
+                        ":model_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "model_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"type\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T02:14:46.000Z",
+                  "updatedAt": "2026-07-28T02:14:46.000Z",
+                  "uid": "35240-e614afc2-b01d-430b-998f-fd0b30ef8b73"
+                }
+              ],
+              "createdAt": "2026-07-28T02:14:46.000Z",
+              "updatedAt": "2026-07-28T02:14:46.000Z",
+              "uid": "35240-7ab190c3-77e8-4c8a-baa0-fa4a7668afa4"
+            },
+            {
+              "name": "Delete model",
+              "id": "acd53060-10d6-4f33-a691-a6daa31a3555",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/models/:model_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "models",
+                    ":model_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "6c9bf0bd-34c5-4e7b-8d47-05c1aaaf4bb8",
+                      "key": "model_id",
+                      "value": "<string>",
+                      "description": "(Required) The ID of the model."
+                    }
+                  ]
+                },
+                "description": "Delete a fine-tuned model. Only models owned by the user's organization can be deleted. Base models cannot be deleted."
+              },
+              "response": [
+                {
+                  "id": "5bda95f4-0772-43ae-9800-c88bf25b59e2",
+                  "name": "Successfully deleted model",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/models/:model_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "models",
+                        ":model_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "model_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"<string>\",\n  \"deleted\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T02:14:46.000Z",
+                  "updatedAt": "2026-07-28T02:14:46.000Z",
+                  "uid": "35240-5bda95f4-0772-43ae-9800-c88bf25b59e2"
+                },
+                {
+                  "id": "e70ffbe5-626d-4914-9710-503d05e02c23",
+                  "name": "Unauthorized due to missing or invalid API key",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/models/:model_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "models",
+                        ":model_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "model_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"type\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T02:14:46.000Z",
+                  "updatedAt": "2026-07-28T02:14:46.000Z",
+                  "uid": "35240-e70ffbe5-626d-4914-9710-503d05e02c23"
+                },
+                {
+                  "id": "46ef02ca-7359-4338-a562-cd3247e741f9",
+                  "name": "Model not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/models/:model_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "models",
+                        ":model_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "model_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"type\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T02:14:46.000Z",
+                  "updatedAt": "2026-07-28T02:14:46.000Z",
+                  "uid": "35240-46ef02ca-7359-4338-a562-cd3247e741f9"
+                }
+              ],
+              "createdAt": "2026-07-28T02:14:46.000Z",
+              "updatedAt": "2026-07-28T02:14:46.000Z",
+              "uid": "35240-acd53060-10d6-4f33-a691-a6daa31a3555"
+            }
+          ],
+          "id": "8ec6aafa-3c73-4bf0-a573-e7a1a65d89e5",
+          "createdAt": "2026-07-28T02:14:46.000Z",
+          "updatedAt": "2026-07-28T02:14:46.000Z",
+          "uid": "35240-8ec6aafa-3c73-4bf0-a573-e7a1a65d89e5"
+        },
+        {
+          "name": "List models",
+          "id": "b51411fc-c082-498b-b43b-07cbbeb21ab6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/models",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "models"
+              ]
+            },
+            "description": "List all models available to the user, including base models and fine-tuned models. Returns model IDs, capabilities, and metadata."
+          },
+          "response": [
+            {
+              "id": "0da2d85d-fe10-41c2-8565-e5c371218127",
+              "name": "Successfully retrieved list of models",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/models",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "models"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"object\": \"list\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"object\": \"model\",\n      \"created\": \"<integer>\",\n      \"owned_by\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"max_context_length\": \"<integer>\",\n      \"aliases\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"deprecation\": \"<dateTime>\",\n      \"capabilities\": {\n        \"completion_chat\": \"<boolean>\",\n        \"completion_fim\": \"<boolean>\",\n        \"function_calling\": \"<boolean>\",\n        \"fine_tuning\": \"<boolean>\",\n        \"vision\": \"<boolean>\"\n      },\n      \"type\": \"fine-tuned\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"object\": \"model\",\n      \"created\": \"<integer>\",\n      \"owned_by\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"max_context_length\": \"<integer>\",\n      \"aliases\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"deprecation\": \"<dateTime>\",\n      \"capabilities\": {\n        \"completion_chat\": \"<boolean>\",\n        \"completion_fim\": \"<boolean>\",\n        \"function_calling\": \"<boolean>\",\n        \"fine_tuning\": \"<boolean>\",\n        \"vision\": \"<boolean>\"\n      },\n      \"type\": \"base\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:14:46.000Z",
+              "updatedAt": "2026-07-28T02:14:46.000Z",
+              "uid": "35240-0da2d85d-fe10-41c2-8565-e5c371218127"
+            },
+            {
+              "id": "9cf64bdc-7d9a-4dba-bf9f-06fac327b9e5",
+              "name": "Unauthorized due to missing or invalid API key",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/models",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "models"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"type\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T02:14:46.000Z",
+              "updatedAt": "2026-07-28T02:14:46.000Z",
+              "uid": "35240-9cf64bdc-7d9a-4dba-bf9f-06fac327b9e5"
+            }
+          ],
+          "createdAt": "2026-07-28T02:14:46.000Z",
+          "updatedAt": "2026-07-28T02:14:46.000Z",
+          "uid": "35240-b51411fc-c082-498b-b43b-07cbbeb21ab6"
+        }
+      ],
+      "id": "749f1468-669c-4d9f-9c36-4fa8ae402d60",
+      "createdAt": "2026-07-28T02:14:46.000Z",
+      "updatedAt": "2026-07-28T02:14:46.000Z",
+      "uid": "35240-749f1468-669c-4d9f-9c36-4fa8ae402d60"
+    },
+    {
+      "name": "fine_tuning",
+      "item": [
+        {
+          "name": "models",
+          "item": [
+            {
+              "name": "{model_id}",
+              "item": [
+                {
+                  "name": "Update fine-tuned model",
+                  "id": "3b206523-755c-4cd1-bb04-4b8a2f2b1555",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/fine_tuning/models/:model_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "fine_tuning",
+                        "models",
+                        ":model_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "bbbf8884-c710-4816-a142-da0275f786c8",
+                          "key": "model_id",
+                          "value": "<string>",
+                          "description": "(Required) The ID of the model."
+                        }
+                      ]
+                    },
+                    "description": "Update a fine-tuned model's metadata such as its name or description."
+                  },
+                  "response": [
+                    {
+                      "id": "48cd1e1b-0e17-45bf-867f-55f24f64354e",
+                      "name": "Successfully updated fine-tuned model",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/fine_tuning/models/:model_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "fine_tuning",
+                            "models",
+                            ":model_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "model_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"model\",\n  \"created\": \"<integer>\",\n  \"owned_by\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"max_context_length\": \"<integer>\",\n  \"aliases\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"deprecation\": \"<dateTime>\",\n  \"capabilities\": {\n    \"completion_chat\": \"<boolean>\",\n    \"completion_fim\": \"<boolean>\",\n    \"function_calling\": \"<boolean>\",\n    \"fine_tuning\": \"<boolean>\",\n    \"vision\": \"<boolean>\"\n  },\n  \"type\": \"fine-tuned\"\n}",
+                      "createdAt": "2026-07-28T02:14:46.000Z",
+                      "updatedAt": "2026-07-28T02:14:46.000Z",
+                      "uid": "35240-48cd1e1b-0e17-45bf-867f-55f24f64354e"
+                    },
+                    {
+                      "id": "507e76fa-eb54-4c30-8823-75e4cc80403c",
+                      "name": "Unauthorized due to missing or invalid API key",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/fine_tuning/models/:model_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "fine_tuning",
+                            "models",
+                            ":model_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "model_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"type\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T02:14:46.000Z",
+                      "updatedAt": "2026-07-28T02:14:46.000Z",
+                      "uid": "35240-507e76fa-eb54-4c30-8823-75e4cc80403c"
+                    },
+                    {
+                      "id": "b90c971e-500e-4fc5-9bb7-3834046509ba",
+                      "name": "Model not found",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/fine_tuning/models/:model_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "fine_tuning",
+                            "models",
+                            ":model_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "model_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"type\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T02:14:46.000Z",
+                      "updatedAt": "2026-07-28T02:14:46.000Z",
+                      "uid": "35240-b90c971e-500e-4fc5-9bb7-3834046509ba"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:14:46.000Z",
+                  "updatedAt": "2026-07-28T02:14:46.000Z",
+                  "uid": "35240-3b206523-755c-4cd1-bb04-4b8a2f2b1555"
+                }
+              ],
+              "id": "cc2841c9-b962-4c76-96bd-4a52f435933c",
+              "createdAt": "2026-07-28T02:14:46.000Z",
+              "updatedAt": "2026-07-28T02:14:46.000Z",
+              "uid": "35240-cc2841c9-b962-4c76-96bd-4a52f435933c"
+            }
+          ],
+          "id": "92a2b63f-e11b-4cf8-81c8-d7e691603768",
+          "createdAt": "2026-07-28T02:14:46.000Z",
+          "updatedAt": "2026-07-28T02:14:46.000Z",
+          "uid": "35240-92a2b63f-e11b-4cf8-81c8-d7e691603768"
+        }
+      ],
+      "id": "c5e3774f-6f70-4a9b-bc92-5175594c782c",
+      "createdAt": "2026-07-28T02:14:46.000Z",
+      "updatedAt": "2026-07-28T02:14:46.000Z",
+      "uid": "35240-c5e3774f-6f70-4a9b-bc92-5175594c782c"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.mistral.ai/v1"
+    }
+  ]
+}

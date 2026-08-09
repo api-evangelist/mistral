@@ -1,0 +1,308 @@
+{
+  "info": {
+    "_postman_id": "abcf0157-95fe-432a-9994-ca498e59bbcd",
+    "name": "Mistral AI Agents OCR API",
+    "description": "The Mistral AI Agents API provides a dedicated framework for building agentic applications. It complements the Chat Completion API by enabling AI agents to handle complex tasks, maintain context across interactions, and coordinate multiple actions. Developers can create agents with specific configurations, tools, and instructions, making it suitable for enterprise-grade agentic platforms and multi-step workflow automation.\n\nContact Support:\n Name: Mistral AI Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:14:47.000Z",
+    "updatedAt": "2026-07-28T02:14:47.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-abcf0157-95fe-432a-9994-ca498e59bbcd"
+  },
+  "item": [
+    {
+      "name": "ocr",
+      "item": [
+        {
+          "name": "Process document with OCR",
+          "id": "d502f43f-336f-4b75-8b2d-ece1d77d5fbb",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model\": \"<string>\",\n  \"document\": {\n    \"type\": \"document_url\",\n    \"document_url\": \"<uri>\",\n    \"image_url\": \"<uri>\",\n    \"content\": \"<string>\"\n  },\n  \"pages\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"include_image_base64\": false,\n  \"image_limit\": \"<integer>\",\n  \"image_min_size\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/ocr",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ocr"
+              ]
+            },
+            "description": "Extracts text and structured content from a PDF document or image using Mistral's OCR model. The API comprehends complex document elements including tables, equations, charts, and interleaved text, returning structured markdown content organized by page."
+          },
+          "response": [
+            {
+              "id": "bfcc0851-d62b-4ab0-93de-56a664f742c8",
+              "name": "Successful OCR processing response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"document\": {\n    \"type\": \"document_url\",\n    \"document_url\": \"<uri>\",\n    \"image_url\": \"<uri>\",\n    \"content\": \"<string>\"\n  },\n  \"pages\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"include_image_base64\": false,\n  \"image_limit\": \"<integer>\",\n  \"image_min_size\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/ocr",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ocr"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"pages\": [\n    {\n      \"index\": \"<integer>\",\n      \"markdown\": \"<string>\",\n      \"images\": [\n        {\n          \"id\": \"<string>\",\n          \"base64\": \"<string>\",\n          \"content_type\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"base64\": \"<string>\",\n          \"content_type\": \"<string>\"\n        }\n      ],\n      \"dimensions\": {\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\"\n      }\n    },\n    {\n      \"index\": \"<integer>\",\n      \"markdown\": \"<string>\",\n      \"images\": [\n        {\n          \"id\": \"<string>\",\n          \"base64\": \"<string>\",\n          \"content_type\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"base64\": \"<string>\",\n          \"content_type\": \"<string>\"\n        }\n      ],\n      \"dimensions\": {\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\"\n      }\n    }\n  ],\n  \"model\": \"<string>\",\n  \"usage\": {\n    \"pages_processed\": \"<integer>\",\n    \"doc_size_bytes\": \"<integer>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:14:47.000Z",
+              "updatedAt": "2026-07-28T02:14:47.000Z",
+              "uid": "35240-bfcc0851-d62b-4ab0-93de-56a664f742c8"
+            },
+            {
+              "id": "621cefbd-8d15-4900-8851-6253d3fdbc5c",
+              "name": "Bad request due to invalid parameters",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"document\": {\n    \"type\": \"document_url\",\n    \"document_url\": \"<uri>\",\n    \"image_url\": \"<uri>\",\n    \"content\": \"<string>\"\n  },\n  \"pages\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"include_image_base64\": false,\n  \"image_limit\": \"<integer>\",\n  \"image_min_size\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/ocr",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ocr"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"type\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T02:14:47.000Z",
+              "updatedAt": "2026-07-28T02:14:47.000Z",
+              "uid": "35240-621cefbd-8d15-4900-8851-6253d3fdbc5c"
+            },
+            {
+              "id": "42f1aecb-a937-4aa9-b3cd-52582638b260",
+              "name": "Unauthorized due to missing or invalid API key",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"document\": {\n    \"type\": \"document_url\",\n    \"document_url\": \"<uri>\",\n    \"image_url\": \"<uri>\",\n    \"content\": \"<string>\"\n  },\n  \"pages\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"include_image_base64\": false,\n  \"image_limit\": \"<integer>\",\n  \"image_min_size\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/ocr",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ocr"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"type\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T02:14:47.000Z",
+              "updatedAt": "2026-07-28T02:14:47.000Z",
+              "uid": "35240-42f1aecb-a937-4aa9-b3cd-52582638b260"
+            },
+            {
+              "id": "85d87a64-8177-40e4-8b90-76215387aa83",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"document\": {\n    \"type\": \"document_url\",\n    \"document_url\": \"<uri>\",\n    \"image_url\": \"<uri>\",\n    \"content\": \"<string>\"\n  },\n  \"pages\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"include_image_base64\": false,\n  \"image_limit\": \"<integer>\",\n  \"image_min_size\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/ocr",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ocr"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"type\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T02:14:47.000Z",
+              "updatedAt": "2026-07-28T02:14:47.000Z",
+              "uid": "35240-85d87a64-8177-40e4-8b90-76215387aa83"
+            }
+          ],
+          "createdAt": "2026-07-28T02:14:47.000Z",
+          "updatedAt": "2026-07-28T02:14:47.000Z",
+          "uid": "35240-d502f43f-336f-4b75-8b2d-ece1d77d5fbb"
+        }
+      ],
+      "id": "d9beb682-3597-418a-a5e0-220380968d23",
+      "createdAt": "2026-07-28T02:14:47.000Z",
+      "updatedAt": "2026-07-28T02:14:47.000Z",
+      "uid": "35240-d9beb682-3597-418a-a5e0-220380968d23"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.mistral.ai/v1"
+    }
+  ]
+}

@@ -1,0 +1,379 @@
+{
+  "info": {
+    "_postman_id": "93cba3b4-5ba6-4728-b986-bab2fe1416a0",
+    "name": "Mistral AI Agents API",
+    "description": "The Mistral AI Agents API provides a dedicated framework for building agentic applications. It complements the Chat Completion API by enabling AI agents to handle complex tasks, maintain context across interactions, and coordinate multiple actions. Developers can create agents with specific configurations, tools, and instructions, making it suitable for enterprise-grade agentic platforms and multi-step workflow automation.\n\nContact Support:\n Name: Mistral AI Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:13:34.000Z",
+    "updatedAt": "2026-07-28T02:13:34.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-93cba3b4-5ba6-4728-b986-bab2fe1416a0"
+  },
+  "item": [
+    {
+      "name": "agents",
+      "item": [
+        {
+          "name": "completions",
+          "item": [
+            {
+              "name": "Create agent completion",
+              "id": "574c89a7-d9c0-4b5e-af35-3acdaebe691d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"agent_id\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"tool\",\n      \"content\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"<string>\"\n    },\n    {\n      \"role\": \"tool\",\n      \"content\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"<string>\"\n    }\n  ],\n  \"stream\": false,\n  \"max_tokens\": \"<integer>\",\n  \"stop\": \"<string>\",\n  \"random_seed\": \"<integer>\",\n  \"response_format\": {\n    \"type\": \"text\"\n  },\n  \"tool_choice\": \"auto\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/agents/completions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "agents",
+                    "completions"
+                  ]
+                },
+                "description": "Creates a completion using a pre-configured Mistral AI agent. The agent processes the input messages using its configured tools, instructions, and model settings. Supports streaming, function calling, and multi-turn conversations."
+              },
+              "response": [
+                {
+                  "id": "ea3ac972-2fbc-4c22-a9fb-f9049b31454e",
+                  "name": "Successful agent completion response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"agent_id\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"tool\",\n      \"content\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"<string>\"\n    },\n    {\n      \"role\": \"tool\",\n      \"content\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"<string>\"\n    }\n  ],\n  \"stream\": false,\n  \"max_tokens\": \"<integer>\",\n  \"stop\": \"<string>\",\n  \"random_seed\": \"<integer>\",\n  \"response_format\": {\n    \"type\": \"text\"\n  },\n  \"tool_choice\": \"auto\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/agents/completions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "agents",
+                        "completions"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"chat.completion\",\n  \"created\": \"<integer>\",\n  \"model\": \"<string>\",\n  \"choices\": [\n    {\n      \"index\": \"<integer>\",\n      \"message\": {\n        \"role\": \"system\",\n        \"content\": \"<string>\",\n        \"tool_calls\": [\n          {\n            \"id\": \"<string>\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"<string>\",\n              \"arguments\": \"<string>\"\n            }\n          },\n          {\n            \"id\": \"<string>\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"<string>\",\n              \"arguments\": \"<string>\"\n            }\n          }\n        ],\n        \"tool_call_id\": \"<string>\"\n      },\n      \"finish_reason\": \"tool_calls\"\n    },\n    {\n      \"index\": \"<integer>\",\n      \"message\": {\n        \"role\": \"system\",\n        \"content\": \"<string>\",\n        \"tool_calls\": [\n          {\n            \"id\": \"<string>\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"<string>\",\n              \"arguments\": \"<string>\"\n            }\n          },\n          {\n            \"id\": \"<string>\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"<string>\",\n              \"arguments\": \"<string>\"\n            }\n          }\n        ],\n        \"tool_call_id\": \"<string>\"\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": \"<integer>\",\n    \"completion_tokens\": \"<integer>\",\n    \"total_tokens\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:13:34.000Z",
+                  "updatedAt": "2026-07-28T02:13:34.000Z",
+                  "uid": "35240-ea3ac972-2fbc-4c22-a9fb-f9049b31454e"
+                },
+                {
+                  "id": "f4eaa60f-93ee-4dee-b5cd-40d71114c8f4",
+                  "name": "Bad request due to invalid parameters",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"agent_id\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"tool\",\n      \"content\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"<string>\"\n    },\n    {\n      \"role\": \"tool\",\n      \"content\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"<string>\"\n    }\n  ],\n  \"stream\": false,\n  \"max_tokens\": \"<integer>\",\n  \"stop\": \"<string>\",\n  \"random_seed\": \"<integer>\",\n  \"response_format\": {\n    \"type\": \"text\"\n  },\n  \"tool_choice\": \"auto\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/agents/completions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "agents",
+                        "completions"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"type\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T02:13:34.000Z",
+                  "updatedAt": "2026-07-28T02:13:34.000Z",
+                  "uid": "35240-f4eaa60f-93ee-4dee-b5cd-40d71114c8f4"
+                },
+                {
+                  "id": "851dbc09-1c17-4219-9fe5-688b8f3c4fca",
+                  "name": "Unauthorized due to missing or invalid API key",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"agent_id\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"tool\",\n      \"content\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"<string>\"\n    },\n    {\n      \"role\": \"tool\",\n      \"content\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"<string>\"\n    }\n  ],\n  \"stream\": false,\n  \"max_tokens\": \"<integer>\",\n  \"stop\": \"<string>\",\n  \"random_seed\": \"<integer>\",\n  \"response_format\": {\n    \"type\": \"text\"\n  },\n  \"tool_choice\": \"auto\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/agents/completions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "agents",
+                        "completions"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"type\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T02:13:34.000Z",
+                  "updatedAt": "2026-07-28T02:13:34.000Z",
+                  "uid": "35240-851dbc09-1c17-4219-9fe5-688b8f3c4fca"
+                },
+                {
+                  "id": "2136ccc8-4455-4f25-b621-3ed5f94390a0",
+                  "name": "Agent not found",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"agent_id\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"tool\",\n      \"content\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"<string>\"\n    },\n    {\n      \"role\": \"tool\",\n      \"content\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"<string>\"\n    }\n  ],\n  \"stream\": false,\n  \"max_tokens\": \"<integer>\",\n  \"stop\": \"<string>\",\n  \"random_seed\": \"<integer>\",\n  \"response_format\": {\n    \"type\": \"text\"\n  },\n  \"tool_choice\": \"auto\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/agents/completions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "agents",
+                        "completions"
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"type\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T02:13:34.000Z",
+                  "updatedAt": "2026-07-28T02:13:34.000Z",
+                  "uid": "35240-2136ccc8-4455-4f25-b621-3ed5f94390a0"
+                },
+                {
+                  "id": "2f9492b6-cf0c-470c-b001-feee309ec31f",
+                  "name": "Rate limit exceeded",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"agent_id\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"tool\",\n      \"content\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"<string>\"\n    },\n    {\n      \"role\": \"tool\",\n      \"content\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"<string>\"\n    }\n  ],\n  \"stream\": false,\n  \"max_tokens\": \"<integer>\",\n  \"stop\": \"<string>\",\n  \"random_seed\": \"<integer>\",\n  \"response_format\": {\n    \"type\": \"text\"\n  },\n  \"tool_choice\": \"auto\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/agents/completions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "agents",
+                        "completions"
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"type\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T02:13:34.000Z",
+                  "updatedAt": "2026-07-28T02:13:34.000Z",
+                  "uid": "35240-2f9492b6-cf0c-470c-b001-feee309ec31f"
+                }
+              ],
+              "createdAt": "2026-07-28T02:13:34.000Z",
+              "updatedAt": "2026-07-28T02:13:34.000Z",
+              "uid": "35240-574c89a7-d9c0-4b5e-af35-3acdaebe691d"
+            }
+          ],
+          "id": "4383c095-2a59-4693-b820-832e68c2f181",
+          "createdAt": "2026-07-28T02:13:34.000Z",
+          "updatedAt": "2026-07-28T02:13:34.000Z",
+          "uid": "35240-4383c095-2a59-4693-b820-832e68c2f181"
+        }
+      ],
+      "id": "8d1af909-1c22-439a-9c82-815bfd03ca8d",
+      "createdAt": "2026-07-28T02:13:34.000Z",
+      "updatedAt": "2026-07-28T02:13:34.000Z",
+      "uid": "35240-8d1af909-1c22-439a-9c82-815bfd03ca8d"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.mistral.ai/v1"
+    }
+  ]
+}

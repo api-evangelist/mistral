@@ -1,7 +1,7 @@
 aid: mistral
 name: Mistral AI
-description: Mistral AI provides state-of-the-art large language models and AI APIs
-  for developers and enterprises.
+description: Mistral AI provides state-of-the-art large language models and AI APIs for developers and
+  enterprises.
 type: Index
 accessModel:
   pricing: paid
@@ -18,7 +18,7 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/mistral.png
 created: '2024'
-modified: '2026-05-29'
+modified: '2026-08-08'
 specificationVersion: '0.19'
 url: https://docs.mistral.ai/apis.json
 apis:
@@ -767,3 +767,11 @@ common:
   updated: '2026-05-04'
 - type: LlmsText
   url: https://docs.mistral.ai/llms.txt
+- type: GitHubOrganization
+  url: https://github.com/mistralai
+- type: Login
+  url: https://console.mistral.ai/
+- type: Integrations
+  url: https://mistral.ai/partners
+x-merged-from:
+- mistral-ai

@@ -1,0 +1,308 @@
+{
+  "info": {
+    "_postman_id": "063bfc0a-1e3b-466a-93a7-006db46f6aad",
+    "name": "Mistral AI Agents Embeddings API",
+    "description": "The Mistral AI Agents API provides a dedicated framework for building agentic applications. It complements the Chat Completion API by enabling AI agents to handle complex tasks, maintain context across interactions, and coordinate multiple actions. Developers can create agents with specific configurations, tools, and instructions, making it suitable for enterprise-grade agentic platforms and multi-step workflow automation.\n\nContact Support:\n Name: Mistral AI Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:14:35.000Z",
+    "updatedAt": "2026-07-28T02:14:35.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-063bfc0a-1e3b-466a-93a7-006db46f6aad"
+  },
+  "item": [
+    {
+      "name": "embeddings",
+      "item": [
+        {
+          "name": "Create embeddings",
+          "id": "eee38850-6c0c-42ce-b089-1f778e06cbfc",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model\": \"<string>\",\n  \"input\": \"<string>\",\n  \"encoding_format\": \"float\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/embeddings",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "embeddings"
+              ]
+            },
+            "description": "Creates an embedding vector representing the input text. The input can be a single string or an array of strings for batch processing. Returns high-dimensional vector representations suitable for semantic search, clustering, and classification tasks."
+          },
+          "response": [
+            {
+              "id": "74a2ce78-33ab-41a0-92eb-ccf3bf7306d7",
+              "name": "Successful embedding response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"input\": \"<string>\",\n  \"encoding_format\": \"float\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/embeddings",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "embeddings"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"list\",\n  \"data\": [\n    {\n      \"object\": \"embedding\",\n      \"embedding\": [\n        \"<float>\",\n        \"<float>\"\n      ],\n      \"index\": \"<integer>\"\n    },\n    {\n      \"object\": \"embedding\",\n      \"embedding\": [\n        \"<float>\",\n        \"<float>\"\n      ],\n      \"index\": \"<integer>\"\n    }\n  ],\n  \"model\": \"<string>\",\n  \"usage\": {\n    \"prompt_tokens\": \"<integer>\",\n    \"total_tokens\": \"<integer>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:14:36.000Z",
+              "updatedAt": "2026-07-28T02:14:36.000Z",
+              "uid": "35240-74a2ce78-33ab-41a0-92eb-ccf3bf7306d7"
+            },
+            {
+              "id": "4fb69722-9b59-41e1-b0d8-2156f167fb32",
+              "name": "Bad request due to invalid parameters",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"input\": \"<string>\",\n  \"encoding_format\": \"float\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/embeddings",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "embeddings"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"type\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T02:14:36.000Z",
+              "updatedAt": "2026-07-28T02:14:36.000Z",
+              "uid": "35240-4fb69722-9b59-41e1-b0d8-2156f167fb32"
+            },
+            {
+              "id": "4504400c-81f9-445a-bcbc-0303d7af3bb9",
+              "name": "Unauthorized due to missing or invalid API key",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"input\": \"<string>\",\n  \"encoding_format\": \"float\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/embeddings",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "embeddings"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"type\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T02:14:36.000Z",
+              "updatedAt": "2026-07-28T02:14:36.000Z",
+              "uid": "35240-4504400c-81f9-445a-bcbc-0303d7af3bb9"
+            },
+            {
+              "id": "fc98f316-a6ce-448b-af30-3fc5c26f84cf",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"input\": \"<string>\",\n  \"encoding_format\": \"float\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/embeddings",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "embeddings"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"type\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T02:14:36.000Z",
+              "updatedAt": "2026-07-28T02:14:36.000Z",
+              "uid": "35240-fc98f316-a6ce-448b-af30-3fc5c26f84cf"
+            }
+          ],
+          "createdAt": "2026-07-28T02:14:36.000Z",
+          "updatedAt": "2026-07-28T02:14:36.000Z",
+          "uid": "35240-eee38850-6c0c-42ce-b089-1f778e06cbfc"
+        }
+      ],
+      "id": "0f4c9555-5ac0-4ac0-971a-f08b426dfbad",
+      "createdAt": "2026-07-28T02:14:36.000Z",
+      "updatedAt": "2026-07-28T02:14:36.000Z",
+      "uid": "35240-0f4c9555-5ac0-4ac0-971a-f08b426dfbad"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.mistral.ai/v1"
+    }
+  ]
+}
