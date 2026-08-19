@@ -1,0 +1,338 @@
+{
+  "item": [
+    {
+      "id": "77966d3f-ec68-4f1b-a054-3c5aaa0a28b8",
+      "name": "Chat",
+      "description": {
+        "content": "Chat completion operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "deeecba5-e66e-4dbe-bcdb-78155031b687",
+          "name": "Mistral AI Create a chat completion",
+          "request": {
+            "name": "Mistral AI Create a chat completion",
+            "description": {
+              "content": "Generate a model response for the given chat conversation. Supports multi-turn conversations, streaming, function calling, JSON mode, and vision inputs depending on the model.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "chat",
+                "completions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"<string>\",\n      \"content\": \"<string>\",\n      \"name\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"<string>\"\n    },\n    {\n      \"role\": \"<string>\",\n      \"content\": \"<string>\",\n      \"name\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"<string>\"\n    }\n  ],\n  \"temperature\": 0.7,\n  \"top_p\": 1,\n  \"max_tokens\": \"<integer>\",\n  \"stream\": false,\n  \"stop\": \"<string>\",\n  \"random_seed\": \"<integer>\",\n  \"response_format\": {\n    \"type\": \"<string>\"\n  },\n  \"tools\": [\n    {\n      \"type\": \"<string>\",\n      \"function\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"parameters\": \"<object>\"\n      }\n    },\n    {\n      \"type\": \"<string>\",\n      \"function\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"parameters\": \"<object>\"\n      }\n    }\n  ],\n  \"tool_choice\": \"auto\",\n  \"safe_prompt\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f1773d9b-a6f6-4b63-9ff1-60b1d80736bd",
+              "name": "Chat completion response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chat",
+                    "completions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"mistral-large-latest\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"string\",\n      \"name\": \"string\",\n      \"tool_calls\": [\n        {\n          \"id\": \"string\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"string\",\n            \"arguments\": \"string\"\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"string\",\n            \"arguments\": \"string\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"string\"\n    },\n    {\n      \"role\": \"system\",\n      \"content\": \"string\",\n      \"name\": \"string\",\n      \"tool_calls\": [\n        {\n          \"id\": \"string\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"string\",\n            \"arguments\": \"string\"\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"string\",\n            \"arguments\": \"string\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"string\"\n    }\n  ],\n  \"temperature\": 0.7,\n  \"top_p\": 1,\n  \"max_tokens\": \"<integer>\",\n  \"stream\": false,\n  \"stop\": \"<string>\",\n  \"random_seed\": \"<integer>\",\n  \"response_format\": {\n    \"type\": \"<string>\"\n  },\n  \"tools\": [\n    {\n      \"type\": \"function\",\n      \"function\": {\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"parameters\": {}\n      }\n    },\n    {\n      \"type\": \"function\",\n      \"function\": {\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"parameters\": {}\n      }\n    }\n  ],\n  \"tool_choice\": \"auto\",\n  \"safe_prompt\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"object\": \"chat.completion\",\n  \"created\": 435,\n  \"model\": \"string\",\n  \"choices\": [\n    {\n      \"index\": 3480,\n      \"message\": {\n        \"role\": \"system\",\n        \"content\": \"string\",\n        \"name\": \"string\",\n        \"tool_calls\": [\n          {\n            \"id\": \"string\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"arguments\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          {\n            \"id\": \"string\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"arguments\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        ],\n        \"tool_call_id\": \"string\"\n      },\n      \"finish_reason\": \"model_length\"\n    },\n    {\n      \"index\": 1037,\n      \"message\": {\n        \"role\": \"system\",\n        \"content\": \"string\",\n        \"name\": \"string\",\n        \"tool_calls\": [\n          {\n            \"id\": \"string\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"arguments\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          {\n            \"id\": \"string\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"arguments\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        ],\n        \"tool_call_id\": \"string\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 8743,\n    \"completion_tokens\": 1388,\n    \"total_tokens\": 8609\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9c6eb2f3-70de-4b92-bdf3-f09010e9ddb9",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chat",
+                    "completions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"mistral-large-latest\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"string\",\n      \"name\": \"string\",\n      \"tool_calls\": [\n        {\n          \"id\": \"string\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"string\",\n            \"arguments\": \"string\"\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"string\",\n            \"arguments\": \"string\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"string\"\n    },\n    {\n      \"role\": \"system\",\n      \"content\": \"string\",\n      \"name\": \"string\",\n      \"tool_calls\": [\n        {\n          \"id\": \"string\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"string\",\n            \"arguments\": \"string\"\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"string\",\n            \"arguments\": \"string\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"string\"\n    }\n  ],\n  \"temperature\": 0.7,\n  \"top_p\": 1,\n  \"max_tokens\": \"<integer>\",\n  \"stream\": false,\n  \"stop\": \"<string>\",\n  \"random_seed\": \"<integer>\",\n  \"response_format\": {\n    \"type\": \"<string>\"\n  },\n  \"tools\": [\n    {\n      \"type\": \"function\",\n      \"function\": {\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"parameters\": {}\n      }\n    },\n    {\n      \"type\": \"function\",\n      \"function\": {\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"parameters\": {}\n      }\n    }\n  ],\n  \"tool_choice\": \"auto\",\n  \"safe_prompt\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"param\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "573306aa-2fdd-4ef3-91fb-6045e0c36c71",
+              "name": "Unauthorized - invalid or missing API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chat",
+                    "completions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"mistral-large-latest\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"string\",\n      \"name\": \"string\",\n      \"tool_calls\": [\n        {\n          \"id\": \"string\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"string\",\n            \"arguments\": \"string\"\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"string\",\n            \"arguments\": \"string\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"string\"\n    },\n    {\n      \"role\": \"system\",\n      \"content\": \"string\",\n      \"name\": \"string\",\n      \"tool_calls\": [\n        {\n          \"id\": \"string\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"string\",\n            \"arguments\": \"string\"\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"string\",\n            \"arguments\": \"string\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"string\"\n    }\n  ],\n  \"temperature\": 0.7,\n  \"top_p\": 1,\n  \"max_tokens\": \"<integer>\",\n  \"stream\": false,\n  \"stop\": \"<string>\",\n  \"random_seed\": \"<integer>\",\n  \"response_format\": {\n    \"type\": \"<string>\"\n  },\n  \"tools\": [\n    {\n      \"type\": \"function\",\n      \"function\": {\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"parameters\": {}\n      }\n    },\n    {\n      \"type\": \"function\",\n      \"function\": {\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"parameters\": {}\n      }\n    }\n  ],\n  \"tool_choice\": \"auto\",\n  \"safe_prompt\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a8c7dacb-ad1e-4be2-8e8d-a450d89df1d6",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chat",
+                    "completions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"mistral-large-latest\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"string\",\n      \"name\": \"string\",\n      \"tool_calls\": [\n        {\n          \"id\": \"string\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"string\",\n            \"arguments\": \"string\"\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"string\",\n            \"arguments\": \"string\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"string\"\n    },\n    {\n      \"role\": \"system\",\n      \"content\": \"string\",\n      \"name\": \"string\",\n      \"tool_calls\": [\n        {\n          \"id\": \"string\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"string\",\n            \"arguments\": \"string\"\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"string\",\n            \"arguments\": \"string\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"string\"\n    }\n  ],\n  \"temperature\": 0.7,\n  \"top_p\": 1,\n  \"max_tokens\": \"<integer>\",\n  \"stream\": false,\n  \"stop\": \"<string>\",\n  \"random_seed\": \"<integer>\",\n  \"response_format\": {\n    \"type\": \"<string>\"\n  },\n  \"tools\": [\n    {\n      \"type\": \"function\",\n      \"function\": {\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"parameters\": {}\n      }\n    },\n    {\n      \"type\": \"function\",\n      \"function\": {\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"parameters\": {}\n      }\n    }\n  ],\n  \"tool_choice\": \"auto\",\n  \"safe_prompt\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d0cf49d8-aa21-4676-a717-5c776615dd56",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chat",
+                    "completions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"mistral-large-latest\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"string\",\n      \"name\": \"string\",\n      \"tool_calls\": [\n        {\n          \"id\": \"string\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"string\",\n            \"arguments\": \"string\"\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"string\",\n            \"arguments\": \"string\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"string\"\n    },\n    {\n      \"role\": \"system\",\n      \"content\": \"string\",\n      \"name\": \"string\",\n      \"tool_calls\": [\n        {\n          \"id\": \"string\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"string\",\n            \"arguments\": \"string\"\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"string\",\n            \"arguments\": \"string\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"string\"\n    }\n  ],\n  \"temperature\": 0.7,\n  \"top_p\": 1,\n  \"max_tokens\": \"<integer>\",\n  \"stream\": false,\n  \"stop\": \"<string>\",\n  \"random_seed\": \"<integer>\",\n  \"response_format\": {\n    \"type\": \"<string>\"\n  },\n  \"tools\": [\n    {\n      \"type\": \"function\",\n      \"function\": {\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"parameters\": {}\n      }\n    },\n    {\n      \"type\": \"function\",\n      \"function\": {\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"parameters\": {}\n      }\n    }\n  ],\n  \"tool_choice\": \"auto\",\n  \"safe_prompt\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.mistral.ai/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "63ceddf4-1b83-4258-857d-f2d9c5087724",
+    "name": "Mistral AI Agents Chat API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Agent completions API for building AI agents that can handle complex tasks, maintain context, coordinate multiple actions, and use tools including function calling. Agents are created and configured via the Mistral platform and invoked through this API.\n\nContact Support:\n Name: Mistral AI Support\n Email: support@mistral.ai",
+      "type": "text/plain"
+    }
+  }
+}

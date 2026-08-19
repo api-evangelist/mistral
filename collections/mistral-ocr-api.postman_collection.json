@@ -1,0 +1,281 @@
+{
+  "item": [
+    {
+      "id": "a6b3db02-5b50-47bd-9c96-e316cae1102c",
+      "name": "OCR",
+      "description": {
+        "content": "Document OCR and text extraction operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "aa154e99-1403-4783-8fad-c79479336164",
+          "name": "Mistral AI Process a document with OCR",
+          "request": {
+            "name": "Mistral AI Process a document with OCR",
+            "description": {
+              "content": "Extract text, images, tables, and structured data from documents, PDFs, or images. Returns structured Markdown with extracted content including mathematical expressions in LaTeX format.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ocr"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model\": \"<string>\",\n  \"document\": {\n    \"type\": \"<string>\",\n    \"document_url\": \"<uri>\",\n    \"image_url\": \"<uri>\",\n    \"file_id\": \"<string>\"\n  },\n  \"pages\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"include_image_base64\": false,\n  \"image_limit\": \"<integer>\",\n  \"image_min_size\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "84aeb98a-3b33-49b4-ad23-c2723ac43b89",
+              "name": "OCR extraction result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ocr"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"mistral-ocr-latest\",\n  \"document\": {\n    \"type\": \"image_url\",\n    \"document_url\": \"http://kirrbglUrvJmHdgRDIHVXIXmViIurzC.wlueWnPDPcQQ96Lp2PfN4uZjK3cowJ1IgG0OpBSLfvF,yYGL+YF+OGHvb5Tter1lciM0MW3WB6\",\n    \"image_url\": \"http://tsnJZrdlZDGuWcypHcKkCJ.lkdD9OWQkyOcg.s6cFKvP-tWBx3HQm6IB06hkDV13hBLUN,b.4L8a\",\n    \"file_id\": \"string\"\n  },\n  \"pages\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"include_image_base64\": false,\n  \"image_limit\": \"<integer>\",\n  \"image_min_size\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pages\": [\n    {\n      \"index\": 5720,\n      \"markdown\": \"string\",\n      \"images\": [\n        {\n          \"id\": \"string\",\n          \"top_left_x\": 99,\n          \"top_left_y\": 7369,\n          \"bottom_right_x\": 5249,\n          \"bottom_right_y\": 89,\n          \"image_base64\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"top_left_x\": 8852,\n          \"top_left_y\": 3091,\n          \"bottom_right_x\": 7785,\n          \"bottom_right_y\": 6681,\n          \"image_base64\": \"string\"\n        }\n      ],\n      \"dimensions\": {\n        \"width\": 580,\n        \"height\": 271\n      }\n    },\n    {\n      \"index\": 3663,\n      \"markdown\": \"string\",\n      \"images\": [\n        {\n          \"id\": \"string\",\n          \"top_left_x\": 3048,\n          \"top_left_y\": 1296,\n          \"bottom_right_x\": 5973,\n          \"bottom_right_y\": 2081,\n          \"image_base64\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"top_left_x\": 7827,\n          \"top_left_y\": 5991,\n          \"bottom_right_x\": 968,\n          \"bottom_right_y\": 3679,\n          \"image_base64\": \"string\"\n        }\n      ],\n      \"dimensions\": {\n        \"width\": 9273,\n        \"height\": 8400\n      }\n    }\n  ],\n  \"model\": \"string\",\n  \"usage\": {\n    \"pages_processed\": 2979,\n    \"doc_size_bytes\": 4544\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "95bd1d6d-21b4-4903-a134-c6777c84d7cd",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ocr"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"mistral-ocr-latest\",\n  \"document\": {\n    \"type\": \"image_url\",\n    \"document_url\": \"http://kirrbglUrvJmHdgRDIHVXIXmViIurzC.wlueWnPDPcQQ96Lp2PfN4uZjK3cowJ1IgG0OpBSLfvF,yYGL+YF+OGHvb5Tter1lciM0MW3WB6\",\n    \"image_url\": \"http://tsnJZrdlZDGuWcypHcKkCJ.lkdD9OWQkyOcg.s6cFKvP-tWBx3HQm6IB06hkDV13hBLUN,b.4L8a\",\n    \"file_id\": \"string\"\n  },\n  \"pages\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"include_image_base64\": false,\n  \"image_limit\": \"<integer>\",\n  \"image_min_size\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cec98172-5990-468c-bdb4-56e41c692507",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ocr"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"mistral-ocr-latest\",\n  \"document\": {\n    \"type\": \"image_url\",\n    \"document_url\": \"http://kirrbglUrvJmHdgRDIHVXIXmViIurzC.wlueWnPDPcQQ96Lp2PfN4uZjK3cowJ1IgG0OpBSLfvF,yYGL+YF+OGHvb5Tter1lciM0MW3WB6\",\n    \"image_url\": \"http://tsnJZrdlZDGuWcypHcKkCJ.lkdD9OWQkyOcg.s6cFKvP-tWBx3HQm6IB06hkDV13hBLUN,b.4L8a\",\n    \"file_id\": \"string\"\n  },\n  \"pages\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"include_image_base64\": false,\n  \"image_limit\": \"<integer>\",\n  \"image_min_size\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c4a6592e-4e10-4d63-9552-c672f0a7de92",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ocr"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"mistral-ocr-latest\",\n  \"document\": {\n    \"type\": \"image_url\",\n    \"document_url\": \"http://kirrbglUrvJmHdgRDIHVXIXmViIurzC.wlueWnPDPcQQ96Lp2PfN4uZjK3cowJ1IgG0OpBSLfvF,yYGL+YF+OGHvb5Tter1lciM0MW3WB6\",\n    \"image_url\": \"http://tsnJZrdlZDGuWcypHcKkCJ.lkdD9OWQkyOcg.s6cFKvP-tWBx3HQm6IB06hkDV13hBLUN,b.4L8a\",\n    \"file_id\": \"string\"\n  },\n  \"pages\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"include_image_base64\": false,\n  \"image_limit\": \"<integer>\",\n  \"image_min_size\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.mistral.ai/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a1dec704-a0cf-4f2e-a4a3-8723bb5fa458",
+    "name": "Mistral AI Agents OCR API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Agent completions API for building AI agents that can handle complex tasks, maintain context, coordinate multiple actions, and use tools including function calling. Agents are created and configured via the Mistral platform and invoked through this API.\n\nContact Support:\n Name: Mistral AI Support\n Email: support@mistral.ai",
+      "type": "text/plain"
+    }
+  }
+}

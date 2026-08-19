@@ -1,0 +1,134 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mistral AI Agents Models API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Models",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Mistral AI List available models",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mistral.ai/v1/models"
+          },
+          "docs": "Retrieve a list of all available models, including both Mistral platform models and user fine-tuned models."
+        },
+        {
+          "info": {
+            "name": "Mistral AI Get model details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mistral.ai/v1/models/:model_id",
+            "params": [
+              {
+                "name": "model_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the model"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific model by ID."
+        },
+        {
+          "info": {
+            "name": "Mistral AI Update a fine-tuned model",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.mistral.ai/v1/models/:model_id",
+            "params": [
+              {
+                "name": "model_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the model"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update metadata of a fine-tuned model, such as its name or description. Only applicable to user fine-tuned models."
+        },
+        {
+          "info": {
+            "name": "Mistral AI Delete a fine-tuned model",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.mistral.ai/v1/models/:model_id",
+            "params": [
+              {
+                "name": "model_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the model"
+              }
+            ]
+          },
+          "docs": "Delete a user fine-tuned model. Platform models cannot be deleted."
+        },
+        {
+          "info": {
+            "name": "Mistral AI Archive a fine-tuned model",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mistral.ai/v1/models/:model_id/archive",
+            "params": [
+              {
+                "name": "model_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the model"
+              }
+            ]
+          },
+          "docs": "Archive a fine-tuned model to remove it from the active models list. Archived models cannot be used for inference."
+        },
+        {
+          "info": {
+            "name": "Mistral AI Unarchive a fine-tuned model",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mistral.ai/v1/models/:model_id/unarchive",
+            "params": [
+              {
+                "name": "model_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the model"
+              }
+            ]
+          },
+          "docs": "Restore an archived fine-tuned model so it can be used for inference again."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

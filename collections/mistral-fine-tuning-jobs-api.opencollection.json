@@ -1,0 +1,133 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mistral AI Agents Fine-Tuning Jobs API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Fine-Tuning Jobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Mistral AI List fine-tuning jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mistral.ai/v1/fine_tuning/jobs",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of items per page"
+              },
+              {
+                "name": "model",
+                "value": "",
+                "type": "query",
+                "description": "Filter by base model"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by job status"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of fine-tuning jobs for the authenticated account, with optional pagination."
+        },
+        {
+          "info": {
+            "name": "Mistral AI Create a fine-tuning job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mistral.ai/v1/fine_tuning/jobs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new fine-tuning job to customize a Mistral model on your dataset. Specify the base model, training file, and hyperparameters."
+        },
+        {
+          "info": {
+            "name": "Mistral AI Get a fine-tuning job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mistral.ai/v1/fine_tuning/jobs/:job_id",
+            "params": [
+              {
+                "name": "job_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the fine-tuning job"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific fine-tuning job by ID."
+        },
+        {
+          "info": {
+            "name": "Mistral AI Cancel a fine-tuning job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mistral.ai/v1/fine_tuning/jobs/:job_id/cancel",
+            "params": [
+              {
+                "name": "job_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the fine-tuning job"
+              }
+            ]
+          },
+          "docs": "Request cancellation of a running or queued fine-tuning job."
+        },
+        {
+          "info": {
+            "name": "Mistral AI Start a validated fine-tuning job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mistral.ai/v1/fine_tuning/jobs/:job_id/start",
+            "params": [
+              {
+                "name": "job_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the fine-tuning job"
+              }
+            ]
+          },
+          "docs": "Start a fine-tuning job that has been validated. The job must be in VALIDATED status to be started."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

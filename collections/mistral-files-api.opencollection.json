@@ -1,0 +1,163 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mistral AI Agents Files API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Files",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Mistral AI List files",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mistral.ai/v1/files",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of items per page"
+              },
+              {
+                "name": "purpose",
+                "value": "",
+                "type": "query",
+                "description": "Filter files by purpose"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of all uploaded files for the authenticated account."
+        },
+        {
+          "info": {
+            "name": "Mistral AI Upload a file",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mistral.ai/v1/files",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "purpose",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Upload a file for use with fine-tuning, batch processing, or OCR. Maximum file size is 512 MB."
+        },
+        {
+          "info": {
+            "name": "Mistral AI Get file details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mistral.ai/v1/files/:file_id",
+            "params": [
+              {
+                "name": "file_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the file"
+              }
+            ]
+          },
+          "docs": "Retrieve metadata about a specific uploaded file."
+        },
+        {
+          "info": {
+            "name": "Mistral AI Delete a file",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.mistral.ai/v1/files/:file_id",
+            "params": [
+              {
+                "name": "file_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the file"
+              }
+            ]
+          },
+          "docs": "Delete a previously uploaded file."
+        },
+        {
+          "info": {
+            "name": "Mistral AI Download file content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mistral.ai/v1/files/:file_id/content",
+            "params": [
+              {
+                "name": "file_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the file"
+              }
+            ]
+          },
+          "docs": "Download the contents of a previously uploaded file."
+        },
+        {
+          "info": {
+            "name": "Mistral AI Get a signed download URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mistral.ai/v1/files/:file_id/url",
+            "params": [
+              {
+                "name": "file_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the file"
+              },
+              {
+                "name": "expiry",
+                "value": "",
+                "type": "query",
+                "description": "URL expiry time in hours"
+              }
+            ]
+          },
+          "docs": "Get a time-limited signed URL for downloading the file content. The URL expires after a short period."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

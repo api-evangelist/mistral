@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mistral AI Agents OCR API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OCR",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Mistral AI Process a document with OCR",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mistral.ai/v1/ocr",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Extract text, images, tables, and structured data from documents, PDFs, or images. Returns structured Markdown with extracted content including mathematical expressions in LaTeX format."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,601 @@
+{
+  "item": [
+    {
+      "id": "4b091148-1aa5-4791-be26-21450de83d6d",
+      "name": "Audio",
+      "description": {
+        "content": "Audio transcription operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f1cafa21-fb31-42cb-94cb-0621ec386fd5",
+          "name": "Mistral AI Create an audio transcription",
+          "request": {
+            "name": "Mistral AI Create an audio transcription",
+            "description": {
+              "content": "Transcribe audio to text using Voxtral. Supports multiple audio formats, speaker diarization, word-level timestamps, context biasing with custom vocabulary, and 13 languages.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "audio",
+                "transcriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "model",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) The transcription model to use"
+                },
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "(Required) The audio file to transcribe (WAV, MP3, FLAC, OGG, M4A, WEBM)"
+                },
+                {
+                  "key": "language",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "ISO 639-1 language code. If not specified, the language is auto-detected."
+                },
+                {
+                  "key": "prompt",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Context or vocabulary hints to improve transcription accuracy. Useful for domain-specific terminology."
+                },
+                {
+                  "key": "response_format",
+                  "value": "json",
+                  "type": "text",
+                  "description": "Output format for the transcription (This can only be one of json,text,verbose_json)"
+                },
+                {
+                  "key": "temperature",
+                  "value": "0",
+                  "type": "text",
+                  "description": "Sampling temperature for transcription"
+                },
+                {
+                  "key": "timestamp_granularities",
+                  "value": "[\"<string>\",\"<string>\"]",
+                  "type": "text",
+                  "description": "Granularity levels for timestamps"
+                },
+                {
+                  "key": "diarization",
+                  "value": "false",
+                  "type": "text",
+                  "description": "Whether to enable speaker diarization"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fd0c39e4-a342-498e-bc26-dac1fe6f39a1",
+              "name": "Transcription result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "audio",
+                    "transcriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The transcription model to use",
+                        "type": "text/plain"
+                      },
+                      "key": "model",
+                      "value": "mistral-audio-latest",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The audio file to transcribe (WAV, MP3, FLAC, OGG, M4A, WEBM)",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "ISO 639-1 language code. If not specified, the language is auto-detected.",
+                        "type": "text/plain"
+                      },
+                      "key": "language",
+                      "value": "en",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Context or vocabulary hints to improve transcription accuracy. Useful for domain-specific terminology.",
+                        "type": "text/plain"
+                      },
+                      "key": "prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Output format for the transcription (This can only be one of json,text,verbose_json)",
+                        "type": "text/plain"
+                      },
+                      "key": "response_format",
+                      "value": "json",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Sampling temperature for transcription",
+                        "type": "text/plain"
+                      },
+                      "key": "temperature",
+                      "value": "0",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Granularity levels for timestamps",
+                        "type": "text/plain"
+                      },
+                      "key": "timestamp_granularities",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Whether to enable speaker diarization",
+                        "type": "text/plain"
+                      },
+                      "key": "diarization",
+                      "value": "false",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"text\": \"string\",\n  \"language\": \"string\",\n  \"duration\": 8094.76348116951,\n  \"words\": [\n    {\n      \"word\": \"string\",\n      \"start\": 1485.8863595890548,\n      \"end\": 9145.957994625498,\n      \"speaker\": 9039\n    },\n    {\n      \"word\": \"string\",\n      \"start\": 1516.8963761064513,\n      \"end\": 3786.323693700049,\n      \"speaker\": 6603\n    }\n  ],\n  \"segments\": [\n    {\n      \"id\": 8593,\n      \"start\": 2412.7845383638037,\n      \"end\": 4820.965981337373,\n      \"text\": \"string\",\n      \"speaker\": 3567\n    },\n    {\n      \"id\": 9744,\n      \"start\": 5324.409735992932,\n      \"end\": 9630.827269004638,\n      \"text\": \"string\",\n      \"speaker\": 4668\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3327098f-2398-4629-91bf-fbe687dc3d27",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "audio",
+                    "transcriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The transcription model to use",
+                        "type": "text/plain"
+                      },
+                      "key": "model",
+                      "value": "mistral-audio-latest",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The audio file to transcribe (WAV, MP3, FLAC, OGG, M4A, WEBM)",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "ISO 639-1 language code. If not specified, the language is auto-detected.",
+                        "type": "text/plain"
+                      },
+                      "key": "language",
+                      "value": "en",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Context or vocabulary hints to improve transcription accuracy. Useful for domain-specific terminology.",
+                        "type": "text/plain"
+                      },
+                      "key": "prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Output format for the transcription (This can only be one of json,text,verbose_json)",
+                        "type": "text/plain"
+                      },
+                      "key": "response_format",
+                      "value": "json",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Sampling temperature for transcription",
+                        "type": "text/plain"
+                      },
+                      "key": "temperature",
+                      "value": "0",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Granularity levels for timestamps",
+                        "type": "text/plain"
+                      },
+                      "key": "timestamp_granularities",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Whether to enable speaker diarization",
+                        "type": "text/plain"
+                      },
+                      "key": "diarization",
+                      "value": "false",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "41c510d0-8068-4de4-977d-b9fae040656b",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "audio",
+                    "transcriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The transcription model to use",
+                        "type": "text/plain"
+                      },
+                      "key": "model",
+                      "value": "mistral-audio-latest",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The audio file to transcribe (WAV, MP3, FLAC, OGG, M4A, WEBM)",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "ISO 639-1 language code. If not specified, the language is auto-detected.",
+                        "type": "text/plain"
+                      },
+                      "key": "language",
+                      "value": "en",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Context or vocabulary hints to improve transcription accuracy. Useful for domain-specific terminology.",
+                        "type": "text/plain"
+                      },
+                      "key": "prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Output format for the transcription (This can only be one of json,text,verbose_json)",
+                        "type": "text/plain"
+                      },
+                      "key": "response_format",
+                      "value": "json",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Sampling temperature for transcription",
+                        "type": "text/plain"
+                      },
+                      "key": "temperature",
+                      "value": "0",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Granularity levels for timestamps",
+                        "type": "text/plain"
+                      },
+                      "key": "timestamp_granularities",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Whether to enable speaker diarization",
+                        "type": "text/plain"
+                      },
+                      "key": "diarization",
+                      "value": "false",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b72bab15-1f24-40a4-9f37-2d6d730e9e09",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "audio",
+                    "transcriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The transcription model to use",
+                        "type": "text/plain"
+                      },
+                      "key": "model",
+                      "value": "mistral-audio-latest",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The audio file to transcribe (WAV, MP3, FLAC, OGG, M4A, WEBM)",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "ISO 639-1 language code. If not specified, the language is auto-detected.",
+                        "type": "text/plain"
+                      },
+                      "key": "language",
+                      "value": "en",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Context or vocabulary hints to improve transcription accuracy. Useful for domain-specific terminology.",
+                        "type": "text/plain"
+                      },
+                      "key": "prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Output format for the transcription (This can only be one of json,text,verbose_json)",
+                        "type": "text/plain"
+                      },
+                      "key": "response_format",
+                      "value": "json",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Sampling temperature for transcription",
+                        "type": "text/plain"
+                      },
+                      "key": "temperature",
+                      "value": "0",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Granularity levels for timestamps",
+                        "type": "text/plain"
+                      },
+                      "key": "timestamp_granularities",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Whether to enable speaker diarization",
+                        "type": "text/plain"
+                      },
+                      "key": "diarization",
+                      "value": "false",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.mistral.ai/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ed51579e-6276-4e3a-8db4-66942e474d4e",
+    "name": "Mistral AI Agents Audio API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Agent completions API for building AI agents that can handle complex tasks, maintain context, coordinate multiple actions, and use tools including function calling. Agents are created and configured via the Mistral platform and invoked through this API.\n\nContact Support:\n Name: Mistral AI Support\n Email: support@mistral.ai",
+      "type": "text/plain"
+    }
+  }
+}
