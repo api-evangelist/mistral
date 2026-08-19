@@ -19,7 +19,7 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/mistral.png
 created: '2024'
 modified: '2026-08-08'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 url: https://docs.mistral.ai/apis.json
 apis:
 - aid: mistral:mistral-agents-api
