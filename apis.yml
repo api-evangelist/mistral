@@ -328,6 +328,8 @@ apis:
   humanURL: https://docs.mistral.ai/api/
   baseURL: https://api.mistral.ai/v1
   tags:
+  - File
+  tags_raw:
   - Files
   properties:
   - type: OpenAPI
