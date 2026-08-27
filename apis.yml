@@ -684,6 +684,29 @@ apis:
     url: https://docs.mistral.ai/api/endpoint/audio/transcriptions
   - type: GettingStarted
     url: https://docs.mistral.ai/capabilities/audio/
+- aid: mistral:mistral-chat-completions-api
+  name: Mistral AI Chat Completions API
+  description: >-
+    Endpoints for generating chat completions using Mistral language models in a conversational format.
+  humanURL: https://docs.mistral.ai/api/
+  baseURL: https://api.mistral.ai/v1
+  tags:
+  - Chat Completions
+  properties:
+  - type: OpenAPI
+    url: openapi/mistral-chat-completions-api-openapi.yml
+- aid: mistral:mistral-training-jobs-api
+  name: Mistral AI Training Jobs API
+  description: >-
+    Endpoints for creating and managing training jobs including pre-training, supervised fine-tuning,
+    and reinforcement learning pipelines.
+  humanURL: https://docs.mistral.ai/api/
+  baseURL: https://api.mistral.ai/v1
+  tags:
+  - Training Jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/mistral-training-jobs-api-openapi.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
