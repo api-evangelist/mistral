@@ -1,0 +1,55 @@
+slug: mistral
+provider: Mistral AI
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: Fine-Tuning Jobs
+  spec_file: mistral-fine-tuning-jobs-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.8
+  evidence: 'POST /fine_tuning/jobs  createFineTuningJob  Mistral AI Create a fine-tuning job; schemas:
+    Hyperparameters, TrainingFile'
+  reason: Creating, starting and cancelling model fine-tuning jobs with hyperparameters and training files
+    is squarely AI/ML model lifecycle and MLOps.
+- tag: Models
+  spec_file: mistral-models-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.8
+  evidence: PATCH /models/{model_id}  updateModel  Mistral AI Update a fine-tuned model; POST /models/{model_id}/archive  archiveModel
+  reason: Listing, updating, archiving and deleting fine-tuned models is model inventory and lifecycle
+    management — AI/ML model lifecycle under Information & Data Management.
+- tag: Training Jobs
+  spec_file: mistral-training-jobs-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.8
+  evidence: 'POST /forge/training/jobs  createTrainingJob  Create training job; schemas: ForgeHyperparameters,
+    ModelConfig'
+  reason: Creation, listing and cancellation of model training jobs with hyperparameters and model config
+    is AI/ML model lifecycle / MLOps.
+- tag: Agents
+  spec_file: mistral-agents-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.7
+  evidence: Agent completions API for building AI agents that can handle complex tasks, maintain context,
+    coordinate multiple actions, and use tools including function calling
+  reason: LLM agent inference endpoint — AI/ML capability delivery. Generic AI management is the only
+    honest fit.

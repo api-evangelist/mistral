@@ -3,6 +3,18 @@ name: Mistral AI
 description: Mistral AI provides state-of-the-art large language models and AI APIs for developers and
   enterprises.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
@@ -711,6 +723,9 @@ maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 common:
+- type: CapabilityMap
+  url: capabilities/mistral-capability-edges.yml
+  name: Mistral AI Business Capability Map
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/mistral-ai/overview
 - type: AgenticAccess
