@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Mistral AI Agents Models API
-  description: Agent completions API for building AI agents that can handle complex tasks, maintain context, coordinate multiple actions, and use tools including function calling. Agents are created and configured via the Mistral platform and invoked through this API.
+  title: Mistral AI Models API
+  description: Models management API for listing available models, retrieving model details, and managing fine-tuned models including archiving, unarchiving, and updating model metadata.
   version: '1.0'
   contact:
     name: Mistral AI Support
@@ -141,26 +141,6 @@ paths:
           description: Model not found
 components:
   schemas:
-    UpdateModelRequest:
-      type: object
-      properties:
-        name:
-          type: string
-          description: New name for the model
-        description:
-          type: string
-          description: New description for the model
-    ModelList:
-      type: object
-      properties:
-        object:
-          type: string
-          enum:
-          - list
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Model'
     Model:
       type: object
       properties:
@@ -221,6 +201,26 @@ components:
           - base
           - fine-tuned
           description: Whether this is a base or fine-tuned model
+    UpdateModelRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: New name for the model
+        description:
+          type: string
+          description: New description for the model
+    ModelList:
+      type: object
+      properties:
+        object:
+          type: string
+          enum:
+          - list
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Model'
     DeleteModelResponse:
       type: object
       properties:
@@ -246,5 +246,5 @@ components:
       scheme: bearer
       description: Mistral AI API key passed as a Bearer token
 externalDocs:
-  description: Mistral AI Agents API Documentation
-  url: https://docs.mistral.ai/api/endpoint/agents
+  description: Mistral AI Models API Documentation
+  url: https://docs.mistral.ai/api/endpoint/models

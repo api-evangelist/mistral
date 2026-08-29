@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Mistral AI Agents Embeddings API
-  description: Agent completions API for building AI agents that can handle complex tasks, maintain context, coordinate multiple actions, and use tools including function calling. Agents are created and configured via the Mistral platform and invoked through this API.
+  title: Mistral AI Mistral Embeddings API
+  description: Generate vector embeddings for text using Mistral's embedding models. Useful for retrieval-augmented generation, clustering, classification, and semantic search use cases.
   version: '1.0'
   contact:
     name: Mistral AI Support
@@ -45,25 +45,6 @@ paths:
           description: Rate limit exceeded
 components:
   schemas:
-    EmbeddingResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier for the embedding request
-        object:
-          type: string
-          enum:
-          - list
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Embedding'
-        model:
-          type: string
-          description: The model used to generate the embeddings
-        usage:
-          $ref: '#/components/schemas/Usage'
     Usage:
       type: object
       properties:
@@ -112,11 +93,30 @@ components:
           - float
           default: float
           description: The format of the output embeddings
+    EmbeddingResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the embedding request
+        object:
+          type: string
+          enum:
+          - list
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Embedding'
+        model:
+          type: string
+          description: The model used to generate the embeddings
+        usage:
+          $ref: '#/components/schemas/Usage'
   securitySchemes:
     bearerAuth:
       type: http
       scheme: bearer
       description: Mistral AI API key passed as a Bearer token
 externalDocs:
-  description: Mistral AI Agents API Documentation
-  url: https://docs.mistral.ai/api/endpoint/agents
+  description: Mistral Embeddings API Documentation
+  url: https://docs.mistral.ai/api/#embeddings

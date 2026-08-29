@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Mistral AI Agents Files API
-  description: Agent completions API for building AI agents that can handle complex tasks, maintain context, coordinate multiple actions, and use tools including function calling. Agents are created and configured via the Mistral platform and invoked through this API.
+  title: Mistral AI Files API
+  description: File management API for uploading, retrieving, downloading, and deleting files used across fine-tuning, batch processing, and OCR endpoints. Supports files up to 512 MB with various purposes.
   version: '1.0'
   contact:
     name: Mistral AI Support
@@ -186,32 +186,6 @@ paths:
           description: File not found
 components:
   schemas:
-    FileList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/File'
-        total:
-          type: integer
-          description: Total number of files
-        object:
-          type: string
-          enum:
-          - list
-    DeleteFileResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        object:
-          type: string
-          enum:
-          - file
-        deleted:
-          type: boolean
     File:
       type: object
       properties:
@@ -250,6 +224,32 @@ components:
           - upload
           - repository
           description: How the file was created
+    DeleteFileResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        object:
+          type: string
+          enum:
+          - file
+        deleted:
+          type: boolean
+    FileList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/File'
+        total:
+          type: integer
+          description: Total number of files
+        object:
+          type: string
+          enum:
+          - list
   parameters:
     fileId:
       name: file_id
@@ -265,5 +265,5 @@ components:
       scheme: bearer
       description: Mistral AI API key passed as a Bearer token
 externalDocs:
-  description: Mistral AI Agents API Documentation
-  url: https://docs.mistral.ai/api/endpoint/agents
+  description: Mistral AI Files API Documentation
+  url: https://docs.mistral.ai/api/endpoint/files

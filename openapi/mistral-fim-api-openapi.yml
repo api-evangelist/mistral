@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Mistral AI Agents FIM API
-  description: Agent completions API for building AI agents that can handle complex tasks, maintain context, coordinate multiple actions, and use tools including function calling. Agents are created and configured via the Mistral platform and invoked through this API.
+  title: Mistral AI FIM API
+  description: Fill-in-the-Middle code completion API powered by Codestral. Generates code between a given prompt prefix and optional suffix, supporting over 80 programming languages for inline code completion and code generation.
   version: '1.0'
   contact:
     name: Mistral AI Support
@@ -11,6 +11,8 @@ info:
 servers:
 - url: https://api.mistral.ai/v1
   description: Mistral AI Production
+- url: https://codestral.mistral.ai/v1
+  description: Codestral Dedicated Endpoint
 security:
 - bearerAuth: []
 tags:
@@ -48,6 +50,37 @@ paths:
           description: Rate limit exceeded
 components:
   schemas:
+    FimCompletionStreamResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+          enum:
+          - chat.completion.chunk
+        created:
+          type: integer
+        model:
+          type: string
+        choices:
+          type: array
+          items:
+            type: object
+            properties:
+              index:
+                type: integer
+              delta:
+                type: object
+                properties:
+                  role:
+                    type: string
+                  content:
+                    type: string
+              finish_reason:
+                type:
+                - string
+                - 'null'
     FimCompletionResponse:
       type: object
       properties:
@@ -89,37 +122,6 @@ components:
               type: integer
             total_tokens:
               type: integer
-    FimCompletionStreamResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        object:
-          type: string
-          enum:
-          - chat.completion.chunk
-        created:
-          type: integer
-        model:
-          type: string
-        choices:
-          type: array
-          items:
-            type: object
-            properties:
-              index:
-                type: integer
-              delta:
-                type: object
-                properties:
-                  role:
-                    type: string
-                  content:
-                    type: string
-              finish_reason:
-                type:
-                - string
-                - 'null'
     FimCompletionRequest:
       type: object
       required:
@@ -175,7 +177,7 @@ components:
     bearerAuth:
       type: http
       scheme: bearer
-      description: Mistral AI API key passed as a Bearer token
+      description: Mistral AI API key or Codestral API key
 externalDocs:
-  description: Mistral AI Agents API Documentation
-  url: https://docs.mistral.ai/api/endpoint/agents
+  description: Mistral AI FIM API Documentation
+  url: https://docs.mistral.ai/api/endpoint/fim

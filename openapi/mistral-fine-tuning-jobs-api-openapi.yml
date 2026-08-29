@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Mistral AI Agents Fine-Tuning Jobs API
-  description: Agent completions API for building AI agents that can handle complex tasks, maintain context, coordinate multiple actions, and use tools including function calling. Agents are created and configured via the Mistral platform and invoked through this API.
+  title: Mistral AI Fine-Tuning Fine-Tuning Jobs API
+  description: Fine-tuning API for customizing Mistral models on your own datasets. Supports text, vision, and classifier fine-tuning with configurable hyperparameters, Weights & Biases integration, and job management.
   version: '1.0'
   contact:
     name: Mistral AI Support
@@ -152,6 +152,72 @@ paths:
           description: Job not found
 components:
   schemas:
+    FineTuningJobList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/FineTuningJob'
+        total:
+          type: integer
+          description: Total number of jobs
+    Integration:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          enum:
+          - wandb
+          description: Integration type
+        project:
+          type: string
+          description: Project name for the integration
+        name:
+          type: string
+          description: Run name for the integration
+        api_key:
+          type: string
+          description: API key for the integration service
+    CreateFineTuningJobRequest:
+      type: object
+      required:
+      - model
+      - training_files
+      properties:
+        model:
+          type: string
+          description: The base model to fine-tune
+          examples:
+          - open-mistral-7b
+          - mistral-small-latest
+        training_files:
+          type: array
+          items:
+            $ref: '#/components/schemas/TrainingFile'
+          description: Training data file references
+        validation_files:
+          type: array
+          items:
+            $ref: '#/components/schemas/TrainingFile'
+          description: Validation data file references
+        hyperparameters:
+          $ref: '#/components/schemas/Hyperparameters'
+        suffix:
+          type: string
+          maxLength: 18
+          description: Suffix appended to the fine-tuned model name
+        integrations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Integration'
+          description: Third-party integrations for tracking
+        auto_start:
+          type: boolean
+          default: true
+          description: Whether to start training after validation
     FineTuningJob:
       type: object
       properties:
@@ -221,25 +287,6 @@ components:
           type: number
           minimum: 0
           description: Relative weight of this training file
-    Integration:
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-          enum:
-          - wandb
-          description: Integration type
-        project:
-          type: string
-          description: Project name for the integration
-        name:
-          type: string
-          description: Run name for the integration
-        api_key:
-          type: string
-          description: API key for the integration service
     Hyperparameters:
       type: object
       properties:
@@ -267,53 +314,6 @@ components:
         seq_len:
           type: integer
           description: Maximum sequence length
-    CreateFineTuningJobRequest:
-      type: object
-      required:
-      - model
-      - training_files
-      properties:
-        model:
-          type: string
-          description: The base model to fine-tune
-          examples:
-          - open-mistral-7b
-          - mistral-small-latest
-        training_files:
-          type: array
-          items:
-            $ref: '#/components/schemas/TrainingFile'
-          description: Training data file references
-        validation_files:
-          type: array
-          items:
-            $ref: '#/components/schemas/TrainingFile'
-          description: Validation data file references
-        hyperparameters:
-          $ref: '#/components/schemas/Hyperparameters'
-        suffix:
-          type: string
-          maxLength: 18
-          description: Suffix appended to the fine-tuned model name
-        integrations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Integration'
-          description: Third-party integrations for tracking
-        auto_start:
-          type: boolean
-          default: true
-          description: Whether to start training after validation
-    FineTuningJobList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/FineTuningJob'
-        total:
-          type: integer
-          description: Total number of jobs
   parameters:
     jobId:
       name: job_id
@@ -329,5 +329,5 @@ components:
       scheme: bearer
       description: Mistral AI API key passed as a Bearer token
 externalDocs:
-  description: Mistral AI Agents API Documentation
-  url: https://docs.mistral.ai/api/endpoint/agents
+  description: Mistral AI Fine-Tuning API Documentation
+  url: https://docs.mistral.ai/api/endpoint/fine-tuning

@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Mistral AI Agents Batch Jobs API
-  description: Agent completions API for building AI agents that can handle complex tasks, maintain context, coordinate multiple actions, and use tools including function calling. Agents are created and configured via the Mistral platform and invoked through this API.
+  title: Mistral AI Batch Batch Jobs API
+  description: Batch inference API for processing up to one million requests asynchronously at reduced cost. Supports chat completions, embeddings, FIM, moderations, OCR, classifications, and audio transcriptions in batch mode.
   version: '1.0'
   contact:
     name: Mistral AI Support
@@ -123,42 +123,16 @@ paths:
         '404':
           description: Job not found
 components:
+  parameters:
+    jobId:
+      name: job_id
+      in: path
+      required: true
+      description: The unique identifier of the batch job
+      schema:
+        type: string
+        format: uuid
   schemas:
-    CreateBatchJobRequest:
-      type: object
-      required:
-      - input_files
-      - endpoint
-      - model
-      properties:
-        input_files:
-          type: array
-          items:
-            type: string
-            format: uuid
-          description: IDs of JSONL input files uploaded via the Files API
-        endpoint:
-          type: string
-          enum:
-          - /v1/chat/completions
-          - /v1/embeddings
-          - /v1/fim/completions
-          - /v1/moderations
-          - /v1/chat/moderations
-          - /v1/ocr
-          description: The API endpoint to use for batch processing
-        model:
-          type: string
-          description: The model to use for inference
-        metadata:
-          type: object
-          additionalProperties:
-            type: string
-          description: Optional metadata key-value pairs
-        timeout_hours:
-          type: integer
-          default: 24
-          description: Maximum time in hours before the job times out
     BatchJobList:
       type: object
       properties:
@@ -247,20 +221,46 @@ components:
         failed_requests:
           type: integer
           description: Number of failed requests
-  parameters:
-    jobId:
-      name: job_id
-      in: path
-      required: true
-      description: The unique identifier of the batch job
-      schema:
-        type: string
-        format: uuid
+    CreateBatchJobRequest:
+      type: object
+      required:
+      - input_files
+      - endpoint
+      - model
+      properties:
+        input_files:
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: IDs of JSONL input files uploaded via the Files API
+        endpoint:
+          type: string
+          enum:
+          - /v1/chat/completions
+          - /v1/embeddings
+          - /v1/fim/completions
+          - /v1/moderations
+          - /v1/chat/moderations
+          - /v1/ocr
+          description: The API endpoint to use for batch processing
+        model:
+          type: string
+          description: The model to use for inference
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+          description: Optional metadata key-value pairs
+        timeout_hours:
+          type: integer
+          default: 24
+          description: Maximum time in hours before the job times out
   securitySchemes:
     bearerAuth:
       type: http
       scheme: bearer
       description: Mistral AI API key passed as a Bearer token
 externalDocs:
-  description: Mistral AI Agents API Documentation
-  url: https://docs.mistral.ai/api/endpoint/agents
+  description: Mistral AI Batch API Documentation
+  url: https://docs.mistral.ai/api/endpoint/batch
