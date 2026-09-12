@@ -1,7 +1,6 @@
 aid: mistral
 name: Mistral AI
-description: Mistral AI provides state-of-the-art large language models and AI APIs for developers and
-  enterprises.
+description: Mistral AI provides state-of-the-art large language models and AI APIs for developers and enterprises.
 type: Index
 deliveryModel:
   model: saas
@@ -699,8 +698,7 @@ apis:
     url: https://docs.mistral.ai/capabilities/audio/
 - aid: mistral:mistral-chat-completions-api
   name: Mistral AI Chat Completions API
-  description: >-
-    Endpoints for generating chat completions using Mistral language models in a conversational format.
+  description: Endpoints for generating chat completions using Mistral language models in a conversational format.
   humanURL: https://docs.mistral.ai/api/
   baseURL: https://api.mistral.ai/v1
   tags:
@@ -710,9 +708,7 @@ apis:
     url: openapi/mistral-chat-completions-api-openapi.yml
 - aid: mistral:mistral-training-jobs-api
   name: Mistral AI Training Jobs API
-  description: >-
-    Endpoints for creating and managing training jobs including pre-training, supervised fine-tuning,
-    and reinforcement learning pipelines.
+  description: Endpoints for creating and managing training jobs including pre-training, supervised fine-tuning, and reinforcement learning pipelines.
   humanURL: https://docs.mistral.ai/api/
   baseURL: https://api.mistral.ai/v1
   tags:
@@ -720,6 +716,93 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/mistral-training-jobs-api-openapi.yml
+- name: Mistral Embeddings API
+  description: Generate vector embeddings for text and code for retrieval, clustering, classification, and semantic search.
+  humanURL: https://docs.mistral.ai/api/#embeddings
+  baseURL: https://api.mistral.ai/v1
+  tags:
+  - Embeddings
+  - Machine-Learning
+  - Semantic Search
+  - Vector Search
+  tags_raw:
+  - Embeddings
+  - Machine Learning
+  - Semantic Search
+  - Vector Search
+  properties:
+  - type: Documentation
+    url: https://docs.mistral.ai/api/#embeddings
+  - type: APIEndpoint
+    url: https://docs.mistral.ai/api/endpoint/embeddings
+- name: Mistral Moderation API
+  description: Content moderation and classification API for detecting harmful content across nine safety categories for text and chat.
+  humanURL: https://docs.mistral.ai/api/#moderation
+  baseURL: https://api.mistral.ai/v1
+  tags:
+  - Classification
+  - Compliance
+  - Content Moderation
+  - Safety
+  properties:
+  - type: Documentation
+    url: https://docs.mistral.ai/capabilities/moderation
+  - type: APIEndpoint
+    url: https://docs.mistral.ai/api/endpoint/classifiers
+- name: Mistral AI Fine-Tuning API
+  description: Fine-tuning API for customizing Mistral models on your own datasets, supporting text, vision, and classifier fine-tuning.
+  humanURL: https://docs.mistral.ai/api/endpoint/fine-tuning
+  baseURL: https://api.mistral.ai/v1
+  tags:
+  - Fine-Tuning
+  - Machine-Learning
+  - Model Customization
+  - Training
+  tags_raw:
+  - Fine-Tuning
+  - Machine Learning
+  - Model Customization
+  - Training
+  properties:
+  - type: Documentation
+    url: https://docs.mistral.ai/capabilities/finetuning/text-vision-finetuning
+  - type: APIEndpoint
+    url: https://docs.mistral.ai/api/endpoint/fine-tuning
+- name: Mistral AI Batch API
+  description: Batch inference API for processing up to one million requests asynchronously at reduced cost across most endpoints.
+  humanURL: https://docs.mistral.ai/api/endpoint/batch
+  baseURL: https://api.mistral.ai/v1
+  tags:
+  - Async
+  - Batch Processing
+  - Bulk Operations
+  - Cost Optimization
+  properties:
+  - type: Documentation
+    url: https://docs.mistral.ai/capabilities/batch
+  - type: APIEndpoint
+    url: https://docs.mistral.ai/api/endpoint/batch
+- name: Mistral AI Audio Transcription API
+  description: Audio transcription API powered by Voxtral for speech-to-text with diarization, word-level timestamps, and streaming.
+  humanURL: https://docs.mistral.ai/api/endpoint/audio/transcriptions
+  baseURL: https://api.mistral.ai/v1
+  tags:
+  - Audio
+  - Diarization
+  - Speech-to-Text
+  - Transcription
+  - Voxtral
+  tags_raw:
+  - Audio
+  - Diarization
+  - Speech to Text
+  - Transcription
+  - Voxtral
+  properties:
+  - type: Documentation
+    url: https://docs.mistral.ai/capabilities/audio_and_transcription
+  - type: APIEndpoint
+    url: https://docs.mistral.ai/api/endpoint/audio/transcriptions
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
