@@ -215,66 +215,6 @@ apis:
     url: https://docs.mistral.ai/api/endpoint/audio/transcriptions
   - type: GettingStarted
     url: https://docs.mistral.ai/capabilities/audio/
-- aid: mistral:mistral-chat-api
-  name: Mistral AI Chat API
-  description: Chat completion operations
-  humanURL: https://docs.mistral.ai/api/
-  baseURL: https://api.mistral.ai/v1
-  tags:
-  - Chat
-  properties:
-  - type: OpenAPI
-    url: openapi/mistral-chat-api-openapi.yml
-  - type: Documentation
-    url: https://docs.mistral.ai/api/
-  - type: Authentication
-    url: https://docs.mistral.ai/api/#authentication
-  - type: APIEndpoint
-    url: https://docs.mistral.ai/api/endpoint/chat
-  - type: AsyncAPI
-    url: asyncapi/mistral-asyncapi.yml
-  - type: GraphQL
-    url: graphql/mistral-graphql.md
-  - type: Documentation
-    url: https://docs.mistral.ai/api/#embeddings
-  - type: Pricing
-    url: https://mistral.ai/technology/#pricing
-  - type: APIEndpoint
-    url: https://docs.mistral.ai/api/endpoint/embeddings
-  - type: Documentation
-    url: https://docs.mistral.ai/api/#moderation
-  - type: APIEndpoint
-    url: https://docs.mistral.ai/api/endpoint/classifiers
-  - type: GettingStarted
-    url: https://docs.mistral.ai/capabilities/guardrailing
-  - type: Documentation
-    url: https://docs.mistral.ai/api/endpoint/agents
-  - type: GettingStarted
-    url: https://docs.mistral.ai/agents/agents
-  - type: Documentation
-    url: https://docs.mistral.ai/api/endpoint/fim
-  - type: GettingStarted
-    url: https://docs.mistral.ai/capabilities/code_generation
-  - type: Documentation
-    url: https://docs.mistral.ai/api/endpoint/ocr
-  - type: GettingStarted
-    url: https://docs.mistral.ai/capabilities/document_ai
-  - type: Documentation
-    url: https://docs.mistral.ai/api/endpoint/fine-tuning
-  - type: GettingStarted
-    url: https://docs.mistral.ai/capabilities/finetuning/text_vision_finetuning
-  - type: Documentation
-    url: https://docs.mistral.ai/api/endpoint/files
-  - type: Documentation
-    url: https://docs.mistral.ai/api/endpoint/models
-  - type: Documentation
-    url: https://docs.mistral.ai/api/endpoint/batch
-  - type: GettingStarted
-    url: https://docs.mistral.ai/capabilities/batch
-  - type: Documentation
-    url: https://docs.mistral.ai/api/endpoint/audio/transcriptions
-  - type: GettingStarted
-    url: https://docs.mistral.ai/capabilities/audio/
 - aid: mistral:mistral-embeddings-api
   name: Mistral AI Embeddings API
   description: Text embedding operations
@@ -699,8 +639,8 @@ apis:
     url: https://docs.mistral.ai/capabilities/audio/
 - aid: mistral:mistral-chat-completions-api
   name: Mistral AI Chat Completions API
-  description: Endpoints for generating chat completions using Mistral language models in a conversational
-    format.
+  description: >-
+    Endpoints for generating chat completions using Mistral language models in a conversational format.
   humanURL: https://docs.mistral.ai/api/
   baseURL: https://api.mistral.ai/v1
   tags:
@@ -710,7 +650,8 @@ apis:
     url: openapi/mistral-chat-completions-api-openapi.yml
 - aid: mistral:mistral-training-jobs-api
   name: Mistral AI Training Jobs API
-  description: Endpoints for creating and managing training jobs including pre-training, supervised fine-tuning,
+  description: >-
+    Endpoints for creating and managing training jobs including pre-training, supervised fine-tuning,
     and reinforcement learning pipelines.
   humanURL: https://docs.mistral.ai/api/
   baseURL: https://api.mistral.ai/v1
@@ -720,8 +661,9 @@ apis:
   - type: OpenAPI
     url: openapi/mistral-training-jobs-api-openapi.yml
 - name: Mistral Embeddings API
-  description: Generate vector embeddings for text and code for retrieval, clustering, classification,
-    and semantic search.
+  description: >-
+    Generate vector embeddings for text and code for retrieval, clustering, classification, and semantic
+    search.
   humanURL: https://docs.mistral.ai/api/#embeddings
   baseURL: https://api.mistral.ai/v1
   tags:
@@ -740,8 +682,9 @@ apis:
   - type: APIEndpoint
     url: https://docs.mistral.ai/api/endpoint/embeddings
 - name: Mistral Moderation API
-  description: Content moderation and classification API for detecting harmful content across nine safety
-    categories for text and chat.
+  description: >-
+    Content moderation and classification API for detecting harmful content across nine safety categories
+    for text and chat.
   humanURL: https://docs.mistral.ai/api/#moderation
   baseURL: https://api.mistral.ai/v1
   tags:
@@ -755,8 +698,9 @@ apis:
   - type: APIEndpoint
     url: https://docs.mistral.ai/api/endpoint/classifiers
 - name: Mistral AI Fine-Tuning API
-  description: Fine-tuning API for customizing Mistral models on your own datasets, supporting text, vision,
-    and classifier fine-tuning.
+  description: >-
+    Fine-tuning API for customizing Mistral models on your own datasets, supporting text, vision, and
+    classifier fine-tuning.
   humanURL: https://docs.mistral.ai/api/endpoint/fine-tuning
   baseURL: https://api.mistral.ai/v1
   tags:
@@ -775,8 +719,9 @@ apis:
   - type: APIEndpoint
     url: https://docs.mistral.ai/api/endpoint/fine-tuning
 - name: Mistral AI Batch API
-  description: Batch inference API for processing up to one million requests asynchronously at reduced
-    cost across most endpoints.
+  description: >-
+    Batch inference API for processing up to one million requests asynchronously at reduced cost across
+    most endpoints.
   humanURL: https://docs.mistral.ai/api/endpoint/batch
   baseURL: https://api.mistral.ai/v1
   tags:
@@ -790,8 +735,9 @@ apis:
   - type: APIEndpoint
     url: https://docs.mistral.ai/api/endpoint/batch
 - name: Mistral AI Audio Transcription API
-  description: Audio transcription API powered by Voxtral for speech-to-text with diarization, word-level
-    timestamps, and streaming.
+  description: >-
+    Audio transcription API powered by Voxtral for speech-to-text with diarization, word-level timestamps,
+    and streaming.
   humanURL: https://docs.mistral.ai/api/endpoint/audio/transcriptions
   baseURL: https://api.mistral.ai/v1
   tags:
