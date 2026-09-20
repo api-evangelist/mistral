@@ -761,6 +761,8 @@ maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 common:
+- type: Plans
+  url: plans/mistral-plans-pricing.yml
 - type: CapabilityMap
   url: capabilities/mistral-capability-edges.yml
   name: Mistral AI Business Capability Map
