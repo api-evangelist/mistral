@@ -123,15 +123,6 @@ paths:
         '404':
           description: Job not found
 components:
-  parameters:
-    jobId:
-      name: job_id
-      in: path
-      required: true
-      description: The unique identifier of the batch job
-      schema:
-        type: string
-        format: uuid
   schemas:
     BatchJobList:
       type: object
@@ -256,6 +247,15 @@ components:
           type: integer
           default: 24
           description: Maximum time in hours before the job times out
+  parameters:
+    jobId:
+      name: job_id
+      in: path
+      required: true
+      description: The unique identifier of the batch job
+      schema:
+        type: string
+        format: uuid
   securitySchemes:
     bearerAuth:
       type: http

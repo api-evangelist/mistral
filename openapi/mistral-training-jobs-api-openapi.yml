@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
   title: Mistral AI Forge Training Jobs API
-  description: Mistral AI Forge is a model-training platform providing a unified API for the entire model lifecycle from pre-training to reinforcement learning. Forge enables enterprises to build frontier-grade AI models grounded in proprietary knowledge, supporting pre-training on large internal datasets, post-training through supervised fine-tuning with DPO and ODPO, and reinforcement learning pipelines for aligning models with internal policies. Forge is optimized for agentic workflows, allowing AI agents to programmatically schedule training jobs, optimize hyperparameters, and generate synthetic data.
+  description: Mistral AI Forge is a model-training platform providing a unified API for the entire model lifecycle from pre-training to reinforcement learning.
   version: 1.0.0
   contact:
     name: Mistral AI Support
@@ -155,18 +155,88 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    Error:
+    ModelConfig:
       type: object
       properties:
-        message:
+        architecture:
           type: string
-          description: A human-readable error message.
-        type:
+          description: The model architecture to use.
+          enum:
+          - dense
+          - mixture_of_experts
+        base_model:
           type: string
-          description: The type of error.
-        code:
+          description: The base model to start from. Required for post-training and reinforcement learning jobs.
+        num_experts:
           type: integer
-          description: The HTTP status code.
+          description: Number of experts for MoE architecture.
+          minimum: 1
+        active_experts:
+          type: integer
+          description: Number of active experts per token for MoE architecture.
+          minimum: 1
+    CreateTrainingJobRequest:
+      type: object
+      required:
+      - job_type
+      - model_config
+      properties:
+        job_type:
+          type: string
+          description: The type of training job to create.
+          enum:
+          - pre_training
+          - supervised_fine_tuning
+          - dpo
+          - odpo
+          - reinforcement_learning
+        model_config:
+          $ref: '#/components/schemas/ModelConfig'
+        dataset_ids:
+          type: array
+          description: The IDs of datasets to use for training.
+          items:
+            type: string
+            format: uuid
+        hyperparameters:
+          $ref: '#/components/schemas/ForgeHyperparameters'
+        auto_start:
+          type: boolean
+          description: Whether to automatically start the training job after validation.
+          default: false
+    TrainingJob:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The unique identifier for the training job.
+        job_type:
+          type: string
+          description: The type of training job.
+        status:
+          type: string
+          description: The current status of the training job.
+          enum:
+          - QUEUED
+          - VALIDATING
+          - RUNNING
+          - SUCCESS
+          - FAILED
+          - CANCELLED
+        model_config:
+          $ref: '#/components/schemas/ModelConfig'
+        hyperparameters:
+          $ref: '#/components/schemas/ForgeHyperparameters'
+        created_at:
+          type: integer
+          description: Unix timestamp when the job was created.
+        modified_at:
+          type: integer
+          description: Unix timestamp when the job was last modified.
+        output_model:
+          type: string
+          description: The ID of the resulting trained model, available after success.
     ForgeHyperparameters:
       type: object
       properties:
@@ -201,88 +271,18 @@ components:
         total:
           type: integer
           description: The total number of training jobs.
-    CreateTrainingJobRequest:
-      type: object
-      required:
-      - job_type
-      - model_config
-      properties:
-        job_type:
-          type: string
-          description: The type of training job to create.
-          enum:
-          - pre_training
-          - supervised_fine_tuning
-          - dpo
-          - odpo
-          - reinforcement_learning
-        model_config:
-          $ref: '#/components/schemas/ModelConfig'
-        dataset_ids:
-          type: array
-          description: The IDs of datasets to use for training.
-          items:
-            type: string
-            format: uuid
-        hyperparameters:
-          $ref: '#/components/schemas/ForgeHyperparameters'
-        auto_start:
-          type: boolean
-          description: Whether to automatically start the training job after validation.
-          default: false
-    ModelConfig:
+    Error:
       type: object
       properties:
-        architecture:
+        message:
           type: string
-          description: The model architecture to use.
-          enum:
-          - dense
-          - mixture_of_experts
-        base_model:
+          description: A human-readable error message.
+        type:
           type: string
-          description: The base model to start from. Required for post-training and reinforcement learning jobs.
-        num_experts:
+          description: The type of error.
+        code:
           type: integer
-          description: Number of experts for MoE architecture.
-          minimum: 1
-        active_experts:
-          type: integer
-          description: Number of active experts per token for MoE architecture.
-          minimum: 1
-    TrainingJob:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: The unique identifier for the training job.
-        job_type:
-          type: string
-          description: The type of training job.
-        status:
-          type: string
-          description: The current status of the training job.
-          enum:
-          - QUEUED
-          - VALIDATING
-          - RUNNING
-          - SUCCESS
-          - FAILED
-          - CANCELLED
-        model_config:
-          $ref: '#/components/schemas/ModelConfig'
-        hyperparameters:
-          $ref: '#/components/schemas/ForgeHyperparameters'
-        created_at:
-          type: integer
-          description: Unix timestamp when the job was created.
-        modified_at:
-          type: integer
-          description: Unix timestamp when the job was last modified.
-        output_model:
-          type: string
-          description: The ID of the resulting trained model, available after success.
+          description: The HTTP status code.
   securitySchemes:
     bearerAuth:
       type: http

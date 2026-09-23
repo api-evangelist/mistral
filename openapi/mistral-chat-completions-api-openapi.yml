@@ -56,87 +56,6 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-          description: A human-readable error message.
-        type:
-          type: string
-          description: The type of error.
-        code:
-          type: integer
-          description: The HTTP status code.
-    ChatCompletionResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          description: A unique identifier for the chat completion.
-        object:
-          type: string
-          description: The object type, always chat.completion.
-          enum:
-          - chat.completion
-        created:
-          type: integer
-          description: The Unix timestamp in seconds of when the completion was created.
-        model:
-          type: string
-          description: The model used for the chat completion.
-        choices:
-          type: array
-          description: A list of chat completion choices.
-          items:
-            $ref: '#/components/schemas/ChatCompletionChoice'
-        usage:
-          $ref: '#/components/schemas/Usage'
-    Usage:
-      type: object
-      properties:
-        prompt_tokens:
-          type: integer
-          description: Number of tokens in the prompt.
-        completion_tokens:
-          type: integer
-          description: Number of tokens in the generated completion.
-        total_tokens:
-          type: integer
-          description: Total number of tokens used in the request.
-    Tool:
-      type: object
-      required:
-      - type
-      - function
-      properties:
-        type:
-          type: string
-          enum:
-          - function
-          description: The type of the tool. Currently only function is supported.
-        function:
-          $ref: '#/components/schemas/FunctionDefinition'
-    ToolCall:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The ID of the tool call.
-        type:
-          type: string
-          enum:
-          - function
-          description: The type of the tool call.
-        function:
-          type: object
-          properties:
-            name:
-              type: string
-              description: The name of the function to call.
-            arguments:
-              type: string
-              description: The arguments to call the function with, as a JSON string.
     FunctionDefinition:
       type: object
       required:
@@ -180,22 +99,75 @@ components:
         tool_call_id:
           type: string
           description: The ID of the tool call this message is responding to, required for tool role messages.
-    ChatCompletionChoice:
+    ToolCall:
       type: object
       properties:
-        index:
-          type: integer
-          description: The index of the choice in the list of choices.
-        message:
-          $ref: '#/components/schemas/ChatMessage'
-        finish_reason:
+        id:
           type: string
-          description: The reason the model stopped generating tokens.
+          description: The ID of the tool call.
+        type:
+          type: string
           enum:
-          - stop
-          - length
-          - tool_calls
-          - model_length
+          - function
+          description: The type of the tool call.
+        function:
+          type: object
+          properties:
+            name:
+              type: string
+              description: The name of the function to call.
+            arguments:
+              type: string
+              description: The arguments to call the function with, as a JSON string.
+    Tool:
+      type: object
+      required:
+      - type
+      - function
+      properties:
+        type:
+          type: string
+          enum:
+          - function
+          description: The type of the tool. Currently only function is supported.
+        function:
+          $ref: '#/components/schemas/FunctionDefinition'
+    ChatCompletionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A unique identifier for the chat completion.
+        object:
+          type: string
+          description: The object type, always chat.completion.
+          enum:
+          - chat.completion
+        created:
+          type: integer
+          description: The Unix timestamp in seconds of when the completion was created.
+        model:
+          type: string
+          description: The model used for the chat completion.
+        choices:
+          type: array
+          description: A list of chat completion choices.
+          items:
+            $ref: '#/components/schemas/ChatCompletionChoice'
+        usage:
+          $ref: '#/components/schemas/Usage'
+    Usage:
+      type: object
+      properties:
+        prompt_tokens:
+          type: integer
+          description: Number of tokens in the prompt.
+        completion_tokens:
+          type: integer
+          description: Number of tokens in the generated completion.
+        total_tokens:
+          type: integer
+          description: Total number of tokens used in the request.
     ChatCompletionRequest:
       type: object
       required:
@@ -280,6 +252,34 @@ components:
           type: boolean
           description: Whether to inject a safety prompt before all conversations.
           default: false
+    ChatCompletionChoice:
+      type: object
+      properties:
+        index:
+          type: integer
+          description: The index of the choice in the list of choices.
+        message:
+          $ref: '#/components/schemas/ChatMessage'
+        finish_reason:
+          type: string
+          description: The reason the model stopped generating tokens.
+          enum:
+          - stop
+          - length
+          - tool_calls
+          - model_length
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: A human-readable error message.
+        type:
+          type: string
+          description: The type of error.
+        code:
+          type: integer
+          description: The HTTP status code.
   securitySchemes:
     bearerAuth:
       type: http

@@ -117,23 +117,6 @@ components:
           type: boolean
           default: false
           description: Whether to enable speaker diarization
-    Word:
-      type: object
-      properties:
-        word:
-          type: string
-          description: The transcribed word
-        start:
-          type: number
-          description: Start time in seconds
-        end:
-          type: number
-          description: End time in seconds
-        speaker:
-          type:
-          - integer
-          - 'null'
-          description: Speaker ID if diarization is enabled
     TranscriptionResponse:
       type: object
       properties:
@@ -156,6 +139,23 @@ components:
           items:
             $ref: '#/components/schemas/Segment'
           description: Segment-level details when verbose_json format is used
+    Word:
+      type: object
+      properties:
+        word:
+          type: string
+          description: The transcribed word
+        start:
+          type: number
+          description: Start time in seconds
+        end:
+          type: number
+          description: End time in seconds
+        speaker:
+          type:
+          - integer
+          - 'null'
+          description: Speaker ID if diarization is enabled
   securitySchemes:
     bearerAuth:
       type: http

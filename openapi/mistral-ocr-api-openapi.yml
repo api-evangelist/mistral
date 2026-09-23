@@ -45,40 +45,29 @@ paths:
           description: Rate limit exceeded
 components:
   schemas:
-    ExtractedImage:
+    DocumentInput:
       type: object
+      required:
+      - type
       properties:
-        id:
+        type:
           type: string
-          description: Image identifier referenced in the Markdown
-        top_left_x:
-          type: integer
-        top_left_y:
-          type: integer
-        bottom_right_x:
-          type: integer
-        bottom_right_y:
-          type: integer
-        image_base64:
+          enum:
+          - document_url
+          - image_url
+          - file_id
+          description: The type of document input
+        document_url:
           type: string
-          description: Base64-encoded image data if requested
-    OcrResponse:
-      type: object
-      properties:
-        pages:
-          type: array
-          items:
-            $ref: '#/components/schemas/OcrPage'
-        model:
+          format: uri
+          description: URL of the document to process
+        image_url:
           type: string
-          description: The model used for OCR
-        usage:
-          type: object
-          properties:
-            pages_processed:
-              type: integer
-            doc_size_bytes:
-              type: integer
+          format: uri
+          description: URL of the image to process
+        file_id:
+          type: string
+          description: ID of a previously uploaded file
     OcrRequest:
       type: object
       required:
@@ -127,29 +116,40 @@ components:
               type: integer
             height:
               type: integer
-    DocumentInput:
+    OcrResponse:
       type: object
-      required:
-      - type
       properties:
-        type:
+        pages:
+          type: array
+          items:
+            $ref: '#/components/schemas/OcrPage'
+        model:
           type: string
-          enum:
-          - document_url
-          - image_url
-          - file_id
-          description: The type of document input
-        document_url:
+          description: The model used for OCR
+        usage:
+          type: object
+          properties:
+            pages_processed:
+              type: integer
+            doc_size_bytes:
+              type: integer
+    ExtractedImage:
+      type: object
+      properties:
+        id:
           type: string
-          format: uri
-          description: URL of the document to process
-        image_url:
+          description: Image identifier referenced in the Markdown
+        top_left_x:
+          type: integer
+        top_left_y:
+          type: integer
+        bottom_right_x:
+          type: integer
+        bottom_right_y:
+          type: integer
+        image_base64:
           type: string
-          format: uri
-          description: URL of the image to process
-        file_id:
-          type: string
-          description: ID of a previously uploaded file
+          description: Base64-encoded image data if requested
   securitySchemes:
     bearerAuth:
       type: http

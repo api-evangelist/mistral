@@ -71,6 +71,44 @@ paths:
           description: Rate limit exceeded
 components:
   schemas:
+    ChatModerationRequest:
+      type: object
+      required:
+      - model
+      - input
+      properties:
+        model:
+          type: string
+          description: The moderation model to use
+          examples:
+          - mistral-moderation-latest
+        input:
+          type: array
+          items:
+            type: object
+            properties:
+              role:
+                type: string
+                enum:
+                - system
+                - user
+                - assistant
+              content:
+                type: string
+          description: Chat messages to classify
+    ModerationResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the moderation request
+        model:
+          type: string
+          description: The model used for moderation
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ModerationResult'
     ModerationResult:
       type: object
       properties:
@@ -118,44 +156,6 @@ components:
               type: number
             pii:
               type: number
-    ChatModerationRequest:
-      type: object
-      required:
-      - model
-      - input
-      properties:
-        model:
-          type: string
-          description: The moderation model to use
-          examples:
-          - mistral-moderation-latest
-        input:
-          type: array
-          items:
-            type: object
-            properties:
-              role:
-                type: string
-                enum:
-                - system
-                - user
-                - assistant
-              content:
-                type: string
-          description: Chat messages to classify
-    ModerationResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier for the moderation request
-        model:
-          type: string
-          description: The model used for moderation
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/ModerationResult'
     ModerationRequest:
       type: object
       required:

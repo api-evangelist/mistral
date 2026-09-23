@@ -185,6 +185,15 @@ paths:
         '404':
           description: File not found
 components:
+  parameters:
+    fileId:
+      name: file_id
+      in: path
+      required: true
+      description: The unique identifier of the file
+      schema:
+        type: string
+        format: uuid
   schemas:
     File:
       type: object
@@ -250,15 +259,6 @@ components:
           type: string
           enum:
           - list
-  parameters:
-    fileId:
-      name: file_id
-      in: path
-      required: true
-      description: The unique identifier of the file
-      schema:
-        type: string
-        format: uuid
   securitySchemes:
     bearerAuth:
       type: http
