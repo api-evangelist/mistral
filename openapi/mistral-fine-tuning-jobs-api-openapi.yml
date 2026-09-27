@@ -152,112 +152,6 @@ paths:
           description: Job not found
 components:
   schemas:
-    TrainingFile:
-      type: object
-      required:
-      - file_id
-      properties:
-        file_id:
-          type: string
-          format: uuid
-          description: ID of the uploaded training file
-        weight:
-          type: number
-          minimum: 0
-          description: Relative weight of this training file
-    FineTuningJobList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/FineTuningJob'
-        total:
-          type: integer
-          description: Total number of jobs
-    Hyperparameters:
-      type: object
-      properties:
-        training_steps:
-          type: integer
-          minimum: 1
-          description: Number of training steps
-        learning_rate:
-          type: number
-          minimum: 0
-          description: Learning rate for training
-        weight_decay:
-          type: number
-          minimum: 0
-          description: Weight decay regularization
-        warmup_fraction:
-          type: number
-          minimum: 0
-          maximum: 1
-          description: Fraction of steps for learning rate warmup
-        epochs:
-          type: number
-          minimum: 0
-          description: Number of training epochs
-        seq_len:
-          type: integer
-          description: Maximum sequence length
-    Integration:
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-          enum:
-          - wandb
-          description: Integration type
-        project:
-          type: string
-          description: Project name for the integration
-        name:
-          type: string
-          description: Run name for the integration
-        api_key:
-          type: string
-          description: API key for the integration service
-    CreateFineTuningJobRequest:
-      type: object
-      required:
-      - model
-      - training_files
-      properties:
-        model:
-          type: string
-          description: The base model to fine-tune
-          examples:
-          - open-mistral-7b
-          - mistral-small-latest
-        training_files:
-          type: array
-          items:
-            $ref: '#/components/schemas/TrainingFile'
-          description: Training data file references
-        validation_files:
-          type: array
-          items:
-            $ref: '#/components/schemas/TrainingFile'
-          description: Validation data file references
-        hyperparameters:
-          $ref: '#/components/schemas/Hyperparameters'
-        suffix:
-          type: string
-          maxLength: 18
-          description: Suffix appended to the fine-tuned model name
-        integrations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Integration'
-          description: Third-party integrations for tracking
-        auto_start:
-          type: boolean
-          default: true
-          description: Whether to start training after validation
     FineTuningJob:
       type: object
       properties:
@@ -314,6 +208,112 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Integration'
+    CreateFineTuningJobRequest:
+      type: object
+      required:
+      - model
+      - training_files
+      properties:
+        model:
+          type: string
+          description: The base model to fine-tune
+          examples:
+          - open-mistral-7b
+          - mistral-small-latest
+        training_files:
+          type: array
+          items:
+            $ref: '#/components/schemas/TrainingFile'
+          description: Training data file references
+        validation_files:
+          type: array
+          items:
+            $ref: '#/components/schemas/TrainingFile'
+          description: Validation data file references
+        hyperparameters:
+          $ref: '#/components/schemas/Hyperparameters'
+        suffix:
+          type: string
+          maxLength: 18
+          description: Suffix appended to the fine-tuned model name
+        integrations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Integration'
+          description: Third-party integrations for tracking
+        auto_start:
+          type: boolean
+          default: true
+          description: Whether to start training after validation
+    Integration:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          enum:
+          - wandb
+          description: Integration type
+        project:
+          type: string
+          description: Project name for the integration
+        name:
+          type: string
+          description: Run name for the integration
+        api_key:
+          type: string
+          description: API key for the integration service
+    FineTuningJobList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/FineTuningJob'
+        total:
+          type: integer
+          description: Total number of jobs
+    TrainingFile:
+      type: object
+      required:
+      - file_id
+      properties:
+        file_id:
+          type: string
+          format: uuid
+          description: ID of the uploaded training file
+        weight:
+          type: number
+          minimum: 0
+          description: Relative weight of this training file
+    Hyperparameters:
+      type: object
+      properties:
+        training_steps:
+          type: integer
+          minimum: 1
+          description: Number of training steps
+        learning_rate:
+          type: number
+          minimum: 0
+          description: Learning rate for training
+        weight_decay:
+          type: number
+          minimum: 0
+          description: Weight decay regularization
+        warmup_fraction:
+          type: number
+          minimum: 0
+          maximum: 1
+          description: Fraction of steps for learning rate warmup
+        epochs:
+          type: number
+          minimum: 0
+          description: Number of training epochs
+        seq_len:
+          type: integer
+          description: Maximum sequence length
   parameters:
     jobId:
       name: job_id

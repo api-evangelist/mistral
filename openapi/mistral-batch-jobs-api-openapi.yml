@@ -124,19 +124,6 @@ paths:
           description: Job not found
 components:
   schemas:
-    BatchJobList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/BatchJob'
-        total:
-          type: integer
-        object:
-          type: string
-          enum:
-          - list
     BatchJob:
       type: object
       properties:
@@ -212,6 +199,19 @@ components:
         failed_requests:
           type: integer
           description: Number of failed requests
+    BatchJobList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BatchJob'
+        total:
+          type: integer
+        object:
+          type: string
+          enum:
+          - list
     CreateBatchJobRequest:
       type: object
       required:
