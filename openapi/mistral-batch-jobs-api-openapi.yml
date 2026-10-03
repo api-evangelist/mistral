@@ -199,19 +199,6 @@ components:
         failed_requests:
           type: integer
           description: Number of failed requests
-    BatchJobList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/BatchJob'
-        total:
-          type: integer
-        object:
-          type: string
-          enum:
-          - list
     CreateBatchJobRequest:
       type: object
       required:
@@ -247,6 +234,19 @@ components:
           type: integer
           default: 24
           description: Maximum time in hours before the job times out
+    BatchJobList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BatchJob'
+        total:
+          type: integer
+        object:
+          type: string
+          enum:
+          - list
   parameters:
     jobId:
       name: job_id

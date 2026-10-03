@@ -64,15 +64,6 @@ components:
           description: The model used to generate the embeddings
         usage:
           $ref: '#/components/schemas/Usage'
-    Usage:
-      type: object
-      properties:
-        prompt_tokens:
-          type: integer
-          description: Number of tokens in the input
-        total_tokens:
-          type: integer
-          description: Total tokens used
     EmbeddingRequest:
       type: object
       required:
@@ -97,6 +88,15 @@ components:
           - float
           default: float
           description: The format of the output embeddings
+    Usage:
+      type: object
+      properties:
+        prompt_tokens:
+          type: integer
+          description: Number of tokens in the input
+        total_tokens:
+          type: integer
+          description: Total tokens used
     Embedding:
       type: object
       properties:

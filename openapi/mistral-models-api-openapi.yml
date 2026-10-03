@@ -140,46 +140,7 @@ paths:
         '404':
           description: Model not found
 components:
-  parameters:
-    modelId:
-      name: model_id
-      in: path
-      required: true
-      description: The unique identifier of the model
-      schema:
-        type: string
   schemas:
-    UpdateModelRequest:
-      type: object
-      properties:
-        name:
-          type: string
-          description: New name for the model
-        description:
-          type: string
-          description: New description for the model
-    DeleteModelResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        object:
-          type: string
-          enum:
-          - model
-        deleted:
-          type: boolean
-    ModelList:
-      type: object
-      properties:
-        object:
-          type: string
-          enum:
-          - list
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Model'
     Model:
       type: object
       properties:
@@ -240,6 +201,45 @@ components:
           - base
           - fine-tuned
           description: Whether this is a base or fine-tuned model
+    UpdateModelRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: New name for the model
+        description:
+          type: string
+          description: New description for the model
+    ModelList:
+      type: object
+      properties:
+        object:
+          type: string
+          enum:
+          - list
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Model'
+    DeleteModelResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+          enum:
+          - model
+        deleted:
+          type: boolean
+  parameters:
+    modelId:
+      name: model_id
+      in: path
+      required: true
+      description: The unique identifier of the model
+      schema:
+        type: string
   securitySchemes:
     bearerAuth:
       type: http

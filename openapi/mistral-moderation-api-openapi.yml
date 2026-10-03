@@ -71,19 +71,6 @@ paths:
           description: Rate limit exceeded
 components:
   schemas:
-    ModerationResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier for the moderation request
-        model:
-          type: string
-          description: The model used for moderation
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/ModerationResult'
     ChatModerationRequest:
       type: object
       required:
@@ -109,6 +96,19 @@ components:
               content:
                 type: string
           description: Chat messages to classify
+    ModerationResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the moderation request
+        model:
+          type: string
+          description: The model used for moderation
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ModerationResult'
     ModerationRequest:
       type: object
       required:

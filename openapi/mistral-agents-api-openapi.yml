@@ -50,40 +50,67 @@ paths:
           description: Rate limit exceeded
 components:
   schemas:
-    Message:
+    AgentCompletionResponse:
       type: object
-      required:
-      - role
-      - content
       properties:
-        role:
+        id:
+          type: string
+        object:
           type: string
           enum:
-          - system
-          - user
-          - assistant
-          - tool
-        content:
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: object
-        tool_calls:
+          - chat.completion
+        created:
+          type: integer
+        model:
+          type: string
+        choices:
           type: array
           items:
-            $ref: '#/components/schemas/ToolCall'
-        tool_call_id:
-          type: string
-    Usage:
+            $ref: '#/components/schemas/Choice'
+        usage:
+          $ref: '#/components/schemas/Usage'
+    AgentCompletionStreamResponse:
       type: object
       properties:
-        prompt_tokens:
+        id:
+          type: string
+        object:
+          type: string
+          enum:
+          - chat.completion.chunk
+        created:
           type: integer
-        completion_tokens:
-          type: integer
-        total_tokens:
-          type: integer
+        model:
+          type: string
+        choices:
+          type: array
+          items:
+            type: object
+            properties:
+              index:
+                type: integer
+              delta:
+                $ref: '#/components/schemas/Message'
+              finish_reason:
+                type:
+                - string
+                - 'null'
+    ToolCall:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum:
+          - function
+        function:
+          type: object
+          properties:
+            name:
+              type: string
+            arguments:
+              type: string
     AgentCompletionRequest:
       type: object
       required:
@@ -132,6 +159,15 @@ components:
           - any
           default: auto
           description: Controls how the agent uses tools
+    Usage:
+      type: object
+      properties:
+        prompt_tokens:
+          type: integer
+        completion_tokens:
+          type: integer
+        total_tokens:
+          type: integer
     Choice:
       type: object
       properties:
@@ -146,67 +182,31 @@ components:
           - length
           - tool_calls
           - model_length
-    AgentCompletionResponse:
+    Message:
       type: object
+      required:
+      - role
+      - content
       properties:
-        id:
-          type: string
-        object:
+        role:
           type: string
           enum:
-          - chat.completion
-        created:
-          type: integer
-        model:
-          type: string
-        choices:
+          - system
+          - user
+          - assistant
+          - tool
+        content:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: object
+        tool_calls:
           type: array
           items:
-            $ref: '#/components/schemas/Choice'
-        usage:
-          $ref: '#/components/schemas/Usage'
-    ToolCall:
-      type: object
-      properties:
-        id:
+            $ref: '#/components/schemas/ToolCall'
+        tool_call_id:
           type: string
-        type:
-          type: string
-          enum:
-          - function
-        function:
-          type: object
-          properties:
-            name:
-              type: string
-            arguments:
-              type: string
-    AgentCompletionStreamResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        object:
-          type: string
-          enum:
-          - chat.completion.chunk
-        created:
-          type: integer
-        model:
-          type: string
-        choices:
-          type: array
-          items:
-            type: object
-            properties:
-              index:
-                type: integer
-              delta:
-                $ref: '#/components/schemas/Message'
-              finish_reason:
-                type:
-                - string
-                - 'null'
   securitySchemes:
     bearerAuth:
       type: http

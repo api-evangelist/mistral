@@ -45,6 +45,43 @@ paths:
           description: Rate limit exceeded
 components:
   schemas:
+    Segment:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Segment index
+        start:
+          type: number
+          description: Start time in seconds
+        end:
+          type: number
+          description: End time in seconds
+        text:
+          type: string
+          description: Transcribed text for this segment
+        speaker:
+          type:
+          - integer
+          - 'null'
+          description: Speaker ID if diarization is enabled
+    Word:
+      type: object
+      properties:
+        word:
+          type: string
+          description: The transcribed word
+        start:
+          type: number
+          description: Start time in seconds
+        end:
+          type: number
+          description: End time in seconds
+        speaker:
+          type:
+          - integer
+          - 'null'
+          description: Speaker ID if diarization is enabled
     TranscriptionRequest:
       type: object
       required:
@@ -97,43 +134,6 @@ components:
           type: boolean
           default: false
           description: Whether to enable speaker diarization
-    Segment:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Segment index
-        start:
-          type: number
-          description: Start time in seconds
-        end:
-          type: number
-          description: End time in seconds
-        text:
-          type: string
-          description: Transcribed text for this segment
-        speaker:
-          type:
-          - integer
-          - 'null'
-          description: Speaker ID if diarization is enabled
-    Word:
-      type: object
-      properties:
-        word:
-          type: string
-          description: The transcribed word
-        start:
-          type: number
-          description: Start time in seconds
-        end:
-          type: number
-          description: End time in seconds
-        speaker:
-          type:
-          - integer
-          - 'null'
-          description: Speaker ID if diarization is enabled
     TranscriptionResponse:
       type: object
       properties:
