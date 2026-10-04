@@ -45,43 +45,6 @@ paths:
           description: Rate limit exceeded
 components:
   schemas:
-    OcrPage:
-      type: object
-      properties:
-        index:
-          type: integer
-          description: Zero-based page index
-        markdown:
-          type: string
-          description: Extracted content in Markdown format
-        images:
-          type: array
-          items:
-            $ref: '#/components/schemas/ExtractedImage'
-        dimensions:
-          type: object
-          properties:
-            width:
-              type: integer
-            height:
-              type: integer
-    ExtractedImage:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Image identifier referenced in the Markdown
-        top_left_x:
-          type: integer
-        top_left_y:
-          type: integer
-        bottom_right_x:
-          type: integer
-        bottom_right_y:
-          type: integer
-        image_base64:
-          type: string
-          description: Base64-encoded image data if requested
     DocumentInput:
       type: object
       required:
@@ -105,6 +68,43 @@ components:
         file_id:
           type: string
           description: ID of a previously uploaded file
+    OcrPage:
+      type: object
+      properties:
+        index:
+          type: integer
+          description: Zero-based page index
+        markdown:
+          type: string
+          description: Extracted content in Markdown format
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExtractedImage'
+        dimensions:
+          type: object
+          properties:
+            width:
+              type: integer
+            height:
+              type: integer
+    OcrResponse:
+      type: object
+      properties:
+        pages:
+          type: array
+          items:
+            $ref: '#/components/schemas/OcrPage'
+        model:
+          type: string
+          description: The model used for OCR
+        usage:
+          type: object
+          properties:
+            pages_processed:
+              type: integer
+            doc_size_bytes:
+              type: integer
     OcrRequest:
       type: object
       required:
@@ -133,23 +133,23 @@ components:
         image_min_size:
           type: integer
           description: Minimum image dimension in pixels to extract
-    OcrResponse:
+    ExtractedImage:
       type: object
       properties:
-        pages:
-          type: array
-          items:
-            $ref: '#/components/schemas/OcrPage'
-        model:
+        id:
           type: string
-          description: The model used for OCR
-        usage:
-          type: object
-          properties:
-            pages_processed:
-              type: integer
-            doc_size_bytes:
-              type: integer
+          description: Image identifier referenced in the Markdown
+        top_left_x:
+          type: integer
+        top_left_y:
+          type: integer
+        bottom_right_x:
+          type: integer
+        bottom_right_y:
+          type: integer
+        image_base64:
+          type: string
+          description: Base64-encoded image data if requested
   securitySchemes:
     bearerAuth:
       type: http

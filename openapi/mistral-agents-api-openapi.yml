@@ -50,51 +50,29 @@ paths:
           description: Rate limit exceeded
 components:
   schemas:
-    AgentCompletionResponse:
+    Usage:
       type: object
       properties:
-        id:
-          type: string
-        object:
-          type: string
-          enum:
-          - chat.completion
-        created:
+        prompt_tokens:
           type: integer
-        model:
-          type: string
-        choices:
-          type: array
-          items:
-            $ref: '#/components/schemas/Choice'
-        usage:
-          $ref: '#/components/schemas/Usage'
-    AgentCompletionStreamResponse:
+        completion_tokens:
+          type: integer
+        total_tokens:
+          type: integer
+    Choice:
       type: object
       properties:
-        id:
-          type: string
-        object:
+        index:
+          type: integer
+        message:
+          $ref: '#/components/schemas/Message'
+        finish_reason:
           type: string
           enum:
-          - chat.completion.chunk
-        created:
-          type: integer
-        model:
-          type: string
-        choices:
-          type: array
-          items:
-            type: object
-            properties:
-              index:
-                type: integer
-              delta:
-                $ref: '#/components/schemas/Message'
-              finish_reason:
-                type:
-                - string
-                - 'null'
+          - stop
+          - length
+          - tool_calls
+          - model_length
     ToolCall:
       type: object
       properties:
@@ -159,29 +137,25 @@ components:
           - any
           default: auto
           description: Controls how the agent uses tools
-    Usage:
+    AgentCompletionResponse:
       type: object
       properties:
-        prompt_tokens:
-          type: integer
-        completion_tokens:
-          type: integer
-        total_tokens:
-          type: integer
-    Choice:
-      type: object
-      properties:
-        index:
-          type: integer
-        message:
-          $ref: '#/components/schemas/Message'
-        finish_reason:
+        id:
+          type: string
+        object:
           type: string
           enum:
-          - stop
-          - length
-          - tool_calls
-          - model_length
+          - chat.completion
+        created:
+          type: integer
+        model:
+          type: string
+        choices:
+          type: array
+          items:
+            $ref: '#/components/schemas/Choice'
+        usage:
+          $ref: '#/components/schemas/Usage'
     Message:
       type: object
       required:
@@ -207,6 +181,32 @@ components:
             $ref: '#/components/schemas/ToolCall'
         tool_call_id:
           type: string
+    AgentCompletionStreamResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+          enum:
+          - chat.completion.chunk
+        created:
+          type: integer
+        model:
+          type: string
+        choices:
+          type: array
+          items:
+            type: object
+            properties:
+              index:
+                type: integer
+              delta:
+                $ref: '#/components/schemas/Message'
+              finish_reason:
+                type:
+                - string
+                - 'null'
   securitySchemes:
     bearerAuth:
       type: http

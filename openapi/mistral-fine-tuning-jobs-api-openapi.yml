@@ -151,39 +151,7 @@ paths:
         '404':
           description: Job not found
 components:
-  parameters:
-    jobId:
-      name: job_id
-      in: path
-      required: true
-      description: The unique identifier of the fine-tuning job
-      schema:
-        type: string
-        format: uuid
   schemas:
-    TrainingFile:
-      type: object
-      required:
-      - file_id
-      properties:
-        file_id:
-          type: string
-          format: uuid
-          description: ID of the uploaded training file
-        weight:
-          type: number
-          minimum: 0
-          description: Relative weight of this training file
-    FineTuningJobList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/FineTuningJob'
-        total:
-          type: integer
-          description: Total number of jobs
     FineTuningJob:
       type: object
       properties:
@@ -240,6 +208,16 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Integration'
+    FineTuningJobList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/FineTuningJob'
+        total:
+          type: integer
+          description: Total number of jobs
     Hyperparameters:
       type: object
       properties:
@@ -267,6 +245,25 @@ components:
         seq_len:
           type: integer
           description: Maximum sequence length
+    Integration:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          enum:
+          - wandb
+          description: Integration type
+        project:
+          type: string
+          description: Project name for the integration
+        name:
+          type: string
+          description: Run name for the integration
+        api_key:
+          type: string
+          description: API key for the integration service
     CreateFineTuningJobRequest:
       type: object
       required:
@@ -304,25 +301,28 @@ components:
           type: boolean
           default: true
           description: Whether to start training after validation
-    Integration:
+    TrainingFile:
       type: object
       required:
-      - type
+      - file_id
       properties:
-        type:
+        file_id:
           type: string
-          enum:
-          - wandb
-          description: Integration type
-        project:
-          type: string
-          description: Project name for the integration
-        name:
-          type: string
-          description: Run name for the integration
-        api_key:
-          type: string
-          description: API key for the integration service
+          format: uuid
+          description: ID of the uploaded training file
+        weight:
+          type: number
+          minimum: 0
+          description: Relative weight of this training file
+  parameters:
+    jobId:
+      name: job_id
+      in: path
+      required: true
+      description: The unique identifier of the fine-tuning job
+      schema:
+        type: string
+        format: uuid
   securitySchemes:
     bearerAuth:
       type: http

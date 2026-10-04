@@ -123,6 +123,15 @@ paths:
         '404':
           description: Job not found
 components:
+  parameters:
+    jobId:
+      name: job_id
+      in: path
+      required: true
+      description: The unique identifier of the batch job
+      schema:
+        type: string
+        format: uuid
   schemas:
     BatchJob:
       type: object
@@ -247,15 +256,6 @@ components:
           type: string
           enum:
           - list
-  parameters:
-    jobId:
-      name: job_id
-      in: path
-      required: true
-      description: The unique identifier of the batch job
-      schema:
-        type: string
-        format: uuid
   securitySchemes:
     bearerAuth:
       type: http

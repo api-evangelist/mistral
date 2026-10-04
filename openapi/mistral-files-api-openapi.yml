@@ -186,32 +186,6 @@ paths:
           description: File not found
 components:
   schemas:
-    DeleteFileResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        object:
-          type: string
-          enum:
-          - file
-        deleted:
-          type: boolean
-    FileList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/File'
-        total:
-          type: integer
-          description: Total number of files
-        object:
-          type: string
-          enum:
-          - list
     File:
       type: object
       properties:
@@ -250,6 +224,32 @@ components:
           - upload
           - repository
           description: How the file was created
+    DeleteFileResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        object:
+          type: string
+          enum:
+          - file
+        deleted:
+          type: boolean
+    FileList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/File'
+        total:
+          type: integer
+          description: Total number of files
+        object:
+          type: string
+          enum:
+          - list
   parameters:
     fileId:
       name: file_id
