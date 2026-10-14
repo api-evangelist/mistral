@@ -70,3 +70,15 @@
   relationship: system-coverage
   status: not-a-workflow
   arazzo: null
+- slug: mistral-visual-studio-code-marketplace
+  label: Visual Studio Code Marketplace
+  partner: vs-code-marketplace
+  partner_name: Visual Studio Code Marketplace
+  type: marketplace
+  marketplace: vscode
+  channel: partner-built
+  evidence: https://marketplace.visualstudio.com/publishers/mistralai
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null

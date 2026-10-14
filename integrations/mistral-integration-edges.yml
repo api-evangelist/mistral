@@ -6,6 +6,7 @@ checked:
 - https://developers.cloudflare.com/ai-gateway/usage/providers/
 - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json
 - https://github.com/Portkey-AI/gateway/tree/main/src/providers
+- https://marketplace.visualstudio.com/vscode
 - https://openrouter.ai/api/v1/models
 marketplace_apps: []
 edges:
@@ -132,3 +133,24 @@ edges:
   matched_by: verified-token-table
   detected_by: sweep-model-routing.py
   first_seen: '2026-10-13'
+- partner_name: Visual Studio Code Marketplace
+  partner: vs-code-marketplace
+  partner_match: aggregator
+  type: marketplace
+  marketplace: vscode
+  channel: partner-built
+  relationship: platform-app
+  direction: third-party
+  evidence: https://marketplace.visualstudio.com/publishers/mistralai
+  listing_count: 2
+  apps:
+  - Mistral Vibe VS Code
+  - Mistral Code Enterprise
+  publisher_name: Mistral AI
+  badges:
+  - Verified publisher
+  - Verified domain
+  detected_by: sweep-devtools.py
+  detected: '2026-10-14'
+source:
+- https://marketplace.visualstudio.com/vscode
