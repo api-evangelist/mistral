@@ -45,6 +45,48 @@ paths:
           description: Rate limit exceeded
 components:
   schemas:
+    TranscriptionResponse:
+      type: object
+      properties:
+        text:
+          type: string
+          description: The full transcribed text
+        language:
+          type: string
+          description: Detected or specified language code
+        duration:
+          type: number
+          description: Duration of the audio in seconds
+        words:
+          type: array
+          items:
+            $ref: '#/components/schemas/Word'
+          description: Word-level details when verbose_json format is used
+        segments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Segment'
+          description: Segment-level details when verbose_json format is used
+    Segment:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Segment index
+        start:
+          type: number
+          description: Start time in seconds
+        end:
+          type: number
+          description: End time in seconds
+        text:
+          type: string
+          description: Transcribed text for this segment
+        speaker:
+          type:
+          - integer
+          - 'null'
+          description: Speaker ID if diarization is enabled
     TranscriptionRequest:
       type: object
       required:
@@ -109,48 +151,6 @@ components:
         end:
           type: number
           description: End time in seconds
-        speaker:
-          type:
-          - integer
-          - 'null'
-          description: Speaker ID if diarization is enabled
-    TranscriptionResponse:
-      type: object
-      properties:
-        text:
-          type: string
-          description: The full transcribed text
-        language:
-          type: string
-          description: Detected or specified language code
-        duration:
-          type: number
-          description: Duration of the audio in seconds
-        words:
-          type: array
-          items:
-            $ref: '#/components/schemas/Word'
-          description: Word-level details when verbose_json format is used
-        segments:
-          type: array
-          items:
-            $ref: '#/components/schemas/Segment'
-          description: Segment-level details when verbose_json format is used
-    Segment:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Segment index
-        start:
-          type: number
-          description: Start time in seconds
-        end:
-          type: number
-          description: End time in seconds
-        text:
-          type: string
-          description: Transcribed text for this segment
         speaker:
           type:
           - integer

@@ -141,6 +141,26 @@ paths:
           description: Model not found
 components:
   schemas:
+    UpdateModelRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: New name for the model
+        description:
+          type: string
+          description: New description for the model
+    DeleteModelResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+          enum:
+          - model
+        deleted:
+          type: boolean
     ModelList:
       type: object
       properties:
@@ -212,26 +232,6 @@ components:
           - base
           - fine-tuned
           description: Whether this is a base or fine-tuned model
-    DeleteModelResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        object:
-          type: string
-          enum:
-          - model
-        deleted:
-          type: boolean
-    UpdateModelRequest:
-      type: object
-      properties:
-        name:
-          type: string
-          description: New name for the model
-        description:
-          type: string
-          description: New description for the model
   parameters:
     modelId:
       name: model_id

@@ -45,29 +45,23 @@ paths:
           description: Rate limit exceeded
 components:
   schemas:
-    DocumentInput:
+    OcrResponse:
       type: object
-      required:
-      - type
       properties:
-        type:
+        pages:
+          type: array
+          items:
+            $ref: '#/components/schemas/OcrPage'
+        model:
           type: string
-          enum:
-          - document_url
-          - image_url
-          - file_id
-          description: The type of document input
-        document_url:
-          type: string
-          format: uri
-          description: URL of the document to process
-        image_url:
-          type: string
-          format: uri
-          description: URL of the image to process
-        file_id:
-          type: string
-          description: ID of a previously uploaded file
+          description: The model used for OCR
+        usage:
+          type: object
+          properties:
+            pages_processed:
+              type: integer
+            doc_size_bytes:
+              type: integer
     OcrPage:
       type: object
       properties:
@@ -87,23 +81,6 @@ components:
             width:
               type: integer
             height:
-              type: integer
-    OcrResponse:
-      type: object
-      properties:
-        pages:
-          type: array
-          items:
-            $ref: '#/components/schemas/OcrPage'
-        model:
-          type: string
-          description: The model used for OCR
-        usage:
-          type: object
-          properties:
-            pages_processed:
-              type: integer
-            doc_size_bytes:
               type: integer
     OcrRequest:
       type: object
@@ -150,6 +127,29 @@ components:
         image_base64:
           type: string
           description: Base64-encoded image data if requested
+    DocumentInput:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          enum:
+          - document_url
+          - image_url
+          - file_id
+          description: The type of document input
+        document_url:
+          type: string
+          format: uri
+          description: URL of the document to process
+        image_url:
+          type: string
+          format: uri
+          description: URL of the image to process
+        file_id:
+          type: string
+          description: ID of a previously uploaded file
   securitySchemes:
     bearerAuth:
       type: http

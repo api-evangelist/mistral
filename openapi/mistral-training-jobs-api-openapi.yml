@@ -155,29 +155,6 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-          description: A human-readable error message.
-        type:
-          type: string
-          description: The type of error.
-        code:
-          type: integer
-          description: The HTTP status code.
-    TrainingJobList:
-      type: object
-      properties:
-        data:
-          type: array
-          description: A list of training jobs.
-          items:
-            $ref: '#/components/schemas/TrainingJob'
-        total:
-          type: integer
-          description: The total number of training jobs.
     ForgeHyperparameters:
       type: object
       properties:
@@ -201,26 +178,18 @@ components:
           type: integer
           description: Number of warmup steps.
           minimum: 0
-    ModelConfig:
+    Error:
       type: object
       properties:
-        architecture:
+        message:
           type: string
-          description: The model architecture to use.
-          enum:
-          - dense
-          - mixture_of_experts
-        base_model:
+          description: A human-readable error message.
+        type:
           type: string
-          description: The base model to start from. Required for post-training and reinforcement learning jobs.
-        num_experts:
+          description: The type of error.
+        code:
           type: integer
-          description: Number of experts for MoE architecture.
-          minimum: 1
-        active_experts:
-          type: integer
-          description: Number of active experts per token for MoE architecture.
-          minimum: 1
+          description: The HTTP status code.
     TrainingJob:
       type: object
       properties:
@@ -254,6 +223,37 @@ components:
         output_model:
           type: string
           description: The ID of the resulting trained model, available after success.
+    ModelConfig:
+      type: object
+      properties:
+        architecture:
+          type: string
+          description: The model architecture to use.
+          enum:
+          - dense
+          - mixture_of_experts
+        base_model:
+          type: string
+          description: The base model to start from. Required for post-training and reinforcement learning jobs.
+        num_experts:
+          type: integer
+          description: Number of experts for MoE architecture.
+          minimum: 1
+        active_experts:
+          type: integer
+          description: Number of active experts per token for MoE architecture.
+          minimum: 1
+    TrainingJobList:
+      type: object
+      properties:
+        data:
+          type: array
+          description: A list of training jobs.
+          items:
+            $ref: '#/components/schemas/TrainingJob'
+        total:
+          type: integer
+          description: The total number of training jobs.
     CreateTrainingJobRequest:
       type: object
       required:
