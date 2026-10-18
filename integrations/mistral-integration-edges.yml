@@ -19,6 +19,7 @@ checked:
 - https://marketplace.visualstudio.com/vscode
 - https://openrouter.ai/api/v1/models
 - https://zapier.com/api/v4/apps/
+- slack/integrations/slack-integration-edges.yml
 marketplace_apps: []
 edges:
 - partner_name: Microsoft Azure Marketplace
@@ -374,5 +375,22 @@ edges:
     builder: Pipedream repo (component)
   detected_by: sweep-workflow-automation.py
   first_seen: '2026-10-15'
+- partner_name: Slack (own)
+  partner: slack
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://slack.com/marketplace/A0AL5104YSJ-mistral-vibe
+  mirror_of: slack/integrations/slack-integration-edges.yml
+  apps:
+  - Mistral Vibe
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Slack app
 source:
 - https://marketplace.visualstudio.com/vscode
