@@ -48,6 +48,7 @@ checked:
 - https://aur.archlinux.org/cgit/aur.git/tree/.SRCINFO
 - https://aur.archlinux.org/packages-meta-ext-v1.json.gz
 - https://aur.archlinux.org/rpc/v5/info
+- hugging-face/integrations/hugging-face-integration-edges.yml
 marketplace_apps: []
 edges:
 - partner_name: Microsoft Azure Marketplace
@@ -463,61 +464,6 @@ edges:
     detected: '2026-10-20'
   detected_by: sweep-agent-skills.py
   first_seen: '2026-10-20'
-- partner_name: Slack (own)
-  partner: slack
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://slack.com/marketplace/A0AL5104YSJ-mistral-vibe
-  mirror_of: slack/integrations/slack-integration-edges.yml
-  apps:
-  - Mistral Vibe
-  listing_count: 1
-  detected: '2026-10-18'
-  detected_by: mirror-platform-listings.py
-  category: Slack app
-- partner_name: Eclipse Foundation (open-vsx)
-  partner: eclipse
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: open-vsx
-  evidence: https://open-vsx.org/namespace/mistralai
-  mirror_of: eclipse/integrations/eclipse-integration-edges.yml
-  apps:
-  - Mistral Vibe VS Code
-  listing_count: 1
-  detected: '2026-10-20'
-  detected_by: mirror-platform-listings.py
-  category: IDE / developer extension marketplace listing
-  badges:
-  - Verified namespace
-- partner_name: JetBrains (jetbrains-marketplace)
-  partner: jetbrains
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: jetbrains-marketplace
-  evidence: https://plugins.jetbrains.com/vendor/mistralai
-  mirror_of: jetbrains/integrations/jetbrains-integration-edges.yml
-  apps:
-  - Mistral Code Enterprise
-  listing_count: 1
-  detected: '2026-10-20'
-  detected_by: mirror-platform-listings.py
-  category: IDE / developer extension marketplace listing
-  badges:
-  - Verified vendor
 - partner_name: Andreessen Horowitz (a16z)
   partner: a16z
   partner_match: register
@@ -650,5 +596,87 @@ edges:
     detected: '2026-10-23'
   detected_by: sweep-aur-vendor-cli-packages.py
   first_seen: '2026-10-23'
+- partner_name: Slack (own)
+  partner: slack
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://slack.com/marketplace/A0AL5104YSJ-mistral-vibe
+  mirror_of: slack/integrations/slack-integration-edges.yml
+  apps:
+  - Mistral Vibe
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Slack app
+- partner_name: Eclipse Foundation (open-vsx)
+  partner: eclipse
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: open-vsx
+  evidence: https://open-vsx.org/namespace/mistralai
+  mirror_of: eclipse/integrations/eclipse-integration-edges.yml
+  apps:
+  - Mistral Vibe VS Code
+  listing_count: 1
+  detected: '2026-10-20'
+  detected_by: mirror-platform-listings.py
+  category: IDE / developer extension marketplace listing
+  badges:
+  - Verified namespace
+- partner_name: JetBrains (jetbrains-marketplace)
+  partner: jetbrains
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: jetbrains-marketplace
+  evidence: https://plugins.jetbrains.com/vendor/mistralai
+  mirror_of: jetbrains/integrations/jetbrains-integration-edges.yml
+  apps:
+  - Mistral Code Enterprise
+  listing_count: 1
+  detected: '2026-10-20'
+  detected_by: mirror-platform-listings.py
+  category: IDE / developer extension marketplace listing
+  badges:
+  - Verified vendor
+- partner_name: Hugging Face (hugging-face-hub)
+  partner: hugging-face
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: hugging-face-hub
+  evidence: https://huggingface.co/mistralai
+  mirror_of: hugging-face/integrations/hugging-face-integration-edges.yml
+  apps:
+  - mistralai/mmlu_speech
+  - mistralai/gsm8k_speech
+  - mistralai/triviaqa_speech
+  - mistralai/MM-MT-Bench
+  - mistralai/voxtral-tts-demo
+  - mistralai/Voxtral-Mini-4B-Realtime-WebGPU
+  - mistralai/Voxtral-Mini-Realtime
+  - mistralai/Ministral_3B_WebGPU
+  - mistralai/Voxtral-Mini-4B-Realtime-Arabic-WebGPU
+  listing_count: 2
+  detected: '2026-10-23'
+  detected_by: mirror-platform-listings.py
+  category: Hugging Face Hub datasets
+  badges:
+  - Verified publisher (Hugging Face verified organisation)
 source:
 - https://marketplace.visualstudio.com/vscode
