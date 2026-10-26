@@ -1,0 +1,366 @@
+# Mistral AI (mistral)
+
+<!-- API-EVANGELIST-PROVENANCE:BEGIN -->
+> ### About this repository
+>
+> **This is not our API.** This repository is an independent, third-party profile of a company's
+> **publicly available** API surface, maintained by [API Evangelist](https://apievangelist.com).
+> API Evangelist does not operate, host, resell, or support this company's APIs, and is not
+> affiliated with or endorsed by the company unless stated on the profile.
+>
+> **Where the information came from.** Everything here is assembled from material a member of the
+> public can reach with a browser and no credentials — the company's own website, developer portal
+> and documentation, the specifications it publishes for public use (OpenAPI, AsyncAPI, JSON Schema,
+> `apis.json`, `llms.txt` and similar), its public repositories, and its public status, pricing and
+> changelog pages. **Nothing here is obtained by breaching a system, defeating an access control, or
+> using credentials of any kind.**
+>
+> **The rating is an independent assessment.** The Kin Score and Agent Readiness rating are
+> independently calculated scores of a company's *public* API artifacts, produced by API Evangelist
+> against a published rubric. They are not certifications, endorsements, security assessments, or
+> audits, and they score published artifacts — not the quality, safety, or security of the software.
+>
+> **Corrections, re-scores, and removal are free.** No partnership, contract, or purchase is
+> required, and you do not need to justify the request.
+>
+> - **Something wrong?** Open an issue on this repository, or email
+>   [info@apievangelist.com](mailto:info@apievangelist.com).
+> - **Published something new?** Ask for a re-score and we will re-run the rating.
+> - **Want the listing taken down?** Say so and we will honor it. The profile is reduced to your
+>   company name, a factual description, and a link to your own site, and the company is recorded as
+>   **unrated** — never scored zero for having asked.
+>
+> **Response times.** Acknowledgement within **one business day**; removal or restriction within
+> **two business days**; corrections and re-scores within **five business days**.
+>
+> **Not from the company, and here with a question?** You are welcome here — we would rather be the
+> front line and point you the right way than have a good report go nowhere. What this repository
+> can answer is narrow, though, so it is worth knowing who you are actually looking for:
+>
+> - **A question about how the API works, an account, billing, or a bug in the service** — that is
+>   the company's own support, not us. We profile this API; we do not operate it and cannot see
+>   your account.
+> - **A bug in an open-source project we only catalog** — file it on that project's own repository.
+>   This has happened with a real and correct bug report that reached us instead of the people who
+>   could fix it, which helped nobody.
+> - **Anything about this listing itself** — the description, the tags, the rating, a missing or
+>   wrong artifact — is ours. Open an issue here.
+> - **Not sure, or something general about API Evangelist or APIs.io** — open an issue on the
+>   [APIs.io Inbox](https://github.com/api-search/inbox) and we will route it.
+>
+> **This repository contains no software, and we will never ask you to download anything.** There is
+> no build, release, installer, or binary here — only text and machine-readable API descriptions, so
+> there is nothing here that can be "corrupt" or need "repairing". Any issue, comment, or email
+> claiming otherwise and offering a download link is not from us and is hostile. Do not follow the
+> link; it is a lure. Report it to GitHub and, if you like, tell us at
+> [info@apievangelist.com](mailto:info@apievangelist.com) so we can take it down.
+>
+> **On a security or compliance team?** Email
+> [info@apievangelist.com](mailto:info@apievangelist.com) with *security* in the subject line and
+> you will get a person, not a form. We will tell you exactly which public URLs this profile was
+> built from so your team can see the same surface we did, and we will take the listing down on
+> request while you work through it.
+>
+> Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
+<!-- API-EVANGELIST-PROVENANCE:END -->
+
+Mistral AI provides state-of-the-art large language models and AI APIs for developers and enterprises.
+
+**APIs.json:** [https://docs.mistral.ai/apis.json](https://docs.mistral.ai/apis.json)
+
+## Scope
+
+- **Type:** Index
+
+## Timestamps
+
+- **Created:** 2024
+- **Modified:** 2026-05-29
+
+## APIs
+
+### Mistral AI Chat API
+
+Chat completion API for conversational AI using Mistral's language models.
+
+- **Human URL:** [https://docs.mistral.ai/api/](https://docs.mistral.ai/api/)
+- **Base URL:** `https://api.mistral.ai/v1`
+
+#### Tags
+
+- Artificial Intelligence
+- Chat
+- Conversational AI
+- Large Language Models
+- NLP
+
+#### Properties
+
+- [Documentation](https://docs.mistral.ai/api/)
+- [OpenAPI](https://docs.mistral.ai/openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Authentication](https://docs.mistral.ai/api/#authentication)
+- [A P I Endpoint](https://docs.mistral.ai/api/endpoint/chat)
+- [OpenAPI](openapi/mistral-chat-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/mistral-chat.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/mistral-chat.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [AsyncAPI](asyncapi/mistral-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
+
+### Mistral Embeddings API
+
+Generate vector embeddings for text and code using Mistral's embedding models for retrieval, clustering, classification, and semantic search.
+
+- **Human URL:** [https://docs.mistral.ai/api/#embeddings](https://docs.mistral.ai/api/#embeddings)
+- **Base URL:** `https://api.mistral.ai/v1`
+
+#### Tags
+
+- Embeddings
+- Machine Learning
+- Semantic Search
+- Vector Search
+
+#### Properties
+
+- [Documentation](https://docs.mistral.ai/api/#embeddings)
+- [Pricing](https://mistral.ai/technology/#pricing)
+- [A P I Endpoint](https://docs.mistral.ai/api/endpoint/embeddings)
+- [OpenAPI](openapi/mistral-embeddings-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/mistral-embeddings.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/mistral-embeddings.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### Mistral Moderation API
+
+Content moderation and classification API for detecting potentially harmful or inappropriate content across nine safety categories including text and chat moderation.
+
+- **Human URL:** [https://docs.mistral.ai/api/#moderation](https://docs.mistral.ai/api/#moderation)
+- **Base URL:** `https://api.mistral.ai/v1`
+
+#### Tags
+
+- Classification
+- Compliance
+- Content Moderation
+- Safety
+
+#### Properties
+
+- [Documentation](https://docs.mistral.ai/api/#moderation)
+- [A P I Endpoint](https://docs.mistral.ai/api/endpoint/classifiers)
+- [Getting Started](https://docs.mistral.ai/capabilities/guardrailing)
+- [OpenAPI](openapi/mistral-moderation-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/mistral-moderation.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/mistral-moderation.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### Mistral AI Agents API
+
+Agent completions API for building AI agents that can handle complex tasks, maintain context, coordinate multiple actions, and use tools including function calling.
+
+- **Human URL:** [https://docs.mistral.ai/api/endpoint/agents](https://docs.mistral.ai/api/endpoint/agents)
+- **Base URL:** `https://api.mistral.ai/v1`
+
+#### Tags
+
+- Agents
+- Artificial Intelligence
+- Automation
+- Function Calling
+- Tools
+
+#### Properties
+
+- [Documentation](https://docs.mistral.ai/api/endpoint/agents)
+- [Getting Started](https://docs.mistral.ai/agents/agents)
+- [OpenAPI](openapi/mistral-agents-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/mistral-agents.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/mistral-agents.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [AsyncAPI](asyncapi/mistral-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
+
+### Mistral AI FIM API
+
+Fill-in-the-Middle code completion API powered by Codestral for generating code between a given prompt and suffix, supporting over 80 programming languages.
+
+- **Human URL:** [https://docs.mistral.ai/api/endpoint/fim](https://docs.mistral.ai/api/endpoint/fim)
+- **Base URL:** `https://api.mistral.ai/v1`
+
+#### Tags
+
+- Code Completion
+- Code Generation
+- Codestral
+- Fill in the Middle
+- Programming
+
+#### Properties
+
+- [Documentation](https://docs.mistral.ai/api/endpoint/fim)
+- [Getting Started](https://docs.mistral.ai/capabilities/code_generation)
+- [OpenAPI](openapi/mistral-fim-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/mistral-fim.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/mistral-fim.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [AsyncAPI](asyncapi/mistral-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
+
+### Mistral AI OCR API
+
+Optical Character Recognition API that extracts text, images, tables, and structured data from documents and PDFs with support for complex layouts, LaTeX, and mathematical expressions.
+
+- **Human URL:** [https://docs.mistral.ai/api/endpoint/ocr](https://docs.mistral.ai/api/endpoint/ocr)
+- **Base URL:** `https://api.mistral.ai/v1`
+
+#### Tags
+
+- Document AI
+- Document Understanding
+- OCR
+- PDF Processing
+- Text Extraction
+
+#### Properties
+
+- [Documentation](https://docs.mistral.ai/api/endpoint/ocr)
+- [Getting Started](https://docs.mistral.ai/capabilities/document_ai)
+- [OpenAPI](openapi/mistral-ocr-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/mistral-ocr.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/mistral-ocr.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### Mistral AI Fine-Tuning API
+
+Fine-tuning API for customizing Mistral models on your own datasets, supporting text, vision, and classifier fine-tuning with configurable hyperparameters and integrations.
+
+- **Human URL:** [https://docs.mistral.ai/api/endpoint/fine-tuning](https://docs.mistral.ai/api/endpoint/fine-tuning)
+- **Base URL:** `https://api.mistral.ai/v1`
+
+#### Tags
+
+- Fine-Tuning
+- Machine Learning
+- Model Customization
+- Training
+
+#### Properties
+
+- [Documentation](https://docs.mistral.ai/api/endpoint/fine-tuning)
+- [Getting Started](https://docs.mistral.ai/capabilities/finetuning/text_vision_finetuning)
+- [OpenAPI](openapi/mistral-fine-tuning-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/mistral-fine-tuning.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/mistral-fine-tuning.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### Mistral AI Files API
+
+File management API for uploading, retrieving, downloading, and deleting files used across fine-tuning, batch processing, and OCR endpoints with support for files up to 512 MB.
+
+- **Human URL:** [https://docs.mistral.ai/api/endpoint/files](https://docs.mistral.ai/api/endpoint/files)
+- **Base URL:** `https://api.mistral.ai/v1`
+
+#### Tags
+
+- File Management
+- Files
+- Storage
+- Upload
+
+#### Properties
+
+- [Documentation](https://docs.mistral.ai/api/endpoint/files)
+- [OpenAPI](openapi/mistral-files-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/mistral-files.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/mistral-files.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### Mistral AI Models API
+
+Models management API for listing available models, retrieving model details, and managing fine-tuned models including archiving and updating.
+
+- **Human URL:** [https://docs.mistral.ai/api/endpoint/models](https://docs.mistral.ai/api/endpoint/models)
+- **Base URL:** `https://api.mistral.ai/v1`
+
+#### Tags
+
+- Artificial Intelligence
+- Model Management
+- Models
+
+#### Properties
+
+- [Documentation](https://docs.mistral.ai/api/endpoint/models)
+- [OpenAPI](openapi/mistral-models-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/mistral-models.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/mistral-models.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### Mistral AI Batch API
+
+Batch inference API for processing up to one million requests asynchronously at reduced cost, supporting chat completions, embeddings, FIM, moderations, OCR, classifications, and audio transcriptions.
+
+- **Human URL:** [https://docs.mistral.ai/api/endpoint/batch](https://docs.mistral.ai/api/endpoint/batch)
+- **Base URL:** `https://api.mistral.ai/v1`
+
+#### Tags
+
+- Async
+- Batch Processing
+- Bulk Operations
+- Cost Optimization
+
+#### Properties
+
+- [Documentation](https://docs.mistral.ai/api/endpoint/batch)
+- [Getting Started](https://docs.mistral.ai/capabilities/batch)
+- [OpenAPI](openapi/mistral-batch-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/mistral-batch.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/mistral-batch.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### Mistral AI Audio Transcription API
+
+Audio transcription API powered by Voxtral for converting speech to text with support for speaker diarization, word-level timestamps, context biasing, and real-time streaming across 13 languages.
+
+- **Human URL:** [https://docs.mistral.ai/api/endpoint/audio/transcriptions](https://docs.mistral.ai/api/endpoint/audio/transcriptions)
+- **Base URL:** `https://api.mistral.ai/v1`
+
+#### Tags
+
+- Audio
+- Diarization
+- Speech to Text
+- Transcription
+- Voxtral
+
+#### Properties
+
+- [Documentation](https://docs.mistral.ai/api/endpoint/audio/transcriptions)
+- [Getting Started](https://docs.mistral.ai/capabilities/audio/)
+- [OpenAPI](openapi/mistral-audio-transcription-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/mistral-audio-transcription.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/mistral-audio-transcription.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+## Common Properties
+
+- [Website](https://mistral.ai)
+- [Documentation](https://docs.mistral.ai)
+- [Getting Started](https://docs.mistral.ai/getting-started/)
+- [Terms of Service](https://mistral.ai/terms/)
+- [Privacy Policy](https://mistral.ai/privacy/)
+- [Pricing](https://mistral.ai/technology/#pricing)
+- [Status Page](https://status.mistral.ai)
+- [Git Hub](https://github.com/mistralai)
+- [Twitter](https://twitter.com/MistralAI)
+- [LinkedIn](https://www.linkedin.com/company/mistralai)
+- [Discord](https://discord.gg/mistralai)
+- [Portal](https://docs.mistral.ai/api)
+- [Blog](https://mistral.ai/news)
+- [Changelog](https://docs.mistral.ai/getting-started/changelog)
+- [Sign Up](https://console.mistral.ai)
+- [Pricing](https://mistral.ai/pricing)
+- [S D Ks](https://docs.mistral.ai/getting-started/clients)
+- [Python S D K](https://github.com/mistralai/client-python)
+- [Type Script S D K](https://github.com/mistralai/client-ts)
+- [Getting Started](https://docs.mistral.ai/getting-started/quickstart)
+- [JSON-LD](json-ld/mistral-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+- [JSON Schema](json-schema/mistral-chat-completion-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON Schema](json-schema/mistral-model-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON Schema](json-schema/mistral-fine-tuning-job-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON Schema](json-schema/mistral-file-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [Features](undefined)
+- [L L Ms Txt](https://docs.mistral.ai/llms.txt)
+
+## Maintainers
+
+**FN:** Kin Lane
+**Email:** kin@apievangelist.com
