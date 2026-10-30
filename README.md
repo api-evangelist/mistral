@@ -1,4 +1,4 @@
-# Mistral AI (mistral)
+# Mistral AI
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,301 +66,240 @@
 
 Mistral AI provides state-of-the-art large language models and AI APIs for developers and enterprises.
 
-**APIs.json:** [https://docs.mistral.ai/apis.json](https://docs.mistral.ai/apis.json)
+**Areas:** Embeddings · Machine Learning · Agents · OCR · LLM · Foundation Models
 
-## Scope
+## Mistral AI on APIs.io
 
-- **Type:** Index
+Everything profiled for Mistral AI is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/mistral/](https://apis.io/providers/mistral/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (17)
 
-- **Created:** 2024
-- **Modified:** 2026-05-29
+- [Mistral AI Agents API](https://apis.io/apis/mistral/mistral-agents-api/) — Agent completion operations
+- [Mistral AI Audio API](https://apis.io/apis/mistral/mistral-audio-api/) — Audio transcription operations
+- [Mistral AI Batch Jobs API](https://apis.io/apis/mistral/mistral-batch-jobs-api/) — Batch inference job operations
+- [Mistral AI Embeddings API](https://apis.io/apis/mistral/mistral-embeddings-api/) — Text embedding operations
+- [Mistral AI Files API](https://apis.io/apis/mistral/mistral-files-api/) — File management operations
+- [Mistral AI FIM API](https://apis.io/apis/mistral/mistral-fim-api/) — Fill-in-the-Middle code completion operations
+- [Mistral AI Fine-Tuning Jobs API](https://apis.io/apis/mistral/mistral-fine-tuning-jobs-api/) — Create and manage fine-tuning jobs
+- [Mistral AI Models API](https://apis.io/apis/mistral/mistral-models-api/) — Model management operations
+- [Mistral AI Moderation API](https://apis.io/apis/mistral/mistral-moderation-api/) — Content moderation and classification operations
+- [Mistral AI OCR API](https://apis.io/apis/mistral/mistral-ocr-api/) — Document OCR and text extraction operations
+- [Mistral AI Chat Completions API](https://apis.io/apis/mistral/mistral-chat-completions-api/) — Endpoints for generating chat completions using Mistral language models in a conversational format.
+- [Mistral AI Training Jobs API](https://apis.io/apis/mistral/mistral-training-jobs-api/) — Endpoints for creating and managing training jobs including pre-training, supervised fine-tuning, and reinforcement learning pipelines.
+- [Mistral Embeddings API](https://apis.io/apis/mistral/mistral-embeddings-api/) — Generate vector embeddings for text and code for retrieval, clustering, classification, and semantic search.
+- [Mistral Moderation API](https://apis.io/apis/mistral/mistral-moderation-api/) — Content moderation and classification API for detecting harmful content across nine safety categories for text and chat.
+- [Mistral AI Fine-Tuning API](https://apis.io/apis/mistral/mistral-ai-fine-tuning-api/) — Fine-tuning API for customizing Mistral models on your own datasets, supporting text, vision, and classifier fine-tuning.
+- [Mistral AI Batch API](https://apis.io/apis/mistral/mistral-ai-batch-api/) — Batch inference API for processing up to one million requests asynchronously at reduced cost across most endpoints.
+- [Mistral AI Audio Transcription API](https://apis.io/apis/mistral/mistral-ai-audio-transcription-api/) — Audio transcription API powered by Voxtral for speech-to-text with diarization, word-level timestamps, and streaming.
 
-## APIs
+### Published properties
 
-### Mistral AI Chat API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Chat completion API for conversational AI using Mistral's language models.
+#### AsyncAPI (1)
 
-- **Human URL:** [https://docs.mistral.ai/api/](https://docs.mistral.ai/api/)
-- **Base URL:** `https://api.mistral.ai/v1`
+Event-driven and webhook contracts.
+
+- [Mistral AI Streaming Completions API](https://apis.io/asyncapis/mistral/mistral-asyncapi/)
+
+#### Event channels (3)
+
+Individual events and webhooks the provider emits.
 
-#### Tags
+- [/agents/completions](https://apis.io/channels/mistral/agents-completions/)
+- [/chat/completions](https://apis.io/channels/mistral/chat-completions/)
+- [/fim/completions](https://apis.io/channels/mistral/fim-completions/)
 
-- Artificial Intelligence
-- Chat
-- Conversational AI
-- Large Language Models
-- NLP
+#### GraphQL (1)
 
-#### Properties
+GraphQL schemas.
 
-- [Documentation](https://docs.mistral.ai/api/)
-- [OpenAPI](https://docs.mistral.ai/openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Authentication](https://docs.mistral.ai/api/#authentication)
-- [A P I Endpoint](https://docs.mistral.ai/api/endpoint/chat)
-- [OpenAPI](openapi/mistral-chat-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/mistral-chat.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mistral-chat.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [AsyncAPI](asyncapi/mistral-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
+- [Moved to /providers/mistral/](https://apis.io/graphqls/mistral/mistral-graphql/)
 
-### Mistral Embeddings API
+#### Agentic access (1)
 
-Generate vector embeddings for text and code using Mistral's embedding models for retrieval, clustering, classification, and semantic search.
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- **Human URL:** [https://docs.mistral.ai/api/#embeddings](https://docs.mistral.ai/api/#embeddings)
-- **Base URL:** `https://api.mistral.ai/v1`
+- [Mistral Agentic Access](https://apis.io/agentic-access/mistral/mistral-agentic-access/)
 
-#### Tags
+#### JSON Schema (66)
 
-- Embeddings
-- Machine Learning
-- Semantic Search
-- Vector Search
+The data models the API reads and writes.
 
-#### Properties
+- [AgentCompletionChoice](https://apis.io/schemas/mistral/mistral-agentcompletionchoice/)
+- [AgentCompletionRequest](https://apis.io/schemas/mistral/mistral-agentcompletionrequest/)
+- [AgentCompletionResponse](https://apis.io/schemas/mistral/mistral-agentcompletionresponse/)
+- [AgentCompletionStreamResponse](https://apis.io/schemas/mistral/mistral-agentcompletionstreamresponse/)
+- [Mistral AI Batch Job](https://apis.io/schemas/mistral/mistral-batch-job/)
+- [BatchJob](https://apis.io/schemas/mistral/mistral-batchjob/)
+- [BatchJobList](https://apis.io/schemas/mistral/mistral-batchjoblist/)
+- [Mistral Chat Completion](https://apis.io/schemas/mistral/mistral-chat-completion/)
+- [ChatCompletionChoice](https://apis.io/schemas/mistral/mistral-chatcompletionchoice/)
+- [ChatCompletionRequest](https://apis.io/schemas/mistral/mistral-chatcompletionrequest/)
+- [ChatCompletionResponse](https://apis.io/schemas/mistral/mistral-chatcompletionresponse/)
+- [ChatCompletionStreamResponse](https://apis.io/schemas/mistral/mistral-chatcompletionstreamresponse/)
+- [ChatMessage](https://apis.io/schemas/mistral/mistral-chatmessage/)
+- [ChatModerationRequest](https://apis.io/schemas/mistral/mistral-chatmoderationrequest/)
+- [Choice](https://apis.io/schemas/mistral/mistral-choice/)
+- [ContentPart](https://apis.io/schemas/mistral/mistral-contentpart/)
+- [CreateBatchJobRequest](https://apis.io/schemas/mistral/mistral-createbatchjobrequest/)
+- [CreateFineTuningJobRequest](https://apis.io/schemas/mistral/mistral-createfinetuningjobrequest/)
+- [CreateTrainingJobRequest](https://apis.io/schemas/mistral/mistral-createtrainingjobrequest/)
+- [DeleteFileResponse](https://apis.io/schemas/mistral/mistral-deletefileresponse/)
+- [DeleteModelResponse](https://apis.io/schemas/mistral/mistral-deletemodelresponse/)
+- [DocumentInput](https://apis.io/schemas/mistral/mistral-documentinput/)
+- [Embedding](https://apis.io/schemas/mistral/mistral-embedding/)
+- [EmbeddingObject](https://apis.io/schemas/mistral/mistral-embeddingobject/)
+- [EmbeddingRequest](https://apis.io/schemas/mistral/mistral-embeddingrequest/)
+- …and 41 more published on APIs.io
 
-- [Documentation](https://docs.mistral.ai/api/#embeddings)
-- [Pricing](https://mistral.ai/technology/#pricing)
-- [A P I Endpoint](https://docs.mistral.ai/api/endpoint/embeddings)
-- [OpenAPI](openapi/mistral-embeddings-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/mistral-embeddings.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mistral-embeddings.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### JSON Structure (1)
 
-### Mistral Moderation API
+Data models expressed in JSON Structure.
 
-Content moderation and classification API for detecting potentially harmful or inappropriate content across nine safety categories including text and chat moderation.
+- [Mistral Structure](https://apis.io/json-structure/mistral/mistral-structure/)
 
-- **Human URL:** [https://docs.mistral.ai/api/#moderation](https://docs.mistral.ai/api/#moderation)
-- **Base URL:** `https://api.mistral.ai/v1`
+#### JSON-LD (1)
 
-#### Tags
+Linked-data contexts for the provider's vocabulary.
 
-- Classification
-- Compliance
-- Content Moderation
-- Safety
+- [Mistral Context](https://apis.io/jsonld/mistral/mistral-context/)
 
-#### Properties
+#### Vocabulary (1)
 
-- [Documentation](https://docs.mistral.ai/api/#moderation)
-- [A P I Endpoint](https://docs.mistral.ai/api/endpoint/classifiers)
-- [Getting Started](https://docs.mistral.ai/capabilities/guardrailing)
-- [OpenAPI](openapi/mistral-moderation-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/mistral-moderation.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mistral-moderation.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+The provider's domain terms, defined.
 
-### Mistral AI Agents API
+- [Mistral AI Domain Vocabulary](https://apis.io/vocabularies/mistral/mistral-vocabulary/)
 
-Agent completions API for building AI agents that can handle complex tasks, maintain context, coordinate multiple actions, and use tools including function calling.
+#### Collections (34)
 
-- **Human URL:** [https://docs.mistral.ai/api/endpoint/agents](https://docs.mistral.ai/api/endpoint/agents)
-- **Base URL:** `https://api.mistral.ai/v1`
+Postman and Open Collection request collections.
 
-#### Tags
+- [Mistral AI Agents API](https://apis.io/collections/mistral/open-mistral-agents/)
+- [Mistral AI Agents API](https://apis.io/collections/mistral/open-mistral-agents-api/)
+- [Mistral AI Agents Audio API](https://apis.io/collections/mistral/open-mistral-audio-api/)
+- [Mistral AI Audio Transcription API](https://apis.io/collections/mistral/open-mistral-audio-transcription/)
+- [Mistral AI Batch API](https://apis.io/collections/mistral/open-mistral-batch/)
+- [Mistral AI Agents Batch Jobs API](https://apis.io/collections/mistral/open-mistral-batch-jobs-api/)
+- [Mistral AI Chat API](https://apis.io/collections/mistral/open-mistral-chat/)
+- [Mistral AI Agents Chat API](https://apis.io/collections/mistral/open-mistral-chat-api/)
+- [Mistral AI Chat Completions API](https://apis.io/collections/mistral/open-mistral-chat-completions/)
+- [Mistral AI Agents Chat Completions API](https://apis.io/collections/mistral/open-mistral-chat-completions-api/)
+- [Mistral AI Mistral Embeddings API](https://apis.io/collections/mistral/open-mistral-embeddings/)
+- [Mistral AI Agents Embeddings API](https://apis.io/collections/mistral/open-mistral-embeddings-api/)
+- [Mistral AI Files API](https://apis.io/collections/mistral/open-mistral-files/)
+- [Mistral AI Agents Files API](https://apis.io/collections/mistral/open-mistral-files-api/)
+- [Mistral AI FIM API](https://apis.io/collections/mistral/open-mistral-fim/)
+- [Mistral AI Agents FIM API](https://apis.io/collections/mistral/open-mistral-fim-api/)
+- [Mistral AI Fine-Tuning API](https://apis.io/collections/mistral/open-mistral-fine-tuning/)
+- [Mistral AI Agents Fine-Tuning Jobs API](https://apis.io/collections/mistral/open-mistral-fine-tuning-jobs-api/)
+- [Mistral AI Forge API](https://apis.io/collections/mistral/open-mistral-forge/)
+- [Mistral AI Models API](https://apis.io/collections/mistral/open-mistral-models/)
+- [Mistral AI Agents Models API](https://apis.io/collections/mistral/open-mistral-models-api/)
+- [Mistral AI Mistral Moderation API](https://apis.io/collections/mistral/open-mistral-moderation/)
+- [Mistral AI Agents Moderation API](https://apis.io/collections/mistral/open-mistral-moderation-api/)
+- [Mistral AI OCR API](https://apis.io/collections/mistral/open-mistral-ocr/)
+- [Mistral AI Agents OCR API](https://apis.io/collections/mistral/open-mistral-ocr-api/)
+- …and 9 more published on APIs.io
 
-- Agents
-- Artificial Intelligence
-- Automation
-- Function Calling
-- Tools
+#### Governance rules (2)
 
-#### Properties
+Spectral rulesets for the provider's contracts.
 
-- [Documentation](https://docs.mistral.ai/api/endpoint/agents)
-- [Getting Started](https://docs.mistral.ai/agents/agents)
-- [OpenAPI](openapi/mistral-agents-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/mistral-agents.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mistral-agents.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [AsyncAPI](asyncapi/mistral-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
+- [Mistral AI — asyncapi rules](https://apis.io/rules/mistral/mistral-asyncapi-spectral-rules/)
+- [Mistral AI — jsonschema rules](https://apis.io/rules/mistral/mistral-jsonschema-spectral-rules/)
 
-### Mistral AI FIM API
+#### Security (2)
 
-Fill-in-the-Middle code completion API powered by Codestral for generating code between a given prompt and suffix, supporting over 80 programming languages.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://docs.mistral.ai/api/endpoint/fim](https://docs.mistral.ai/api/endpoint/fim)
-- **Base URL:** `https://api.mistral.ai/v1`
+- [Mistral Authentication](https://apis.io/security/mistral/mistral-authentication/)
+- [Mistral Domain Security](https://apis.io/security/mistral/mistral-domain-security/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- Code Completion
-- Code Generation
-- Codestral
-- Fill in the Middle
-- Programming
+Published plans, tiers and prices.
 
-#### Properties
+- [Mistral Plans Pricing](https://apis.io/plans/mistral/mistral-plans-pricing/)
 
-- [Documentation](https://docs.mistral.ai/api/endpoint/fim)
-- [Getting Started](https://docs.mistral.ai/capabilities/code_generation)
-- [OpenAPI](openapi/mistral-fim-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/mistral-fim.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mistral-fim.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [AsyncAPI](asyncapi/mistral-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
+#### Rate limits (1)
 
-### Mistral AI OCR API
+Published request limits.
 
-Optical Character Recognition API that extracts text, images, tables, and structured data from documents and PDFs with support for complex layouts, LaTeX, and mathematical expressions.
+- [Mistral Rate Limits](https://apis.io/rate-limits/mistral/mistral-rate-limits/)
 
-- **Human URL:** [https://docs.mistral.ai/api/endpoint/ocr](https://docs.mistral.ai/api/endpoint/ocr)
-- **Base URL:** `https://api.mistral.ai/v1`
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- Document AI
-- Document Understanding
-- OCR
-- PDF Processing
-- Text Extraction
+- [Mistral Finops](https://apis.io/finops/mistral/mistral-finops/)
 
-#### Properties
+## Where to find this API
 
-- [Documentation](https://docs.mistral.ai/api/endpoint/ocr)
-- [Getting Started](https://docs.mistral.ai/capabilities/document_ai)
-- [OpenAPI](openapi/mistral-ocr-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/mistral-ocr.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mistral-ocr.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Mistral AI Fine-Tuning API
-
-Fine-tuning API for customizing Mistral models on your own datasets, supporting text, vision, and classifier fine-tuning with configurable hyperparameters and integrations.
-
-- **Human URL:** [https://docs.mistral.ai/api/endpoint/fine-tuning](https://docs.mistral.ai/api/endpoint/fine-tuning)
-- **Base URL:** `https://api.mistral.ai/v1`
-
-#### Tags
-
-- Fine-Tuning
-- Machine Learning
-- Model Customization
-- Training
-
-#### Properties
-
-- [Documentation](https://docs.mistral.ai/api/endpoint/fine-tuning)
-- [Getting Started](https://docs.mistral.ai/capabilities/finetuning/text_vision_finetuning)
-- [OpenAPI](openapi/mistral-fine-tuning-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/mistral-fine-tuning.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mistral-fine-tuning.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Mistral AI Files API
-
-File management API for uploading, retrieving, downloading, and deleting files used across fine-tuning, batch processing, and OCR endpoints with support for files up to 512 MB.
-
-- **Human URL:** [https://docs.mistral.ai/api/endpoint/files](https://docs.mistral.ai/api/endpoint/files)
-- **Base URL:** `https://api.mistral.ai/v1`
-
-#### Tags
-
-- File Management
-- Files
-- Storage
-- Upload
-
-#### Properties
-
-- [Documentation](https://docs.mistral.ai/api/endpoint/files)
-- [OpenAPI](openapi/mistral-files-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/mistral-files.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mistral-files.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Mistral AI Models API
-
-Models management API for listing available models, retrieving model details, and managing fine-tuned models including archiving and updating.
-
-- **Human URL:** [https://docs.mistral.ai/api/endpoint/models](https://docs.mistral.ai/api/endpoint/models)
-- **Base URL:** `https://api.mistral.ai/v1`
-
-#### Tags
-
-- Artificial Intelligence
-- Model Management
-- Models
-
-#### Properties
-
-- [Documentation](https://docs.mistral.ai/api/endpoint/models)
-- [OpenAPI](openapi/mistral-models-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/mistral-models.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mistral-models.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Mistral AI Batch API
-
-Batch inference API for processing up to one million requests asynchronously at reduced cost, supporting chat completions, embeddings, FIM, moderations, OCR, classifications, and audio transcriptions.
-
-- **Human URL:** [https://docs.mistral.ai/api/endpoint/batch](https://docs.mistral.ai/api/endpoint/batch)
-- **Base URL:** `https://api.mistral.ai/v1`
-
-#### Tags
-
-- Async
-- Batch Processing
-- Bulk Operations
-- Cost Optimization
-
-#### Properties
-
-- [Documentation](https://docs.mistral.ai/api/endpoint/batch)
-- [Getting Started](https://docs.mistral.ai/capabilities/batch)
-- [OpenAPI](openapi/mistral-batch-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/mistral-batch.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mistral-batch.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Mistral AI Audio Transcription API
-
-Audio transcription API powered by Voxtral for converting speech to text with support for speaker diarization, word-level timestamps, context biasing, and real-time streaming across 13 languages.
-
-- **Human URL:** [https://docs.mistral.ai/api/endpoint/audio/transcriptions](https://docs.mistral.ai/api/endpoint/audio/transcriptions)
-- **Base URL:** `https://api.mistral.ai/v1`
-
-#### Tags
-
-- Audio
-- Diarization
-- Speech to Text
-- Transcription
-- Voxtral
-
-#### Properties
-
-- [Documentation](https://docs.mistral.ai/api/endpoint/audio/transcriptions)
-- [Getting Started](https://docs.mistral.ai/capabilities/audio/)
-- [OpenAPI](openapi/mistral-audio-transcription-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/mistral-audio-transcription.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mistral-audio-transcription.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://mistral.ai)
 - [Documentation](https://docs.mistral.ai)
-- [Getting Started](https://docs.mistral.ai/getting-started/)
-- [Terms of Service](https://mistral.ai/terms/)
-- [Privacy Policy](https://mistral.ai/privacy/)
+- [Getting started](https://docs.mistral.ai/getting-started/)
 - [Pricing](https://mistral.ai/technology/#pricing)
-- [Status Page](https://status.mistral.ai)
-- [Git Hub](https://github.com/mistralai)
-- [Twitter](https://twitter.com/MistralAI)
-- [LinkedIn](https://www.linkedin.com/company/mistralai)
-- [Discord](https://discord.gg/mistralai)
-- [Portal](https://docs.mistral.ai/api)
-- [Blog](https://mistral.ai/news)
 - [Changelog](https://docs.mistral.ai/getting-started/changelog)
-- [Sign Up](https://console.mistral.ai)
-- [Pricing](https://mistral.ai/pricing)
-- [S D Ks](https://docs.mistral.ai/getting-started/clients)
-- [Python S D K](https://github.com/mistralai/client-python)
-- [Type Script S D K](https://github.com/mistralai/client-ts)
-- [Getting Started](https://docs.mistral.ai/getting-started/quickstart)
-- [JSON-LD](json-ld/mistral-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [JSON Schema](json-schema/mistral-chat-completion-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/mistral-model-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/mistral-fine-tuning-job-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/mistral-file-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [Features](undefined)
-- [L L Ms Txt](https://docs.mistral.ai/llms.txt)
+- [Blog](https://mistral.ai/news)
+- [Terms of service](https://mistral.ai/terms/)
+- [Privacy policy](https://mistral.ai/privacy/)
+- [GitHub](https://github.com/mistralai)
+- [Status](https://status.mistral.ai)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 47.7** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 76.8 |
+| Contract quality | 64.9 |
+| Contract governance | 13.6 |
+| Operational transparency | 42.1 |
+| Developer ergonomics | 58.3 |
+| Access clarity | 27.6 |
+
+**Agent readiness 28.8** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | derived (partial credit) |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | partial |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 19.1** — AI & Biometrics
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/mistral/](https://apis.io/providers/mistral/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Mistral AI: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/mistral/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
